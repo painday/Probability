@@ -1,9 +1,19 @@
 % 模板出处：https://zhuanlan.zhihu.com/p/379360037
 
-\documentclass[12pt, a4paper, oneside]{ctexbook}
+\documentclass[12pt, a4paper, oneside]{book}
+\usepackage{ctex}
 \usepackage{amsmath, amsthm, amssymb, bm, graphicx, hyperref, mathrsfs}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=blue,      
+	urlcolor=blue,
+	citecolor=cyan,
+}
 \usepackage{comment}
 \usepackage{titlesec} % 添加 titlesec 宏包
+
 
 \titleformat{\section} % 重新定义 section 格式
   {\normalfont\Large\bfseries} % 标题格式
@@ -42,6 +52,7 @@
 \item[2.] 测度与概率教程. 任佳刚,巫静. 科学出版社, 2018.
 \item[3.] Measure, Integration \& Real Analysis. Sheldon Axler. Springer, 2020.
 \end{enumerate}
+
 ~\\
 \begin{flushright}
     \begin{tabular}{c}
@@ -81,5 +92,8 @@ $A_1\subset \sum_{n=1}^\infty (A_n-A_{n+1}) + \bigcap_{n=1}^\infty A_n.$
 \end{proof}
 
 
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{../Ref/reference.bib}
 
 \end{document}

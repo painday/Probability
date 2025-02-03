@@ -1,2 +1,2 @@
-\contentsline {chapter}{\numberline {第一章\hspace {.3em}}测度论}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {1}测度论}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}$\sigma $-代数与测度}{1}{section.1.1}%
