@@ -70,11 +70,12 @@
 \begin{example}
     设 $\{A_n\}_{n\in\mathbb N}$ 为单调减少集列. 证明 
     \begin{equation*}
-        A_1=\sum_{n=1}^\infty (A_n-A_{n-1}) + \bigcap_{n=1}^\infty A_n
+        A_1=\sum_{n=1}^\infty (A_n-A_{n+1}) + \bigcap_{n=1}^\infty A_n
     \end{equation*}
 \end{example}
 \begin{proof}
-首先，右边的每个集合都含于 $A_1.$ 因此右边含于 $A_1.$ 其次，若 $x\in A_1$ 且 $x\notin \bigcap_{n=1}^\infty A_n$, 则 $x\in \sum_{n=1}^\infty (A_n-A_{n-1})$ 且 $x\notin \bigcap_{n=1}^\infty A_n.$ 因此 $A_1$ 也是单调递减的. 最后，若 $x\in \bigcap_{n=1}^\infty A_n$, 则存在某个 $n>1,$ 使得 $x\notin A_n.$ 令 $n_0$ 为
+首先，右边的每个集合都含于 $A_1.$ 因此右边含于 $A_1.$ 其次，若 $x\in A_1$ 且 $x\notin \bigcap_{n=1}^\infty A_n$, 则 $x\in \sum_{n=1}^\infty (A_n-A_{n-1})$ 且 $x\notin \bigcap_{n=1}^\infty A_n.$ 因此 $A_1$ 也是单调递减的. 最后，若 $x\in \bigcap_{n=1}^\infty A_n$, 则存在某个 $n>1,$ 使得 $x\notin A_n.$ 令 $n_0$ 为最小的这种 $n,$ 那么就有 $x\notin A_{n_0},\ x\in A_{n_0-1}.$ 于是就有 $x\in \sum_{n=1}^\infty (A_n-A_{n-1}).$ 这就证明了 
+$A_1\subset \sum_{n=1}^\infty (A_n-A_{n+1}) + \bigcap_{n=1}^\infty A_n.$ 
 \end{proof}
 
 
