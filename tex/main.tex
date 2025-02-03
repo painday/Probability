@@ -3,6 +3,13 @@
 \documentclass[12pt, a4paper, oneside]{ctexbook}
 \usepackage{amsmath, amsthm, amssymb, bm, graphicx, hyperref, mathrsfs}
 \usepackage{comment}
+\usepackage{titlesec} % 添加 titlesec 宏包
+
+\titleformat{\section} % 重新定义 section 格式
+  {\normalfont\Large\bfseries} % 标题格式
+  {\thesection} % 标签
+  {1em} % 标签和标题之间的间距
+  {} % 前代码
 
 \title{{\Huge{\textbf{测度与概率 Notes}}}}
 \author{Liu Fuzhou}
@@ -27,6 +34,7 @@
     \Huge\textbf{前言}
 \end{center}~\
 
+以前其实也看过这个主题的书，结果后来都忘了. 看来做一些有形的笔记是很有必要的. 不需要特别详细，提纲挈领即可.
 
 主要参考文献：
 \begin{enumerate}
@@ -49,13 +57,25 @@
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-\chapter{章节标题}
+\chapter{测度论}
+ 
+\section{$\sigma$-代数与测度}
 
-在这里可以输入笔记的内容. 
+首先比较重要的概念就是集列的上极限与下极限. 集列 $\{A_n\}_{n\in\mathbb N}$ 的上极限就是落到其中无限多个集合的元素所做成的集合，也即 $\limsup_{n\to\infty}A_n=\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k.$ 
+下极限就是除去有限多个集合后，落到所有集中的元素所做成的集合，也即 $\liminf_{n\to\infty}A_n=\bigcup_{n=1}^\infty\bigcap_{k=n}^\infty A_k.$ 换言之也即“最终落到集列” $A_n$ 中的那些元素之全体.
+显然，下限集中的元素也都落到上限集之中，也即 $\liminf A_n\subset \limsup A_n.$ 如果集列 $A_n$ 的上限集与下限集相等，那么就说集列 $A_n$ 收敛，并称 $A=\liminf A_n=\limsup A_n$ 为集列 $A_n$ 的极限.      这个极限是关于集合包含的偏序关系说的. 
+与实数的情况类似，有单调集列的收敛定理：如果 $A_n\uparrow$ 是单调递增的，那么 $\lim A_n=\bigcup_n A_n.$ 类似地，如果 $A_n\downarrow$ 是单调递减的，那么 $\lim A_n=\bigcap_n A_n.$ 
 
-\section{小节标题}
 
-这是笔记的正文部分. 
+\begin{example}
+    设 $\{A_n\}_{n\in\mathbb N}$ 为单调减少集列. 证明 
+    \begin{equation*}
+        A_1=\sum_{n=1}^\infty (A_n-A_{n-1}) + \bigcap_{n=1}^\infty A_n
+    \end{equation*}
+\end{example}
+\begin{proof}
+首先，右边的每个集合都含于 $A_1.$ 因此右边含于 $A_1.$ 其次，若 $x\in A_1$ 且 $x\notin \bigcap_{n=1}^\infty A_n$, 则 $x\in \sum_{n=1}^\infty (A_n-A_{n-1})$ 且 $x\notin \bigcap_{n=1}^\infty A_n.$ 因此 $A_1$ 也是单调递减的. 最后，若 $x\in \bigcap_{n=1}^\infty A_n$, 则存在某个 $n>1,$ 使得 $x\notin A_n.$ 令 $n_0$ 为
+\end{proof}
 
 
 
