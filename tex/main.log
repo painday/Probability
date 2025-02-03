@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.16)  3 FEB 2025 17:16
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.16)  3 FEB 2025 17:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -538,7 +538,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 43--44
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
  []
 
@@ -552,18 +552,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--44
 第一章
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 62.
+(hyperref)                removing `math shift' on input line 63.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sigma' on input line 62.
+(hyperref)                removing `\sigma' on input line 63.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 62.
+(hyperref)                removing `math shift' on input line 63.
 
 
-Overfull \hbox (4.99272pt too wide) in paragraph at lines 64--68
+Overfull \hbox (4.99272pt too wide) in paragraph at lines 65--69
 \TU/SimSun(0)/m/n/12 极 限 就 是 落 到 其 中 无 限 多 个 集 合 的 元 素 所 做 成 的 集 合，|  也 即 $[][] \OML/cmm/m/it/12 A[] \OT1/cmr/m/n/12 =
  []
 
@@ -586,4 +586,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  93i,8n,97p,541b,360s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (4 pages, 17652 bytes).
+Output written on main.xdv (4 pages, 18132 bytes).
