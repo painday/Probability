@@ -10,6 +10,8 @@
     urlcolor=blue,
     citecolor=cyan,
 }
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
 \usepackage{comment}
 \usepackage{titlesec} % 添加 titlesec 宏包
 \titleclass{\section}{straight} % 清除默认章节格式
@@ -41,7 +43,8 @@
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\arabic{section}\arabic{subsection}}
 
-
+% 图编号格式调整
+\numberwithin{figure}{section}
 
 % 定理环境样式调整
 \theoremstyle{definition}
@@ -97,6 +100,9 @@
 \setcounter{page}{1}
 \tableofcontents
 \newpage
+% 生成图表目录
+\listoffigures
+\newpage
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
@@ -135,7 +141,7 @@ $\Omega_\mathcal P (f)=\sum_{i} (\sup_{x_{i-1}\leq x\leq x_i} f-\inf_{x_{i-1}\le
     \mathcal R_n:=\mathcal R(f,\mathcal P_n,\Delta_n,[a,b])=\sum_{i=1}^{\#(\mathcal P_n)-1} f(\xi_i)(x_{i}-x_{i-1})
 \end{equation}
 显然有 $\mathcal L(f,\mathcal P_n,[a,b])\leq \mathcal R_n\leq \mathcal U(f,\mathcal P_n,[a,b]).$ 因此有
-\begin{equation}
+\begin{equation}\label{eq:Riemann limit inequalities}
     \underline{\int}_a^b f(x)\ \mathrm dx\leq \liminf \mathcal R_n\leq \limsup \mathcal R_n\leq  \overline{\int}_a^b f(x)\ \mathrm dx
 \end{equation}
 
@@ -147,6 +153,9 @@ $\Omega_\mathcal P (f)=\sum_{i} (\sup_{x_{i-1}\leq x\leq x_i} f-\inf_{x_{i-1}\le
     \lim_{\|\mathcal P\|\to 0} \mathcal R(f,\mathcal P,\Delta,[a,b])
 \end{equation}
 其中 $\|\mathcal P\|=\max_{i}|x_{i}-x_{i-1}|$ 是 partition 的 mesh. 这个极限其实相当强，因为其定义只涉及 partition, 对相伴的点集 $\Delta$ 没什么要求.  
+
+由不等式 \eqref{eq:Riemann limit inequalities} 可知，如果两种定义下的 Riemann 积分均存在，那么它们的值必定相等. 因此，两种定义的等价性的证明就归结于证明其存在性的等价性.
+
 
 要证明两种定义的等价性，首先要注意到，上下积分之差恰好等于函数振幅的下确界 $\inf_{\mathcal P}\Omega_\mathcal P(f).$ 这就是说 $\lim_{\mathcal P} (\mathcal U(f,\mathcal P,[a,b])-\mathcal L(f,\mathcal P,[a,b]))=\inf_{\mathcal P}\Omega_\mathcal P(f),$ 或者说 $\lim_{\mathcal P}\Omega_\mathcal P(f)=\inf_{\mathcal P}\Omega_\mathcal P(f).$ 
 事实上，设 $\varepsilon>0,$ 那么由 net 的极限的定义，存在 partition $\mathcal P_0,$ 使得任意细于 $\mathcal P_0$ 的分割 $\mathcal P$ 都满足 $|\Omega_{\mathcal P_0}(f)-\lim_{\mathcal P} \Omega_{\mathcal P}(f)|<\varepsilon.$ 
@@ -160,7 +169,149 @@ $\Omega_\mathcal P (f)=\sum_{i} (\sup_{x_{i-1}\leq x\leq x_i} f-\inf_{x_{i-1}\le
     \overline{\int}_a^b f(x)\ \mathrm dx - \underline{\int}_a^b f(x)\ \mathrm dx = \inf_{\mathcal P}\Omega_{\mathcal P}(f)
 \end{equation}
 
-假如极限 \eqref{eq:Riemann_limit} 存在，那么
+假如极限 \eqref{eq:Riemann_limit} 存在，其值记为 $A,$ 那么对于任意的 $\varepsilon>0,$ 存在 $\delta>0,$ 使得只要 partition 的 mesh 小于 $\delta,$ 就有 $|\mathcal R(f,\mathcal P,\Delta,[a,b])-A|<\varepsilon.$ 
+现在固定分割 $\mathcal P,$ 那么由于该不等式对于任意与 $\mathcal P$ 相伴的点集 $\Delta$ 都成立，因此有 $\Omega_{\mathcal P}(f)\leq 2\varepsilon.$ 这就证明了 $\inf_{\mathcal P}\Omega_{\mathcal P}(f)=0,$ 因而上下积分相等. 
+
+反之，要从上下积分相等导出极限 \eqref{eq:Riemann_limit} 的存在性，还需要证明一个基于 partition 的 mesh 估计的技术性引理：
+\begin{lemma}\label{lemma:mesh estimate}
+    设 $\mathcal P,\mathcal P'$ 为区间 $[a,b]$ 的两个 partition, $M=\sup_{x\in [a,b]}|f(x)|,$ 那么就有不等式 
+    \begin{equation}\label{eq:mesh estimate}
+        \Omega_{\mathcal P}(f) \leq \Omega_{\mathcal P'}(f) + (\#(\mathcal P')-2)M\|\mathcal P\|
+    \end{equation}
+\end{lemma}
+
+事实上，如果向 $\mathcal P$ 中添加一个新元素 $y,$ 譬如说插入到区间 $[x_k,x_{k+1}]$ 中，那么所形成的新分割 $\mathcal P''$ 的 Darboux 和与 $\mathcal P$ 的 Darboux 的差异仅来自于区间 $[x_k,x_{k+1}]$ 的贡献，也即
+\begin{equation}
+    \Omega_{\mathcal P''}(f)-\Omega_{\mathcal P}(f)=\omega_{x_k\leq x\leq y}f(x) (y-x_k)+ \omega_{y\leq x\leq x_{k+1}}f(x) (x_{k+1}-y) - \omega_{x_k\leq x\leq x_{k+1}}f(x) (x_{k+1}-x_k)
+\end{equation}
+考虑到 $\omega_{x_k\leq x\leq y}-\omega_{x_k\leq x\leq x_{k+1}}$ 和 $\omega_{y\leq x\leq x_{k+1}}-\omega_{x_k\leq x\leq x_{k+1}}$ 都落到区间 $[-M,M]$ 内，因此 $\Omega_{\mathcal P''}(f)-\Omega_{\mathcal P}(f)$ 的绝对值被 $M(x_{k+1}-x_k)$ 控制， 
+从而也被 $M\|\mathcal P\|$ 控制. 这就导出了 $|\Omega_{\mathcal P''}(f)-\Omega_{\mathcal P}(f)|\leq M\|\mathcal P\|.$ 类似地，如果向 $\mathcal P''$ 中再插入一个新元素得到新分割 $\mathcal P''',$那么同样有
+\begin{equation}
+    |\Omega_{\mathcal P'''}(f)-\Omega_{\mathcal P''}(f)|\leq M\|\mathcal P''\|
+\end{equation}
+由于 $\mathcal P'''$ 细于 $\mathcal P,$ 因此 $\|\mathcal P'''\|\leq \|\mathcal P\|.$ 因此 $\Omega_{\mathcal P'''}(f)-\Omega_{\mathcal P''}(f)$ 的绝对值也被 $M\|\mathcal P\|$ 控制，从而有 $|\Omega_{\mathcal P'''}(f)-\Omega_{\mathcal P}(f)|\leq 2 M\|\mathcal P\|.$ 
+现在考虑 $\mathcal P$ 与 $\mathcal P'$ 的 merge $\mathcal S,$ 其可以通过反复向 $\mathcal P$ 中插入元素来得到，插入次数至多为 $ \#(\mathcal P')-2$ 次. 因此就有
+\begin{equation}
+    \Omega_{\mathcal P}(f)-(\#(\mathcal P')-2)M\|\mathcal P\|\leq \Omega_{\mathcal S}(f)\leq \Omega_{\mathcal P'}(f)
+\end{equation}
+这就导出了不等式 \eqref{eq:mesh estimate}. 这个引理最初是在 \cite{Mei_2011} pp.213 看到的.
+
+作为引理 \ref{lemma:mesh estimate} 的一个推论，立刻可以导出
+\begin{equation}\label{eq:Riemann_limit_mesh_inf}
+    \lim_{\|\mathcal P\|\to 0} \Omega_{\mathcal P}(f)=\inf_{\mathcal P}\Omega_{\mathcal P}(f)
+\end{equation}
+这是因为，设 $\varepsilon>0,$ 那么由下确界的定义可知存在 partition $\mathcal P_0,$ 使得 $\Omega_{\mathcal P_0}(f)<\inf_{\mathcal P}\Omega_{\mathcal P}(f)+\varepsilon.$ 
+记 $N=\#(\mathcal P_0)-2,$ 那么当 partition 的 mesh 小于 $\varepsilon/(MN)$ 时，由引理 \ref{lemma:mesh estimate} 可知
+\begin{equation}
+    \Omega_{\mathcal P}(f)\leq\Omega_{\mathcal P_0}(f)+(\#(\mathcal P')-2)M\|\mathcal P\|<\inf_{\mathcal P}\Omega_{\mathcal P}(f)+2\varepsilon
+\end{equation}
+这就证明了 \eqref{eq:Riemann_limit_mesh_inf} 式. 类似地可以证明
+\begin{equation}\label{eq:Riemann_limit_mesh_upper_lower}
+    \lim_{\|\mathcal P\|\to 0} \mathcal L(f,\mathcal P,[a,b])=\underline{\int}_a^b f(x)\ \mathrm dx,\ \lim_{\|\mathcal P\|\to 0} \mathcal U(f,\mathcal P,[a,b])=\overline{\int}_a^b f(x)\ \mathrm dx.
+\end{equation}
+
+现在假设 Riemann 上下积分相等，也即 $\lim_{\|\mathcal P\|\to 0}\Omega_{\mathcal P}(f)=0,$ 那么对于任意的 $\varepsilon>0,$ 存在 $\delta>0,$  使得只要 partition 的 mesh 小于 $\delta,$ 就有
+$|\mathcal U-\overline{\int}|,|\mathcal L-\underline{\int}|< \varepsilon.$ 自然，此时由不等式 \eqref{eq:Riemann_limit_mesh_upper_lower} 可知
+\begin{equation}
+    \underline{\int}_a^b f(x)\ \mathrm dx-\varepsilon<\mathcal L(f,\mathcal P,[a,b])\leq \mathcal R(f,\mathcal P,\Delta,[a,b])\leq \mathcal U(f,\mathcal P,[a,b])\leq \overline{\int}_a^b f(x)\ \mathrm dx+\varepsilon
+\end{equation}
+这就证明了极限 \eqref{eq:Riemann_limit} 的存在性.
+
+容易验证闭区间上的连续函数是 Riemann 可积的. 这主要用到了其一致连续性.
+
+\section{Riemann 积分的若干缺陷}
+
+Riemann 积分的一些缺陷：
+\begin{enumerate}
+    \item 如果函数的连续性较差，则其 Riemann 可积性也较差：典型的例子就是 Dirichlet 函数.
+    \item 无界函数的 Riemann 可积性较差(反常积分)：一个例子就是取一列可求出瑕积分的函数 $f_k(x),$ 使得每个函数的瑕点恰好对应区间 $[0,1]$ 上的一个有理数，最终导致无法通过划分区间的办法求出函数 $f:=\sum_k {f_k\over 2^k}$ 的瑕积分. 这里其实是说，
+          如果将面积的次可加性推广到可数的情况，那么通常的 Riemann 积分就不太够用了. 毕竟这样构造出的 $f$ 多多少少是个较为奇怪的函数，这种例子更偏向于理论意义.
+    \item Riemann 积分与极限的可交换性较差：这个问题看起来是最为致命的. 可以构造出一列函数 $f_k,$ 它们的 Riemann 积分均为零，但其逐点收敛到 Dirichlet 函数. 虽然可以证明，如果一致有界的可积函数列的逐点极限函数是 Riemann 可积的，那么其积分与极限可以交换位置，也即 $\lim_{n} \int_a^b f_n = \int_a^b \lim_n f_n,$ 但其证明 
+          却非常复杂，并且也绕不过使用测度的思想. 这个缺陷使得 Riemann 积分在理论上使用起来尤为不便. 
+\end{enumerate}
+
+\begin{example}
+    定义闭区间 $[0,1]$ 上的函数 $f$ 为
+    \begin{equation}
+        f(x)=\begin{cases}
+            0, & \text{若 $x$ 为无理数}\\
+            {1\over n}, & \text{若 $x$ 为有理数，且 $n$ 为形如 $x={m\over n}$ 的表达式中的最小正整数 $n$}
+        \end{cases}
+    \end{equation}
+    证明 $f$ 是 Riemann 可积的，并计算其积分值.
+\end{example}
+显然 $f$ 的每一个 Darboux 下和都为零，因此 $\underline{\int}_0^1 f = 0.$ 下面证明 $f$ Riemann 可积. 只需构造出一列 partition $\mathcal P_n,$ 使得 $\lim_n \Omega_{\mathcal P_n}(f)=0$ 即可. 由于 $\mathcal L\equiv 0,$ 因此只需证明 $\lim_n \mathcal U(f,\mathcal P_n,[0,1])=0.$
+事实上，对于任意的 $n,$ 满足 $f(x)=1/n$ 的 $[0,1]$ 内的有理数至多有 $n+1$ 个，因此其数目有限. 自然，可以适当地划分区间，得到分割 $\mathcal P_n,$ 使得满足 $f(x)\geq 1/n,$ 也即 $f(x)=1,1/2,\cdots,1/n$ 的全体有理数 $x$ 所在的区间的总长不超过 $1/n.$ 自然，$f$ 在剩下的那些区间上的上确界均小于 $1/n.$ 于是就有
+\begin{equation}
+    \begin{aligned}
+        \mathcal U(f,\mathcal P_n,[0,1])=&\sum_{\text{$f(x)\geq 1/n$ 的 $x$ 所在区间 $[x_{i-1},x_{i}]$}} \sup_{x_{i-1}\leq x\leq x_i}f(x)(x_i-x_{i-1})\\
+        &+\sum_{\text{其余区间 $[x_{i-1},x_{i}]$}}\sup_{x_{i-1}\leq x\leq x_i}f(x)(x_i-x_{i-1})  \\
+        <& {1\over n}-{1\over n}\left(1-{1\over n}\right) \\
+        =&{2\over n}-{1\over n^2}
+    \end{aligned}
+\end{equation}
+于是就有 $\lim_n \mathcal U(f,\mathcal P_n,[0,1])=0.$ 因此 $f$ 是 Riemann 可积的，并且其 Riemann 积分为 $\int_0^1 f=0.$
+
+
+\begin{example}
+    Riemann 积分与极限交换时，一致有界条件不可去掉.
+\end{example}
+事实上，构造单位区间 $[0,1]$ 上的连续函数列
+\begin{equation}\label{eq:swap_limit_counterexample}
+    f_n(x) = \begin{cases}
+        n^2 x, & \text{若 $0\leq x\leq 1/n$}\\
+        2n-n^2x, & \text{若 $1/n<x\leq 2/n$}\\
+        0&\text{若 $x>2/n$}
+    \end{cases}
+\end{equation}
+
+\begin{figure}[]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = {$x$},
+        ylabel = {$f_n(x)$},
+        ymin = -1, ymax = 10,
+        xmin = -0.1, xmax = 1.1,
+        domain = 0:1,
+        samples = 100,
+        grid = major,
+        width=10cm,
+        height=6cm,
+    ]
+    
+    % Define n
+    \def\n{3}
+    
+    % Plot the function
+    \addplot [thick, blue, domain=0:1/\n] {(\n)^2 * x};
+    \addplot [thick, blue, domain=1/\n:2/\n] {2*\n - (\n)^2 * x};
+    \addplot [thick, blue, domain=2/\n:1] {0};
+    
+    % Add vertical lines at x = 1/n and x = 2/n
+    \draw [dashed, red] (axis cs:1/\n,0) -- (axis cs:1/\n,9);
+    \draw [dashed, red] (axis cs:2/\n,0) -- (axis cs:2/\n,9);
+    
+    % Add labels for the vertical lines
+    \node [below, font=\scriptsize] at (axis cs:1/\n,0) {$\frac{1}{3}$};
+    \node [below, font=\scriptsize] at (axis cs:2/\n,0) {$\frac{2}{3}$};
+    
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Graph of the piecewise function \( f_n(x) \) depicted by equation \eqref{eq:swap_limit_counterexample} for \( n=3 \).}
+    \label{fig:fn}
+\end{figure}
+
+那么就有 $\int_0^1 f_n = 1,$ 以及 $\lim_n f_n(x)\equiv 0.$ 这是因为 $f_n(x)$ 也就只在开区间 $(0,2/n)$ 上不为零，该区间随着 $n\to\infty$ 而消失.
+因此，极限函数 $f:=\lim_n f_n$ 是连续的，并且有 $\int_0^1 f=0.$ 因此
+\begin{equation}
+    \lim_n \int_0^1 f_n = 1\neq 0=\int_0^1 \lim_n f_n
+\end{equation}
+当然，$f_n$ 不是一致有界的：$\sup_{x\in [0,1]}f_n(x)=n,$ 因此 $f_n(x)$ 不可能被某个有限的数所一致控制.
+
+
+\section{外测度}
 
 \nocite{*}
 \bibliographystyle{plain}
