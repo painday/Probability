@@ -3,34 +3,64 @@
 \documentclass[12pt, a4paper, oneside]{book}
 \usepackage{ctex}
 \usepackage{amsmath, amsthm, amssymb, bm, graphicx, hyperref, mathrsfs}
-\usepackage{hyperref}
 \hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	filecolor=blue,      
-	urlcolor=blue,
-	citecolor=cyan,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+    citecolor=cyan,
 }
 \usepackage{comment}
 \usepackage{titlesec} % 添加 titlesec 宏包
+\titleclass{\section}{straight} % 清除默认章节格式
+
+% 章节格式统一设置
+\titleformat{\section}[runin]
+  {\normalfont\bfseries}
+  {\thesection.}
+  {-0.5em}
+  {\quad}
+  
+\titleformat{\subsection}[runin]
+  {\normalfont\bfseries}
+  {\thesubsection.}
+  {-0.3em}
+  {\quad}
+
+% 间距微调
+\titlespacing*{\section}
+  {0pt}
+  {1.2ex plus 0.5ex minus 0.2ex}
+  {0.3em}
+
+\titlespacing*{\subsection}
+  {15pt} % 二级标题增加缩进
+  {0.8ex plus 0.3ex minus 0.1ex}
+  {0.2em}
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{section}\arabic{subsection}}
 
 
-\titleformat{\section} % 重新定义 section 格式
-  {\normalfont\Large\bfseries} % 标题格式
-  {\thesection} % 标签
-  {1em} % 标签和标题之间的间距
-  {} % 前代码
+
+% 定理环境样式调整
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{example}[theorem]{例}
+\newtheorem{proposition}[theorem]{命题}
+
 
 \title{{\Huge{\textbf{测度与概率 Notes}}}}
 \author{Liu Fuzhou}
 \date{\today}
 \linespread{1.5}
-\newtheorem{theorem}{定理}[section]
-\newtheorem{definition}[theorem]{定义}
-\newtheorem{lemma}[theorem]{引理}
-\newtheorem{corollary}[theorem]{推论}
-\newtheorem{example}[theorem]{例}
-\newtheorem{proposition}[theorem]{命题}
+
+
+
+
+
 
 \begin{document}
 
@@ -70,13 +100,11 @@
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-\chapter{测度论}
- 
-\section{$\sigma$-代数与测度}
 
+\section{集列的极限}
 首先比较重要的概念就是集列的上极限与下极限. 集列 $\{A_n\}_{n\in\mathbb N}$ 的上极限就是落到其中无限多个集合的元素所做成的集合，也即 $\limsup_{n\to\infty}A_n=\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k.$ 
 下极限就是除去有限多个集合后，落到所有集中的元素所做成的集合，也即 $\liminf_{n\to\infty}A_n=\bigcup_{n=1}^\infty\bigcap_{k=n}^\infty A_k.$ 换言之也即“最终落到集列” $A_n$ 中的那些元素之全体.
-显然，下限集中的元素也都落到上限集之中，也即 $\liminf A_n\subset \limsup A_n.$ 如果集列 $A_n$ 的上限集与下限集相等，那么就说集列 $A_n$ 收敛，并称 $A=\liminf A_n=\limsup A_n$ 为集列 $A_n$ 的极限.      这个极限是关于集合包含的偏序关系说的. 
+显然，下限集中的元素也都落到上限集之中，也即 $\liminf A_n\subset \limsup A_n.$ 如果集列 $A_n$ 的上限集与下限集相等，那么就说集列 $A_n$ 收敛，并称 $A=\liminf A_n=\limsup A_n$ 为集列 $A_n$ 的极限. 这个极限是关于集合包含的偏序关系说的. 
 与实数的情况类似，有单调集列的收敛定理：如果 $A_n\uparrow$ 是单调递增的，那么 $\lim A_n=\bigcup_n A_n.$ 类似地，如果 $A_n\downarrow$ 是单调递减的，那么 $\lim A_n=\bigcap_n A_n.$ 
 
 
@@ -91,6 +119,48 @@
 $A_1\subset \sum_{n=1}^\infty (A_n-A_{n+1}) + \bigcap_{n=1}^\infty A_n.$ 
 \end{proof}
 
+\section{Riemann 积分} 
+还是用 \cite{Axler_2020} 作为参考书比较好，还是彩色的. 我还是比较喜欢 Riemann 积分的，最开始是在梅加强的书上学的. 比较重要的技术就是证明 Darboux 上和总是大于等于 Darboux 下和那里，需要用到两个 partition 的 merge. 也就是说，用到了有界闭区间的 partition 全体构成一个 directed set 的性质. Darboux 上和与 Darboux 下和之差就是所谓的函数振幅 
+$\Omega_\mathcal P (f)=\sum_{i} (\sup_{x_{i-1}\leq x\leq x_i} f-\inf_{x_{i-1}\leq x\leq x_i})(x_i-x_{i-1}),$ 这里 $\mathcal P=\{a=x_0<x_1<\cdots<x_n=b\}$ 是所讨论的具体的分割. 
+
+如果向 partition 的点集增加元素，也即使得分割变得更细，那么结果就是上和不增，下和不减. 这就导致了两个极限 $\lim_{\mathcal P} \mathcal L(f,\mathcal P,[a,b])$ 和 $\lim_{\mathcal P} \mathcal U(f,\mathcal P,[a,b]),$ 称为 Riemann 下积分 $\underline{\int}$ 和上积分 $\overline{\int}$. 这两个极限是关于 partition 全体所具有的 directed set 结构说的, 也就是说是 net 的极限. 由于下和不大于上和，也即 $\mathcal L\leq \mathcal U,$ 因此这两个极限之间也有关系
+\begin{equation}
+    \underline{\int}_a^b f(x)\ \mathrm dx\leq  \overline{\int}_a^b f(x)\ \mathrm dx
+\end{equation}
+如果 Riemann 上下积分相等，就说 $f$ 在 $[a,b]$ 上 Riemann 可积，其积分 $\int_a^b f(x)\ \mathrm dx$ 就定义为上下积分的共同值. 
+
+任意分割 $\mathcal P$ 都将区间 $[a,b]$ 分成 $\#(\mathcal P)-1$ 个首尾相接的闭区间 $[x_0,x_1],\cdots,[x_{n-1},x_n].$ 从每个闭区间挑选一个元素出来，就可以做成一个集合 $\Delta.$ 这种挑选当然是不唯一的. 称这种通过在每个闭区间中挑出一个元素所形成的集合为与 partition $\mathcal P$ 相伴的一个点集. 
+设 $\{\mathcal P_n\}_{n\in\mathbb N}$ 是任意一列 partition, 并且 $\{\Delta_n\}_{n\in\mathbb N}$ 是一列与之相伴的点集，每个 $\Delta_n$ 中元素形如 $\Delta_n=\{\xi_1,\cdots,\xi_{\#(\mathcal P_n)-1}\},$ 那么就可以考虑 Riemann 和所形成的数列
+\begin{equation}
+    \mathcal R_n:=\mathcal R(f,\mathcal P_n,\Delta_n,[a,b])=\sum_{i=1}^{\#(\mathcal P_n)-1} f(\xi_i)(x_{i}-x_{i-1})
+\end{equation}
+显然有 $\mathcal L(f,\mathcal P_n,[a,b])\leq \mathcal R_n\leq \mathcal U(f,\mathcal P_n,[a,b]).$ 因此有
+\begin{equation}
+    \underline{\int}_a^b f(x)\ \mathrm dx\leq \liminf \mathcal R_n\leq \limsup \mathcal R_n\leq  \overline{\int}_a^b f(x)\ \mathrm dx
+\end{equation}
+
+这就表明，如果 $\mathcal R_n$ 有收敛子列的话，那么该子列的极限就必定位于上下积分之间.  当然了，如果 $f$ 是 Riemann 可积的，这个极限就必定等于 $\int_a^b f(x)\ \mathrm dx.$ 
+
+
+以上讨论了利用 partition 的全体所组成的集合之上的 directed set 结构来定义的 Riemann 积分. 下面考虑利用 Riemann 和关于 partition 的 mesh 的极限的途径. 这就是说，把 Riemann 积分定义为极限
+\begin{equation}\label{eq:Riemann_limit}
+    \lim_{\|\mathcal P\|\to 0} \mathcal R(f,\mathcal P,\Delta,[a,b])
+\end{equation}
+其中 $\|\mathcal P\|=\max_{i}|x_{i}-x_{i-1}|$ 是 partition 的 mesh. 这个极限其实相当强，因为其定义只涉及 partition, 对相伴的点集 $\Delta$ 没什么要求.  
+
+要证明两种定义的等价性，首先要注意到，上下积分之差恰好等于函数振幅的下确界 $\inf_{\mathcal P}\Omega_\mathcal P(f).$ 这就是说 $\lim_{\mathcal P} (\mathcal U(f,\mathcal P,[a,b])-\mathcal L(f,\mathcal P,[a,b]))=\inf_{\mathcal P}\Omega_\mathcal P(f),$ 或者说 $\lim_{\mathcal P}\Omega_\mathcal P(f)=\inf_{\mathcal P}\Omega_\mathcal P(f).$ 
+事实上，设 $\varepsilon>0,$ 那么由 net 的极限的定义，存在 partition $\mathcal P_0,$ 使得任意细于 $\mathcal P_0$ 的分割 $\mathcal P$ 都满足 $|\Omega_{\mathcal P_0}(f)-\lim_{\mathcal P} \Omega_{\mathcal P}(f)|<\varepsilon.$ 
+另一方面，由下确界的定义，存在 partition $\mathcal P_1$ 使得 $\Omega_{\mathcal P_1}(f)< \inf_{\mathcal P}\Omega_{\mathcal P}(f)+\varepsilon.$
+取分割 $\mathcal P_2$ 为 $\mathcal P_0$ 与 $\mathcal P_1$ 的 merge, 那么就有 
+\begin{equation}
+    \lim_{\mathcal P}\Omega_{\mathcal P}(f)-\varepsilon< \Omega_{\mathcal P_2}(f)\leq \Omega_{\mathcal P_1}(f)<\inf_{\mathcal P}\Omega_{\mathcal P}(f)+\varepsilon
+\end{equation}
+于是 $\inf_{\mathcal P}\Omega_{\mathcal P}(f)\leq \lim_{\mathcal P}\Omega_{\mathcal P}(f)<\inf_{\mathcal P}\Omega_{\mathcal P}(f)+2\varepsilon.$ 这就证明了 
+\begin{equation}
+    \overline{\int}_a^b f(x)\ \mathrm dx - \underline{\int}_a^b f(x)\ \mathrm dx = \inf_{\mathcal P}\Omega_{\mathcal P}(f)
+\end{equation}
+
+假如极限 \eqref{eq:Riemann_limit} 存在，那么
 
 \nocite{*}
 \bibliographystyle{plain}
