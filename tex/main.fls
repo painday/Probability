@@ -329,6 +329,8 @@ INPUT c:/texlive/2024/texmf-dist/tex/latex/comment/comment.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/comment/comment.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/titlesec/titleps.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/titlesec/titleps.sty
 INPUT ./main.aux
 INPUT ./main.aux
 INPUT main.aux

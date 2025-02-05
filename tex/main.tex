@@ -13,7 +13,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 \usepackage{comment}
-\usepackage{titlesec} % 添加 titlesec 宏包
+\usepackage{titlesec,titleps} % 添加 titlesec 宏包
 \titleclass{\section}{straight} % 清除默认章节格式
 
 % 章节格式统一设置
@@ -54,6 +54,12 @@
 \newtheorem{example}[theorem]{例}
 \newtheorem{proposition}[theorem]{命题}
 
+% 页眉页脚设置(来自于 titleps 宏包)
+% 设置页眉为楷体
+\newpagestyle{main}{
+    \sethead{\kaishu \sectiontitle}{}{\kaishu \thepage}
+}
+\pagestyle{main}
 
 \title{{\Huge{\textbf{测度与概率 Notes}}}}
 \author{Liu Fuzhou}
@@ -312,6 +318,61 @@ Riemann 积分的一些缺陷：
 
 
 \section{外测度} 外测度的概念是经典的：对 $\mathbb R$ 的任意子集 $A,$ 都可定义其外测度 $|A|$ 为覆盖 $A$ 的开区间列的总长度之下确界，也即 $|A|=\inf_{A\subset\bigcup_n I_n} \sum_n \ell(I_n).$
+这总是定义良好的. 如果某个 $\ell(I_n)$ 为 $+\infty,$ 那么显然 $\sum_n \ell(I_n)=+\infty.$ 反之，$\sum_n \ell(I_n)$ 是一个非负项的数项级数. 
+自然，非负项级数要么收敛，要么发散到 $+\infty.$ 因此，如果将 $+\infty$ 也作为一个合法的长度值，
+那么 $\sum_n \ell(I_n)$ 总是有定义的，并且总是大于等于零. 因此任意的实数集 $A$ 的外测度总是有定义的.
+
+\begin{example}
+    可数集的外测度为零.
+\end{example}
+设 $A=\{a_n\}_{n\in\mathbb N},\ \varepsilon>0,$ 那么可以构作区间列 $I_n=(a_n-\varepsilon/2^n,a_n+\varepsilon/2^n),$ 使得 $A\subset \bigcup_n I_n,$ 于是 
+\begin{equation}
+    |A|\leq \sum_n \ell(I_n)=\sum_n {\varepsilon\over 2^{n-1}}=2\varepsilon
+\end{equation}
+这就证明了 $|A|=0.$ 
+
+特别的，有理数集 $\mathbb Q$ 的外测度为零. 这表明外测度的性质至少要比 Jordan 测度要好，因为 $\mathbb Q\cap [0,1]$ 的 Jordan 测度正是 Dirichlet 函数的 Riemann 积分，因而是不存在的.
+
+如果实数集 $A$ 含于 $B,$ 那么任意覆盖了 $B$ 的开区间列也覆盖了 $A,$ 因而 $|A|\leq |B|.$ 因此外测度与集合的包含关系的相容性良好. 此外，由于平移变换并不改变开区间的长度，并且将开区间变为开区间，并且还是可逆的，因此任意实数集 $A$ 平移 $t$ 距离后，其外测度保持不变：$|A+t|=|A|.$ 这就是说外测度具有平移不变性.
+
+外测度最为重要的一条性质恐怕就是次可数可加性了.
+\begin{theorem}
+    外测度具有次可数可加性：$|\bigcup_n A_n|\leq \sum_n |A_n|.$
+\end{theorem}
+首先，如果某个集合 $A_n$ 的外测度为 $+\infty,$ 那么结论显然成立. 下面假设所有 $|A_n|$ 都是有限的. 设 $\varepsilon>0.$ 对于任意固定的 $n,$ 根据外测度的定理，可以找到一列开区间 $\{I_{n,k}\}_{k\in\mathbb N},$ 使得
+\begin{equation}
+    \sum_k \ell(I_{n,k})<|A_n|+{\varepsilon\over 2^n}
+\end{equation}
+自然，记所有这些区间 $I_{n,k}$ 所做成的集合为 $X,$ 那么映射 $\mathbb N\times\mathbb N\to X,\ (n,k)\mapsto I_{n,k}$ 可以重新排列顺序为 $\mathbb N\to X,\ j\mapsto I_{n(j),k(j)}.$ 这一列区间 $I'_j:=I_{n(j),k(j)}$ 覆盖了 $\bigcup_n A_n,$ 并且对于每个正整数 $p\in\mathbb N,$ 记 $n(1),\cdots,n(p)$ 中的最大值为 $N(p),$ 则有
+\begin{equation}
+    \sum_{j=1}^p \ell(J_j) \leq \sum_{n=1}^{N(j)} \sum_k \ell(I_{n,k}) \leq \sum_n\sum_k \ell(I_{n,k})<\sum_n |A_n|+\varepsilon
+\end{equation}
+于是 $\sum_j \ell(J_j)\leq\sum_n |A_n|+\varepsilon.$ 
+这就证明了 
+\begin{equation}\label{eq:outer_measure_subadditivity}
+    \left|\bigcup_n A_n\right|\leq \sum_n |A_n|
+\end{equation}
+作为一个简单推论，外测度也具有次有限可加性：$|A_1\cup\cdots\cup A_n|\leq \sum_{i=1}^n |A_i|.$ 
+
+下面来计算有界区间的外测度. 从几何上来看，开区间 $(a,b)$ 的外测度应该就等于其长度 $b-a.$ 严格的证明稍微麻烦一些，需要借助有界闭区间的紧性. 首先，$(a,b)$ 与 $[a,b]$ 的外测度相同：$|(a,b)|\leq |[a,b]|\leq b-a,$ 并且由 $[a,b]\subset (a-\varepsilon,b+\varepsilon),$ 以及 
+$|(a-\varepsilon,b+\varepsilon)|\leq |(a,b)|+2\varepsilon$ 可得 $[a,b]\leq (a,b).$ 这就证明了开区间 $(a,b)$ 的外测度与其闭包相同. 另一方面，由 $[a,b]$ 的紧性可知，任意覆盖了 $[a,b]$ 的开区间列 $I_n$ 都存在有限子覆盖 $J_1,\cdots,J_p.$ 
+下面只需证明 $\sum_{i=1}^p \ell(J_i)\geq b-a$ 即可. 最简单的证法是用归纳法(\cite{Axler_2020} pp. 20). 当 $p=1$ 时结论显然成立. 假设该结论对 $p\leq k$ 成立，那么当 $p=k+1$ 时，设 $[a,b]$ 被开区间 $J_1,\cdots,J_p$ 中的某个 $J_s=(c,d)$ 所覆盖，那么若 $c\leq a,$ 则 $\ell((c,d))\geq b-a,$ 故结论成立. 
+若 $c>a,$ 则闭区间 $[a,c]$ 被 $k$ 个开区间 $\{J_i\}_{1\leq i\leq p,\ i\neq s}$ 所覆盖，于是由归纳假设即知 $\sum_{i\neq s}\ell(J_i)\geq c-a.$ 于是就有 $\sum_{i=1}^p \ell(J_i)\geq (c-a)+(b-c)=b-a,$ 因此总是有 
+$\sum_n \ell(I_n)\geq b-a.$ 这就证明了 $|[a,b]|=b-a,$ 因而开区间 $(a,b)$ 的外测度也等于 $b-a.$
+
+利用区间的外测度还可以给出区间的不可数性的另一个证明.
+\begin{example}
+    非空区间是不可数的.
+\end{example}
+事实上，由于可数集的外测度为零，而非空区间的外测度都大于零，因而非空区间不可能是可数集. 这就证明了结论.
+
+\section{外测度的缺点：不可加性} Vitali 提供了集合的不交并的外测度不等于各自外测度之和的一个例子. 
+\begin{example}
+    存在不交的实数集 $A$ 和 $B$，使得 $|A\cup B|\neq |A|+|B|.$
+\end{example}
+对于区间 $[-1,1]$ 内的任意实数 $a,$ 定义相伴的集合 $\tilde a$ 为 $[-1,1]$ 内所有与 $a$ 只相差一个有理移位的元素之全体，那么若 $\tilde a\cap\tilde b\neq \emptyset,$ 譬如说 $c\in\tilde a\cap\tilde b,$ 那么就有 
+$a-c,b-c\in\mathbb Q.$ 因此 $a,b$ 本身就只相差一个有理移位. 因此对于任意实数来说，与 $a$ 的距离为有理数当且仅当与 $b$ 的距离为有理数，从而有 $\tilde a=\tilde b.$ 
+自然，由 $a\in\tilde a$ 可知 $[-1,1]\subset \bigcup_{a\in [-1,1]}\tilde a.$ 
 
 \nocite{*}
 \bibliographystyle{plain}
