@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.16)  5 FEB 2025 21:21
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.16)  5 FEB 2025 22:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -867,7 +867,7 @@ Overfull \hbox (5.47823pt too wide) in paragraph at lines 345--347
 \TU/SimSun(0)/m/n/12 自 然，|  记 所 有 这 些 区 间 $\OML/cmm/m/it/12 I[]$ \TU/SimSun(0)/m/n/12 所 做 成 的 集 合 为 $\OML/cmm/m/it/12 X;$ \TU/SimSun(0)/m/n/12 那 么 映 射 $\U/msb/m/n/12 N \OMS/cmsy/m/n/12 ^^B \U/msb/m/n/12 N \OMS/cmsy/m/n/12 ! \OML/cmm/m/it/12 X;  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n; k\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 7!
  []
 
-[8] [9] (./main.bbl [10]) [11
+[8] [9] [10] (./main.bbl [11]) [12
 
 ] (./main.aux)
  ***********
@@ -875,15 +875,15 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 53ADFAE13630646B86046E160D5240FD;535.
+(rerunfilecheck)             Checksum: FB0F491286AFA5229554DCDC738DADDC;652.
  ) 
 Here is how much of TeX's memory you used:
- 36792 strings out of 474773
- 915554 string characters out of 5761289
+ 36804 strings out of 474773
+ 916282 string characters out of 5761289
  1940842 words of memory out of 5000000
- 58326 multiletter control sequences out of 15000+600000
+ 58338 multiletter control sequences out of 15000+600000
  575795 words of font info for 129 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  103i,13n,107p,727b,2131s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (15 pages, 138016 bytes).
+Output written on main.xdv (16 pages, 157120 bytes).

@@ -372,7 +372,60 @@ $\sum_n \ell(I_n)\geq b-a.$ 这就证明了 $|[a,b]|=b-a,$ 因而开区间 $(a,b
 \end{example}
 对于区间 $[-1,1]$ 内的任意实数 $a,$ 定义相伴的集合 $\tilde a$ 为 $[-1,1]$ 内所有与 $a$ 只相差一个有理移位的元素之全体，那么若 $\tilde a\cap\tilde b\neq \emptyset,$ 譬如说 $c\in\tilde a\cap\tilde b,$ 那么就有 
 $a-c,b-c\in\mathbb Q.$ 因此 $a,b$ 本身就只相差一个有理移位. 因此对于任意实数来说，与 $a$ 的距离为有理数当且仅当与 $b$ 的距离为有理数，从而有 $\tilde a=\tilde b.$ 
-自然，由 $a\in\tilde a$ 可知 $[-1,1]\subset \bigcup_{a\in [-1,1]}\tilde a.$ 
+自然，由 $a\in\tilde a$ 可知 $[-1,1]\subset \bigcup_{a\in [-1,1]}\tilde a.$ 利用选择公理可从集合簇 $\{\tilde a\}_{a\in [-1,1]}$ 中的每个集合中取出一个元素，做成一个新集合 $V.$ 令 $[-2,2]$ 内的全体有理数所做成的数列为 $r_1,r_2,\cdots,$ 
+那么就有 $[-1,1]\subset\bigcup_{k} (r_k+V).$ 这是因为对于 $[-1,1]$ 中的任意元素 $a,$ 设 $V$ 所含的 $\tilde a$ 中元素为 $x,$ 则有 $a-x\in\mathbb Q\cap [-2,2],$ 因而 $a-x$ 等于某个 $r_k,$ 于是 $a\in \bigcup_{k} (r_k+V).$ 
+由外测度的次可数可加性和平移不变性即知
+\begin{equation}
+    2=|[-1,1]|\leq\sum_k |r_k+V|=\sum_k |V|
+\end{equation}
+这表明 $V$ 的外测度必定大于零. 容易验证集列 $\{r_k+V\}_{k\in\mathbb N}$ 是互不相交的. 这是因为，若 $x\in (r_{k_1}+V)\cap (r_{k_2}+V),$ 其中 $r_{k_1}\neq r_{k_2},$ 那么存在实数 $a,b,$ 使得 $x-r_{k_1}\in \tilde a\cap V,\ x-r_{k_2}\in\tilde b\cap V.$ 自然，$x-r_{k_2}=x-r_{k_1}+(r_{k_1}-r_{k_2})$ 也落入 $\tilde a$ 中，这就表明 $\tilde a$ 与 $\tilde b$ 相交，于是 $\tilde a=\tilde b.$ 由 $V$ 的定义即知 $x-r_{k_1}=x-r_{k_2},$ 这就导出了 $r_{k_1}=r_{k_2},$ 矛盾！
+
+由于 $r_k\in [-2,2],\ V\subset [-1,1],$ 因此 $\bigcup_k (r_k+V)\subset [-3,3].$ 于是 $|\bigcup_k (r_k+V)|\leq 6.$ 另一方面，由于 $|V|>0,$ 因此必定存在 $n\in\mathbb N,$ 使得 
+\begin{equation}
+    |\bigcup_{k=1}^n (r_k+V)|< n|V|=\sum_{k=1}^n |r_k+V|
+\end{equation}
+特别的，如果对于任意的不交的实数集 $A,B,$ 均有等式 $|A\cup B|=|A|+|B|,$ 那么以上不等式必定不成立. 因此必定存在不交的集合 $A,B,$ 使得其并集的外测度不等于各自外测度之和.
+
+\begin{example}
+    若 $\mathbb R$ 的一簇闭子集的交集为空集，并且其中某个集合有界，那么该集合簇中可以找到有限个集合，使得其交集为空集.
+\end{example}
+事实上，设 $\bigcap_{F\in\mathcal A}F=\emptyset,$ 那么 $\{F^C\}_{F\in\mathcal A}$ 就是 $\mathbb R$ 的一个开覆盖. 设其中的 $F\in \mathcal A$ 有界，那么其为紧集，故存在有限多个 $F_1^C,\cdots,F_n^C$ 覆盖了 $F.$ 自然，$F_1^C,\cdots,F_n^C,F^C$ 就是 $\mathbb R$ 的一个有限开覆盖，从而有 
+\begin{equation}
+    F_1\cap\cdots\cap F_n\cap F=\emptyset
+\end{equation}
+
+\begin{example}
+    若 $I_1,I_2,\cdots$ 为一列互不相交的开区间，则有 $|\bigcup_n I_n|=\sum_n \ell(I_n).$
+\end{example}
+左 $\leq$ 右是明显的. 下面证明左 $\geq$ 右. 设 $J_n$ 是一列覆盖了 $\bigcup_n I_n$ 的开区间，那么对于每个 $n,$ 可定义开区间(包括空集)列 $\{J_{n,k}\}_{k\in\mathbb N}$ 为 $J_{n,k}:=J_k\cap I_n.$ 自然，$\{J_{n,k}\}_{k\in\mathbb N}$ 覆盖了 $I_n,$ 于是有 $\sum_k \ell(J_{n,k})\geq |I_n|= \ell(I_n).$
+由于 $I_n$ 互不相交，因此对于任意固定的 $m,$ 容易验证 $\ell(J_k)\geq \sum_{n=1}^m \ell(J_k\cap I_n).$ 于是就有 $\ell(J_k)\geq\sum_n \ell(J_k\cap I_n),$ 从而有 
+\begin{equation}
+    \sum_k \ell(J_k)\geq\sum_k\sum_n \ell(J_k\cap I_n)=\sum_{n}\sum_k \ell(J_{n,k}) \geq \sum_n\ell(I_n)
+\end{equation}
+这就证明了
+\begin{equation}
+    \left|\bigcup_n I_n\right|=\sum_n\ell(I_n)
+\end{equation}
+
+\begin{example}
+    设 $r_1,r_2,\cdots$ 为全体有理数的一个枚举. 令 $F=\mathbb R\setminus \bigcup_{k} (r_k-2^{-k},r_k+2^{-k}).$ 证明
+    \begin{enumerate}
+        \item $F$ 是闭集.
+        \item $F$ 所包含的区间都是退化的.
+        \item $|F|=+\infty.$
+    \end{enumerate}
+\end{example}
+1. 是平凡的. 至于 2, 设 $I$ 是 $F$ 是包含的一个区间，若 $I$ 非退化，那么就必定包含一个有理数 $r_k$ 作为其内点，从而也是 $F$ 的内点. 由 $F$ 的定义可知 $r_k$ 不是 $F$ 的内点，矛盾！ 
+至于第三条，则是因为 $\sum_k \ell((r_k-2^{-k},r_k+2^{-k}))=2,$ 因此由 $+\infty=|F\cup (\bigcup_k (r_k-2^{-k},r_k+2^{-k}))|\leq |F|+\sum_k |(r_k-2^{-k},r_k+2^{-k})|$ 即知 $|F|=+\infty.$
+
+
+\section{可测空间与可测函数}
+
+
+
+
+
+
 
 \nocite{*}
 \bibliographystyle{plain}
