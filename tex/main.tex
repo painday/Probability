@@ -367,7 +367,7 @@ $\sum_n \ell(I_n)\geq b-a.$ 这就证明了 $|[a,b]|=b-a,$ 因而开区间 $(a,b
 事实上，由于可数集的外测度为零，而非空区间的外测度都大于零，因而非空区间不可能是可数集. 这就证明了结论.
 
 \section{外测度的缺点：不可加性} Vitali 提供了集合的不交并的外测度不等于各自外测度之和的一个例子. 
-\begin{example}
+\begin{example}\label{ex:non_additivity_of_outer_measure}
     存在不交的实数集 $A$ 和 $B$，使得 $|A\cup B|\neq |A|+|B|.$
 \end{example}
 对于区间 $[-1,1]$ 内的任意实数 $a,$ 定义相伴的集合 $\tilde a$ 为 $[-1,1]$ 内所有与 $a$ 只相差一个有理移位的元素之全体，那么若 $\tilde a\cap\tilde b\neq \emptyset,$ 譬如说 $c\in\tilde a\cap\tilde b,$ 那么就有 
@@ -382,7 +382,7 @@ $a-c,b-c\in\mathbb Q.$ 因此 $a,b$ 本身就只相差一个有理移位. 因此
 
 由于 $r_k\in [-2,2],\ V\subset [-1,1],$ 因此 $\bigcup_k (r_k+V)\subset [-3,3].$ 于是 $|\bigcup_k (r_k+V)|\leq 6.$ 另一方面，由于 $|V|>0,$ 因此必定存在 $n\in\mathbb N,$ 使得 
 \begin{equation}
-    |\bigcup_{k=1}^n (r_k+V)|< n|V|=\sum_{k=1}^n |r_k+V|
+    \left|\bigcup_{k=1}^n (r_k+V)\right|< n|V|=\sum_{k=1}^n |r_k+V|
 \end{equation}
 特别的，如果对于任意的不交的实数集 $A,B,$ 均有等式 $|A\cup B|=|A|+|B|,$ 那么以上不等式必定不成立. 因此必定存在不交的集合 $A,B,$ 使得其并集的外测度不等于各自外测度之和.
 
@@ -398,7 +398,28 @@ $a-c,b-c\in\mathbb Q.$ 因此 $a,b$ 本身就只相差一个有理移位. 因此
     若 $I_1,I_2,\cdots$ 为一列互不相交的开区间，则有 $|\bigcup_n I_n|=\sum_n \ell(I_n).$
 \end{example}
 左 $\leq$ 右是明显的. 下面证明左 $\geq$ 右. 设 $J_n$ 是一列覆盖了 $\bigcup_n I_n$ 的开区间，那么对于每个 $n,$ 可定义开区间(包括空集)列 $\{J_{n,k}\}_{k\in\mathbb N}$ 为 $J_{n,k}:=J_k\cap I_n.$ 自然，$\{J_{n,k}\}_{k\in\mathbb N}$ 覆盖了 $I_n,$ 于是有 $\sum_k \ell(J_{n,k})\geq |I_n|= \ell(I_n).$
-由于 $I_n$ 互不相交，因此对于任意固定的 $m,$ 容易验证 $\ell(J_k)\geq \sum_{n=1}^m \ell(J_k\cap I_n).$ 于是就有 $\ell(J_k)\geq\sum_n \ell(J_k\cap I_n),$ 从而有 
+由于 $I_n$ 互不相交，因此对于任意固定的 $m,$ 可以验证 $\ell(J_k)\geq \sum_{n=1}^m \ell(J_k\cap I_n).$ 
+不妨将其写为一个引理：
+\begin{lemma}\label{lemma:disjoint_interval_intersection}
+    设 $I$ 为开区间，$K_1,\cdots,K_n$ 为互不相交的开区间，那么 $\ell(I)\geq\sum_{k=1}^n \ell(I\cap K_n).$
+\end{lemma}
+事实上，若 $I$ 退化或者为空集，那么结论显然成立. 下面设 $I=(a,b)$ 非退化，将 $I\cap K_n$ 中的非退化区间的左端点做成一个集合，并进行排序，得到数组 $a_1<a_2<\cdots<a_m,$ 将右端点也做成一个集合，排序为 $b_1<b_2<\cdots<b_m.$ 那么由于 $K_i$ 两两不交，因此必定有 
+\begin{equation}\label{eq:interval_order}
+    a\leq a_1<b_1\leq a_2<b_2\leq\cdots\leq a_m<b_m\leq b
+\end{equation}
+也就是说，如果令 $b_0:=a,$ 那么就有 $b_{i-1}\leq a_i< b_{i},\ i=1,2,\cdots,m.$ 这是因为，对于两个不交的非退化开区间 $(c,d),(c',d')$ 来说，由 $c\leq d'$ 即可导出 $c<d\leq c'<d',$ 类似地由 $c\geq d'$ 也可导出 $c'<d'\leq c<d.$ 
+现在由于 $a_1<a_2<\cdots<a_m,$ 因此如果记 $a_i$ 所对应的区间右端点为 $\tilde a_i,$ 则有 $a_{i-1}<a_{i}<\tilde a_{i},\ (a_0:=a),$ 这就导出了 
+\begin{equation}
+    a_{i-1}<\tilde a_{i-1}\leq a_i<\tilde a_i
+\end{equation}
+从而得到了 $m$ 个区间的右端点数组 $\tilde a_1<\tilde a_2<\cdots<\tilde a_m.$ 对比 $b_i$ 的定义即知 $\tilde a_i=b_i,$ 这就导出了不等式 \eqref{eq:interval_order}. 
+由此还可以知道，非退化区间 $I\cap K_n$ 可枚举为 $(a_1,b_1),\cdots,(a_m,b_m).$ 于是就有 
+\begin{equation}
+    \sum_{k=1}^n \ell(I\cap K_n)=\sum_{I\cap K_n\ \text{非退化}} \ell(I\cap K_n)=\sum_{i=1}^m (b_i-a_i)\leq \sum_{i=1}^m (b_i-b_{i-1}) \leq b-a
+\end{equation}
+即证明了引理 \ref{lemma:disjoint_interval_intersection}. 
+
+根据引理 \ref{lemma:disjoint_interval_intersection}，我们有 $\ell(J_k)\geq\sum_n \ell(J_k\cap I_n),$ 从而有 
 \begin{equation}
     \sum_k \ell(J_k)\geq\sum_k\sum_n \ell(J_k\cap I_n)=\sum_{n}\sum_k \ell(J_{n,k}) \geq \sum_n\ell(I_n)
 \end{equation}
@@ -420,10 +441,23 @@ $a-c,b-c\in\mathbb Q.$ 因此 $a,b$ 本身就只相差一个有理移位. 因此
 
 
 \section{可测空间与可测函数}
+在 Vitali 的例子 \eqref{ex:non_additivity_of_outer_measure} 中，只使用到了外测度的以下几条性质：
+\begin{enumerate}
+    \item $\mathbb R$ 的任意子集的外测度均有定义.
+    \item 开区间的外测度等于其长度.
+    \item 外测度具有次可数可加性.
+    \item 外测度与集合的包含关系相容.
+    \item 外测度具有平移不变性.
+\end{enumerate}
+其中性质 4. 实际上可从性质 3. 推出. 自然，对于任何一个定义在 $\mathbb R$ 的子集簇上的 $[0,+\infty]$ 值函数 $\mu,$ 只要其同时满足上述五条性质，那么它就不可能满足有限可加性，遑论可数可加性. 
+因而为了获得可加性，势必要作出一些妥协. 由于后 4 条性质与几何直觉以及分析的需要密切相关，因此最容易放弃的就是第 1 条，也即限制 $\mu$ 的定义域，选择一些较小的集类. 由此引入的 $\sigma-$代数恐怕就是测度论中最为重要的概念了，没有之一.  
 
-
-
-
+所谓 $X$ 上的一个 $\sigma-$代数就是指一个包含集合 $X$ 本身，且对补集运算和可数并封闭的 $X$ 的子集类. 自然，其对有限并、有限交和可数交也封闭.
+\begin{example}
+    $X$ 的所有至多可数子集，以及补集为至多可数集的子集，构成 $X$ 上的一个 $\sigma-$代数 $\mathcal S.$
+\end{example}
+首先，$X\in \mathcal S.$ 其次，显然 $\mathcal S$ 对补集运算封闭. 最后，设 $\{E_n\}_{n\in\mathbb N}$ 为 $\mathcal S$ 中的一列集合，那么若 $E_n$ 均至多可数，则 $\bigcup_{n} E_n$ 当然也至多可数. 
+否则，必定存在某个 $E_n,$ 其补集至多可数. 于是 $[\bigcup_n E_n]^C=\bigcap_n E_n^C$ 至多可数. 这就证明了 $\mathcal S$ 关于有限并的封闭性.
 
 
 
