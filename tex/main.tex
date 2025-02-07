@@ -455,13 +455,32 @@ $a-c,b-c\in\mathbb Q.$ 因此 $a,b$ 本身就只相差一个有理移位. 因此
 因而为了获得可加性，势必要作出一些妥协. 由于后 4 条性质与几何直觉以及分析的需要密切相关，因此最容易放弃的就是第 1 条，也即限制 $\mu$ 的定义域，选择一些较小的集类. 由此引入的 $\sigma-$代数恐怕就是测度论中最为重要的概念了，没有之一.  
 
 所谓 $X$ 上的一个 $\sigma-$代数就是指一个包含集合 $X$ 本身，且对补集运算和可数并封闭的 $X$ 的子集类. 自然，其对有限并、有限交和可数交也封闭.
-\begin{example}
+\begin{example}\label{ex:sigma_algebra_at_most_countable}
     $X$ 的所有至多可数子集，以及补集为至多可数集的子集，构成 $X$ 上的一个 $\sigma-$代数 $\mathcal S.$
 \end{example}
 首先，$X\in \mathcal S.$ 其次，显然 $\mathcal S$ 对补集运算封闭. 最后，设 $\{E_n\}_{n\in\mathbb N}$ 为 $\mathcal S$ 中的一列集合，那么若 $E_n$ 均至多可数，则 $\bigcup_{n} E_n$ 当然也至多可数. 
 否则，必定存在某个 $E_n,$ 其补集至多可数. 于是 $[\bigcup_n E_n]^C=\bigcap_n E_n^C$ 至多可数. 这就证明了 $\mathcal S$ 关于有限并的封闭性.
 
+由于 $\sigma-$代数的定义只涉及对 $X$ 的子集簇的集论运算操作的描述，因而容易验证 $X$ 上任意一族 $\sigma-$代数的交集仍然做成一个 $\sigma-$代数. 这就导致了由 $X$ 的任意子集类 $\mathcal A$ 所生成的最小 $\sigma-$代数 
+$\sigma(\mathcal A)$ 的概念. 这不过就是一切包含 $\mathcal A$ 的 $X$ 上 $\sigma-$代数之交集. 和其他诸多``由某某元素所生成的最小结构''的概念一样，通常我们只能从集类运算的一般性质的角度了解 $\mathcal A$ 所生成的 $\sigma-$代数，
+而其具体结构的揭示往往是困难的.
 
+\begin{example}
+    $X$ 的一切单点子集所组成的集类 $\mathcal A=\{\{x\}|\ x\in X\}$ 所生成的 $\sigma-$代数恰好等于例 \eqref{ex:sigma_algebra_at_most_countable} 中的 $\mathcal S.$
+\end{example}
+首先，由于 $\sigma-$代数 $\sigma(\mathcal A)$ 包含了所有单点集，因而显然有 $\mathcal S\subset \sigma(\mathcal A).$ 另一方面，由于 $\mathcal S$ 本身也是一个包含了 $\mathcal A$ 的 $\sigma-$代数，因此由集类所生成的 $\sigma-$代数之定义即知 $\sigma(\mathcal A)\subset\mathcal S,$ 故这就证明了 
+$\sigma(\mathcal A)=\mathcal S.$ 
+
+最为重要的一个 $\sigma-$代数恐怕就是 $\mathbb R$ 上的全体开集所生成的 $\sigma-$代数，即 Borel 代数 $\mathcal B.$ 可以证明 $\mathbb R$ 的开子集都可表示为开区间的可数并，因此 Borel 代数亦可由 $\mathbb R$ 上的全体开区间生成.
+
+一个集合 $X$ 连同其上的一个 $\sigma-$代数 $\mathcal S$ 就做成一个可测空间 $(X,\mathcal S).$ 可测空间的结构自然完全由 $\sigma-$代数 $\mathcal S$ 所决定. 这种精巧定义了的集类将为之后测度的大展身手提供了基本舞台. 
+$\sigma-$代数 $\mathcal S$ 中的元素也就摇身一变有了一个新名字，即 $\mathcal S-$可测集.
+
+
+与可测空间同样重要的一个概念就是可测函数. 给定了可测空间 $(X,\mathcal S),$ 那么说函数 $f:X\to [-\infty,+\infty]$ 是可测的，就是说对于任意 Borel 可测集 $B,$ 其原像 $f^{-1}(B)$ 均落到 $\sigma-$代数 $\mathcal S$ 中. 
+这就是说 $f^{\leftarrow}(\mathcal B)\subset\mathcal S.$ 
+
+以下是一些五花八门的可测函数判别准则以及构作可测函数的基本方法，这些结论可以为可测函数的判定提供极大的便利.
 
 \nocite{*}
 \bibliographystyle{plain}
