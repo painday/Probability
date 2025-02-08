@@ -442,7 +442,7 @@ $a-c,b-c\in\mathbb Q.$ 因此 $a,b$ 本身就只相差一个有理移位. 因此
 至于第三条，则是因为 $\sum_k \ell((r_k-2^{-k},r_k+2^{-k}))=2,$ 因此由 $+\infty=|F\cup (\bigcup_k (r_k-2^{-k},r_k+2^{-k}))|\leq |F|+\sum_k |(r_k-2^{-k},r_k+2^{-k})|$ 即知 $|F|=+\infty.$
 
 
-\section{可测空间与可测函数}
+\section{$\sigma-$代数}
 在 Vitali 的例子 \eqref{ex:non_additivity_of_outer_measure} 中，只使用到了外测度的以下几条性质：
 \begin{enumerate}
     \item $\mathbb R$ 的任意子集的外测度均有定义.
@@ -465,22 +465,87 @@ $a-c,b-c\in\mathbb Q.$ 因此 $a,b$ 本身就只相差一个有理移位. 因此
 $\sigma(\mathcal A)$ 的概念. 这不过就是一切包含 $\mathcal A$ 的 $X$ 上 $\sigma-$代数之交集. 和其他诸多``由某某元素所生成的最小结构''的概念一样，通常我们只能从集类运算的一般性质的角度了解 $\mathcal A$ 所生成的 $\sigma-$代数，
 而其具体结构的揭示往往是困难的.
 
+容易验证函数的 inverse image operator 与 $\sigma-$代数的生成运算可以交换顺序：也就是说，若 $f:X\to Y$ 为映射，$\mathcal A$ 为 $Y$ 上的一个子集类，则有
+\begin{equation}\label{eq:commute_inverse_image_sigma_algebra_generation}
+    f^\leftarrow(\sigma(\mathcal A))=\sigma(f^\leftarrow(\mathcal A))
+\end{equation}
+这是因为 inverse image 保持集合的交集和并集运算.
+
 \begin{example}
     $X$ 的一切单点子集所组成的集类 $\mathcal A=\{\{x\}|\ x\in X\}$ 所生成的 $\sigma-$代数恰好等于例 \eqref{ex:sigma_algebra_at_most_countable} 中的 $\mathcal S.$
 \end{example}
 首先，由于 $\sigma-$代数 $\sigma(\mathcal A)$ 包含了所有单点集，因而显然有 $\mathcal S\subset \sigma(\mathcal A).$ 另一方面，由于 $\mathcal S$ 本身也是一个包含了 $\mathcal A$ 的 $\sigma-$代数，因此由集类所生成的 $\sigma-$代数之定义即知 $\sigma(\mathcal A)\subset\mathcal S,$ 故这就证明了 
 $\sigma(\mathcal A)=\mathcal S.$ 
 
-最为重要的一个 $\sigma-$代数恐怕就是 $\mathbb R$ 上的全体开集所生成的 $\sigma-$代数，即 Borel 代数 $\mathcal B.$ 可以证明 $\mathbb R$ 的开子集都可表示为开区间的可数并，因此 Borel 代数亦可由 $\mathbb R$ 上的全体开区间生成.
+\begin{example}
+    若集列 $\{A_n\}_{n\in\mathbb N}$ 落入某个 $\sigma-$代数 $\mathcal S,$ 那么上限集 $\limsup_n A_n$ 和下限集 $\liminf_n A_n$ 也落入 $\mathcal S.$
+\end{example}
+证明是明显的.
+
+最为重要的一个 $\sigma-$代数恐怕就是 $\mathbb R$ 上的全体开集所生成的 $\sigma-$代数，即 Borel 代数 $\mathcal B.$ 可以证明 $\mathbb R$ 的开子集都可表示为开区间的至多可数并，因此 Borel 代数亦可由 $\mathbb R$ 上的全体开区间生成.
+$\mathbb R$ 中的全体开集、闭集、开集和闭集的可数并和可数交都落入 Borel 代数 $\mathcal B.$  因而 Borel 代数是包含拓扑信息的一种特殊的 $\sigma-$代数. 
+
+\begin{example}
+    $\mathbb R$ 中任意开集均可表为至多可数个互不相交的开区间之并集.
+\end{example}
+
+要证明这个结论需要一些技巧. 设 $U$ 为 $\mathbb R$ 中开集. 若 $U=\emptyset,$ 那么结论显然成立. 下面设 $U$ 非空. 首先，在 $U$ 上定义一个等价关系 $~,$ 其中 $x~y$ 当且仅当 $x,y$ 都落在某个含于 $U$ 的开区间 $I_{x,y}$ 中. 容易验证这确实给出了一个等价关系，
+因而有
+\begin{equation}\label{eq:open_set_decomposition_disjoint_open_interval}
+    U=\bigsqcup_{[x]_\sim\in U/\sim} [x]_\sim
+\end{equation}
+下面只需要证明等价类 $[x]_\sim$ 为开区间即可. 首先，$x\in [x]_\sim,$ 故其非空. 其次，若 $y,z\in [x]_\sim,$ 那么就有 $\{y,z\}\subset I_{y,z}\subset U.$ 由于 $I_{y,z}$ 为区间，因而介于 $y,z$ 之间的任意实数 $w$ 都落入 $I_{y,z}$ 中，因而有 $\{x,w\}\subset I_{x,y}\subset U.$ 
+这表明 $w\in [x]_\sim,$ 这就证明了 $[x]_\sim$ 为区间. 要进一步证明 $[x]_\sim$ 为开区间，只需验证其为开集. 事实上，设 $y\in [x]_\sim,$ 那么有 $y\in I_{x,y}\subset U.$ 自然，开区间 $I_{x,y}$ 内的任意元素也都落入 $[x]_\sim$ 中，也即 $y\in I_{x,y}\subset [x]_\sim.$ 
+这就证明了 $[x]_\sim$ 为开区间. 因此式 \eqref{eq:open_set_decomposition_disjoint_open_interval} 的确将 $U$ 表示为若干开区间的不交并. 
+另一方面，由于这些开区间是互不相交的，因此可以使用选择公理来从每个开区间中选取一个有理数.  这些有理数当然是至多可数的，并且不同区间内选取的有理数必定不同，因而这些开区间的数目也是至多可数的. 
+
+
+\section{可测空间与可测函数}
+
 
 一个集合 $X$ 连同其上的一个 $\sigma-$代数 $\mathcal S$ 就做成一个可测空间 $(X,\mathcal S).$ 可测空间的结构自然完全由 $\sigma-$代数 $\mathcal S$ 所决定. 这种精巧定义了的集类将为之后测度的大展身手提供了基本舞台. 
 $\sigma-$代数 $\mathcal S$ 中的元素也就摇身一变有了一个新名字，即 $\mathcal S-$可测集.
 
 
-与可测空间同样重要的一个概念就是可测函数. 给定了可测空间 $(X,\mathcal S),$ 那么说函数 $f:X\to [-\infty,+\infty]$ 是可测的，就是说对于任意 Borel 可测集 $B,$ 其原像 $f^{-1}(B)$ 均落到 $\sigma-$代数 $\mathcal S$ 中. 
-这就是说 $f^{\leftarrow}(\mathcal B)\subset\mathcal S.$ 
+与可测空间同样重要的一个概念就是可测函数. 给定了可测空间 $(X,\mathcal S),$ 那么说函数 $f:X\to \mathbb R$ 是(Borel)可测的，就是说对于任意 Borel 可测集 $B,$ 其原像 $f^{-1}(B)$ 均落到 $\sigma-$代数 $\mathcal S$ 中. 
+这就是说 $f^{\leftarrow}(\mathcal B)\subset\mathcal S.$ 这就是说 $f$ 是可测空间 $(X,\mathcal S)$ 和 $(\mathbb R,\mathcal B)$ 之间的可测映射.
 
 以下是一些五花八门的可测函数判别准则以及构作可测函数的基本方法，这些结论可以为可测函数的判定提供极大的便利.
+
+\begin{example}
+    设 $(X,\mathcal S)$ 为可测空间，$E$ 为 $X$ 的子集. 那么 $E$ 是 $\mathcal S-$可测集当前仅当其示性函数
+    \begin{equation}
+        \chi_E:X\to\mathbb R,\ x\mapsto\chi_E(x)=\begin{cases}
+            1,&x\in E\\
+            0,&x\notin E
+        \end{cases}
+    \end{equation}
+    是 $\mathcal S-$可测函数.
+\end{example}
+事实上，$\mathbb R$ 的子集关于 $\chi_E$ 的原像无非 $\emptyset,E,E^C,X$ 四种情况. 并且这四种情况可被 Borel 集所遍及. 
+因而 $\chi_E^\leftarrow(\mathcal B)=\{\emptyset,E,E^C,X\}.$ 因而函数 $\chi_E$ 的可测性与集合 $E$ 的 $\mathcal S-$可测性等价.
+
+
+若 $X$ 为 $\mathbb R$ 的 Borel 可测子集，那么可以定义 $X$ 上的一个 $\sigma-$代数为一切含于 $X$ 的 Borel 可测集所做成的集类 $\mathcal S.$ 这其实也等同于 $X$ 的子空间拓扑所伴随的 Borel 代数.
+
+\begin{example}
+    设 $X$ 为 $\mathbb R$ 的一个 Borel 可测子集. 那么 $X$ 上的实值连续函数是可测的.
+\end{example}
+这是因为，若 $f:X\to\mathbb R$ 连续，那么 $\mathbb R$ 中开集的原像为 $X$ 中开集，这当然是一个含于 $X$ 的 Borel 子集.
+也就是说， inverse image $f^{-1}$ 将 $\mathbb R$ 中的开集类 $\mathcal O$ 映入 $\mathcal S.$ 于是就有
+\begin{equation}
+    f^\leftarrow(\mathcal B)=f^\leftarrow(\sigma(\mathcal O))=\sigma(f^\leftarrow(\mathcal O))\subset \sigma(\mathcal S)=\mathcal S.
+\end{equation}
+其中最后一个等式是因为 $\sigma-$代数的生成操作具有幂等性： $\sigma\circ\sigma=\sigma.$
+
+
+
+\begin{example}
+    $f:X\to [-\infty,+\infty]$ 可测当且仅当每个形如 $(a,+\infty]$ 的区间的原像都是 $\mathcal S-$可测集.
+\end{example}
+如果 $f$ 可测，那么 $f^{-1}((a,+\infty])$ 自然
+
+
 
 \nocite{*}
 \bibliographystyle{plain}
