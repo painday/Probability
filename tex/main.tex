@@ -478,7 +478,7 @@ $\sigma(\mathcal A)$ 的概念. 这不过就是一切包含 $\mathcal A$ 的 $X$
 $\sigma(\mathcal A)=\mathcal S.$ 
 
 \begin{example}
-    若集列 $\{A_n\}_{n\in\mathbb N}$ 落入某个 $\sigma-$代数 $\mathcal S,$ 那么上限集 $\limsup_n A_n$ 和下限集 $\liminf_n A_n$ 也落入 $\mathcal S.$
+    $\sigma$ 代数对集列极限封闭：若集列 $\{A_n\}_{n\in\mathbb N}$ 落入某个 $\sigma-$代数 $\mathcal S,$ 那么上限集 $\limsup_n A_n$ 和下限集 $\liminf_n A_n$ 也落入 $\mathcal S.$
 \end{example}
 证明是明显的.
 
@@ -510,7 +510,7 @@ $\sigma-$代数 $\mathcal S$ 中的元素也就摇身一变有了一个新名字
 与可测空间同样重要的一个概念就是可测函数. 给定了可测空间 $(X,\mathcal S),$ 那么说函数 $f:X\to \mathbb R$ 是(Borel)可测的，就是说对于任意 Borel 可测集 $B,$ 其原像 $f^{-1}(B)$ 均落到 $\sigma-$代数 $\mathcal S$ 中. 
 这就是说 $f^{\leftarrow}(\mathcal B)\subset\mathcal S.$ 这就是说 $f$ 是可测空间 $(X,\mathcal S)$ 和 $(\mathbb R,\mathcal B)$ 之间的可测映射.
 
-以下是一些五花八门的可测函数判别准则以及构作可测函数的基本方法，这些结论可以为可测函数的判定提供极大的便利.
+示性函数的概念总是有用的.
 
 \begin{example}\label{ex:indicator_function__measurability}
     设 $(X,\mathcal S)$ 为可测空间，$E$ 为 $X$ 的子集. 那么 $E$ 是 $\mathcal S-$可测集当且仅当其示性函数
@@ -527,24 +527,104 @@ $\sigma-$代数 $\mathcal S$ 中的元素也就摇身一变有了一个新名字
 
 根据例 \ref{ex:indicator_function__measurability}, 也可以先定义可测函数类，然后再定义可测集的概念. 类似地，可以先定义 Lesbegue 积分(Daniell integral)，然后再定义 Lesbegue 测度. 这是文献 \cite{Willem_2022} 的做法.
 
-若 $X$ 为 $\mathbb R$ 的 Borel 可测子集，那么可以定义 $X$ 上的一个 $\sigma-$代数为一切含于 $X$ 的 Borel 可测集所做成的集类 $\mathcal S.$ 这其实也等同于 $X$ 的子空间拓扑所伴随的 Borel 代数.
+若 $X$ 为 $\mathbb R$ 的 Borel 可测子集，那么可以定义 $X$ 上的一个 $\sigma-$代数为一切含于 $X$ 的 Borel 可测集所做成的集类 $\mathcal S\subset \mathcal B.$ 这其实也等同于 $X$ 的子空间拓扑所伴随的 Borel 代数.
 
+另一方面，对于 $\mathbb R$ 的任意子集 $X$ 来说，只要存在某个可测函数 $f:X\to\mathbb R,$ 那么集合 $X=f^{-1}(\mathbb R)$ 便是 Borel 可测的. 因而适合作为有意义的测度空间的承载集的实数集必须是 Borel 可测的.
 \begin{example}
     设 $X$ 为 $\mathbb R$ 的一个 Borel 可测子集. 那么 $X$ 上的实值连续函数是可测的.
 \end{example}
 这是因为，若 $f:X\to\mathbb R$ 连续，那么 $\mathbb R$ 中开集的原像为 $X$ 中开集，这当然是一个含于 $X$ 的 Borel 子集.
-也就是说， inverse image $f^{-1}$ 将 $\mathbb R$ 中的开集类 $\mathcal O$ 映入 $\mathcal S.$ 于是就有
+也就是说， inverse image $f^{-1}$ 将 $\mathbb R$ 中的开集类 $\mathcal O$ 映入 $\mathcal S.$ 应用方程 \eqref{eq:commute_inverse_image_sigma_algebra_generation} 就有
 \begin{equation}
     f^\leftarrow(\mathcal B)=f^\leftarrow(\sigma(\mathcal O))=\sigma(f^\leftarrow(\mathcal O))\subset \sigma(\mathcal S)=\mathcal S.
 \end{equation}
 其中最后一个等式是因为 $\sigma-$代数的生成操作具有幂等性： $\sigma\circ\sigma=\sigma.$
 
+以下是一些五花八门的可测函数判别准则以及构作可测函数的基本方法，这些结论可以为可测函数的判定提供极大的便利.
 
+\begin{example}\label{ex:function__measurability_semiinfinite_open_interval}
+    $f:X\to\mathbb R$ 可测当且仅当每一个右半无界开区间 $(a,+\infty)$ 的原像 $f^{-1}((a,+\infty))=\{x\in X|\ f(x)>a\}$ 都是 $\mathcal S-$可测的. 
+\end{example}
+只需验证右半无界开区间所构成的集类 $\mathcal U$ 可生成 $\mathbb R$ 上的 Borel 代数即可. 事实上，由于 $(a,+\infty)^C=(-\infty,a],$ 而左半无界开区间 $(-\infty,a)$ 可表为左半无界闭区间的可数并，因而就有 $(-\infty,a)\in\sigma(\mathcal U).$ 特别的，对于 $b>a,$ 有 $(a,b)=(-\infty,b)\cap (a,+\infty)\in\sigma(\mathcal U).$ 自然，由于 $\mathbb R$ 中开集都是开区间的可数并，因而就有 
+$\mathcal B=\sigma(\mathcal O)\subset\sigma(\mathcal U).$ 现在就有
+\begin{equation}
+    f^{\leftarrow}(\mathcal B)\subset f^{\leftarrow}(\sigma(\mathcal U))=\sigma(f^{\leftarrow}(\mathcal U))\subset\sigma(\mathcal S)=\mathcal S
+\end{equation}
+
+类似地，如果 $f^{-1}((-\infty,a))$ 对每个实数 $a$ 均是 $\mathcal S-$可测集，那么函数 $f$ 是可测的.
 
 \begin{example}
-    $f:X\to [-\infty,+\infty]$ 可测当且仅当每个形如 $(a,+\infty]$ 的区间的原像都是 $\mathcal S-$可测集.
+    设 $X$ 为 $\mathbb R$ 的一个 Borel 可测子集，那么 $X$ 上的任意实值单调函数都是可测的.
 \end{example}
-如果 $f$ 可测，那么 $f^{-1}((a,+\infty])$ 自然
+不妨设函数 $f:X\to\mathbb R$ 单调递增，那么容易验证 $f^{-1}((a,+\infty))$ 可表为某个区间 $I$ 与 $X$ 的交集. 首先，若 $f^{-1}((a,+\infty))=\emptyset,$ 那么结论显然成立. 下面设 $f^{-1}((a,+\infty))$ 非空. 
+由 $f$ 的单调性可知，只要实数 $x>b$ 且 $x\in X,$ 那么必定有 $x\in f^{-1}((a,+\infty)).$ 这是因为，若 $f(x)\leq a,$ 那么必定有 $f^{-1}((a,+\infty))\subset (x,+\infty),$ 因而 
+$f^{-1}((a,+\infty))$ 的下确界 $b$ 应当不小于 $x,$ 这就与 $x>b$ 的假设矛盾！于是就有 $((b,+\infty)\cap X)\subset f^{-1}((a,+\infty)).$ 
+另一方面，若 $x\in X$ 且 $x<b,$ 那么必定有 $f(x)\leq a.$ 事实上，此时 $f(x)\leq f(y)$ 对 $f^{-1}((a,+\infty))$ 中的每个元素 $y$ 均成立，故有 $f(x)\leq \inf_{y\in f^{-1}((a,+\infty))}f(y)=a.$ 这就证明了 $(-\infty,b)\cap f^{-1}((a,+\infty))=\emptyset.$ 于是有
+\begin{equation}
+    ((b,+\infty)\cap X)\subset f^{-1}((a,+\infty))\subset ([b,+\infty)\cap X)
+\end{equation}
+因而 $f^{-1}((a,+\infty))$ 两者必居其一. 应用例 \ref{ex:function__measurability_semiinfinite_open_interval} 的结论即知 $f$ 是可测的.
+
+\begin{example}\label{ex:composition_of_measurable_functions}
+    可测函数的复合也是可测的：若 $f:X\to\mathbb R$ 为 $\mathcal S-$可测函数，Borel 可测函数 $g:Y\to\mathbb R$ 的定义域 $Y$ 是一个包含了 $\mathrm{Im}(f)$ 的 Borel 可测集，那么 $g\circ f:X\to\mathbb R$ 是 $\mathcal S-$可测函数.
+\end{example}
+只需注意到 $(g\circ f)^\leftarrow=f^\leftarrow\circ g^\leftarrow$ 即可.
+
+由例 \ref{ex:composition_of_measurable_functions} 立刻可导出，若 $f:X\to\mathbb R$ 为可测函数，那么 $-f,f^2,|f|$ 均可测. 若 $\lambda$ 为实数，则 $\lambda f$ 也可测. 若 $f$ 恒不为零，则 $1/f$ 也可测.
+
+
+
+
+为了方便测度和积分理论的叙述，可以将实值可测函数的值域略微扩充一下，也即考虑取值在广义实数轴 $\overline{\mathbb R}=[-\infty,+\infty]$ 内的函数. 广义实数集 $\overline{\mathbb R}$ 上可定义一个 $\sigma-$代数 $\mathcal B(\overline{\mathbb R})$ 为与 $\mathbb R$ 的交集为 Borel 可测集的 $\overline{\mathbb R}$ 的子集全体所做成的集类.
+也说这些集合是(广义)Borel 可测集. 不过这些集合的确也与 $\mathbb R$ 上的 Borel 可测集相差无几. 
+\begin{example}\label{ex:generalized_borel_algebra}
+    $\mathcal B(\overline{\mathbb R})$ 由 Borel 集、Borel 集与 $\{+\infty\}$ 的并集、Borel 集与 $\{-\infty\}$ 的并集和 Borel 集与 $\{-\infty,+\infty\}$ 的并集组成.
+\end{example}
+容易验证这四类集合与 $\mathbb R$ 的交集均是 Borel 可测集.  另一方面，由于 $\overline{\mathbb R}$ 仅比 $\mathbb R$ 多了两个元素 $\pm\infty,$ 因而广义 Borel 可测集也必定居于这四类其一.
+
+将 $\sigma-$代数扩充到一个更大的承载集上的想法对一般的测度空间也成立：若 $(X,\mathcal S)$ 为测度空间，$X\subset Y,$ 那么就可以在 $Y$ 上定义一个由 $\mathcal S$ 扩张来的 $\sigma-$代数为 
+由与 $X$ 的交集为 $\mathcal S-$可测集的 $Y$ 的子集全体所做成的集类 $\mathcal T.$ 
+
+\begin{example}
+    $f:X\to [-\infty,+\infty]$ 可测当且仅当 $f^\leftarrow(\mathcal B)\subset\mathcal S$ 以及 $f^{-1}(+\infty),f^{-1}(-\infty)\in\mathcal S.$
+\end{example}
+这是例 \eqref{ex:generalized_borel_algebra} 中结论的直接推论.
+
+\begin{example}
+    可测函数类对代数运算封闭. 若 $f,g:X\to\mathbb R$ 为可测函数，则 $f+g,f-g,fg$ 均可测. 此外，若 $g$ 恒不为零，则 $f/g$ 为可测函数.
+\end{example}
+要验证 $f+g$ 可测，只需注意到 
+\begin{equation}
+    (f+g)^{-1}((a,+\infty))=\bigcup_{r\in\mathbb Q}\left(f^{-1}((r,+\infty))\cap g^{-1}((a-r,+\infty))\right)
+\end{equation}
+即可. 右 $\subset$ 左是明显的. 下面证明左 $\subset$ 右.
+这是因为，若 $f(x)+g(x)>a,$ 那么 $f(x)>a-g(x),$ 因此区间 $(a-g(x),f(x))$ 非空，故包含一个有理数 $r.$ 这就证明了左边含于右边.
+由 $-g$ 的可测性即得 $f-g$ 可测. 至于 $fg$ 的可测性，可从等式 $fg = {(f+g)^2-f^2-g^2\over 2}$ 和 $f^2,\lambda f$ 的可测性得到. 
+最后，当 $g$ 恒不为零时，由 $1/g$ 的可测性即知 $f/g$ 可测.
+
+\begin{example}
+    可测函数列的上下确界函数也是可测的.
+\end{example}
+这是因为，设 $\{f_n\}_{n\in\mathbb N}$ 为 $X$ 到 $[-\infty,+\infty]$ 的一列可测函数，记 $f=\sup_n f_n,$
+那么就有
+\begin{equation}
+    f^{-1}([a,+\infty))=\bigcap_n f_n^{-1}([a,+\infty))
+\end{equation}
+因而 $f^{-1}([a,+\infty))$ 是 $\mathcal S-$可测集.
+另一方面，
+\begin{equation}\label{eq:inverse_image_of_positive_infinity}
+    f^{-1}(+\infty)=\bigcap_n \bigcup_{k} f_k^{-1}([n,+\infty))
+\end{equation}
+这是因为，若 $x\in \bigcap_n \bigcup_{k} f_k^{-1}([n,+\infty)),$ 那么对于每个 $n,$ 均存在某个 $k\in\mathbb N,$ 使得 $f_k(x)\geq n.$ 满足该条件的 $x$ 必定满足 $f(x)=+\infty.$ 另一方面，若 $f(x)=+\infty,$ 那么要么 $f_n(x)$ 对某个 $n$ 为 $+\infty,$ 要么 $\{f_n(x)\}_{n\in\mathbb N}$ 为上无界序列. 在这两种情况下，自然都有 $x\in \bigcap_n \bigcup_k f_k^{-1}([n,+\infty))$ 成立. 这就证明了等式 \eqref{eq:inverse_image_of_positive_infinity}. 类似地有
+\begin{equation}\label{eq:inverse_image_of_negative_infinity}
+    f^{-1}(-\infty)=\bigcap_n \bigcup_{k} f_k^{-1}((-\infty,-n])
+\end{equation}
+这就证明了 $f^{-1}(+\infty)$ 和 $f^{-1}(-\infty)$ 都是 $\mathcal S-$可测集，从而证明了 $f$ 的可测性. 类似可知 $\inf_n f_n$ 是可测的.
+
+
+
+
+
 
 
 
