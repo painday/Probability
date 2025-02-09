@@ -161,6 +161,8 @@ INPUT c:/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 INPUT c:/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 INPUT c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex

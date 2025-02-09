@@ -2,7 +2,7 @@
 
 \documentclass[12pt, a4paper, oneside]{book}
 \usepackage{ctex}
-\usepackage{amsmath, amsthm, amssymb, bm, graphicx, hyperref, mathrsfs}
+\usepackage{amsmath, amsthm, amssymb, bm, graphicx, hyperref, mathrsfs, enumitem}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -631,9 +631,72 @@ $f^{-1}((a,+\infty))$ 的下确界 $b$ 应当不小于 $x,$ 这就与 $x>b$ 的�
 作为一个特殊情况，实值可测函数列的极限函数也是可测的. 并且由于引入了广义实数轴的概念，我们可以将 $\lim_n f_n(x)=\pm\infty$ 的情形算作是 $f_n$ ``收敛''到了 $\pm\infty.$ 也就是说，一般来说实值函数列的极限会是一个 $\overline{\mathbb R}-$值函数. 
 这样，函数列的极限函数的概念就变得略为宽松一些. 这也是广义实数轴所带来的便利之一.
 
+\begin{example}
+    令 $\mathcal S=\{\bigcup_{n\in K}(n,n+1]|\ K\subset\mathbb N\}\cup\{\emptyset\}.$ 则 $\mathcal S$ 是 $\mathbb R$ 上的一个 $\sigma-$代数.
+\end{example}
+显然 $\mathbb R=\bigcup_{n\in\mathbb N}(n,n+1]$ 落入 $\mathcal S$ 中. 另一方面，由于 $\mathbb N$ 的任意可数个子集的并集仍是 $\mathbb N$ 的子集，故 
+$\mathcal S$ 对可数并封闭(事实上对任意并都封闭).
+注意到 
+$(n,m]=\bigcup_{n\leq k<m}(n,n+1]$ 以及 $(-\infty,n]=\bigcup_{k<n}(n,n+1],\ (n,+\infty)=\bigcup_{k\geq n}(n,n+1],$ 因此 $(n,m],(-\infty,n],(n,+\infty)$ 均落入 $\mathcal S$ 中.
+当然了，这三类集合的任意(不局限于至多可数，因为 $\mathbb N$ 的任意子集类的并集仍是 $\mathbb N$ 的子集)并集也落入 $\mathcal S$ 中. 注意到
+
+\begin{equation}
+    \left(\bigcup_{n\in K}(n,n+1]\right)^C=\bigcap_{n\in K} (n,n+1]^C=\bigcap_{n\in K}((-\infty,n]\cup (n+1,+\infty))
+\end{equation}
+当 $\#(K)=1$ 时，$(\bigcup_{n\in K}(n,n+1])^C=(-\infty,n]\cup (n+1,+\infty)$ 落入 $\mathcal S$ 中. 
+考虑到对于 $n<m,$ 有 $((-\infty,n]\cup (n+1,+\infty))\cap ((-\infty,m]\cup (m+1,+\infty))=(-\infty,n]\cup (n+1,m]\cup (m+1,+\infty),$ 因此当 $\#(K)=2$ 时，$(\bigcup_{n\in K}(n,n+1])^C$ 也落入 $\mathcal S$ 中. 
+由归纳法可知，当 $K$ 为有限集时，$(\bigcup_{n\in K}(n,n+1])^C$ 可表示为形如 $(n,m],(-\infty,n],(n,+\infty)$ 的集合的并集，故落入 $\mathcal S$ 中.
+
+当 $K$ 为无限集时，可将 $K$ 写为数列 $a_1<a_2<\cdots$ 的形式. 此时就有 
+\begin{equation}
+    \left(\bigcup_{n\in K}(n,n+1]\right)^C = \bigcup_n (a_n+1,a_{n+1}]
+\end{equation}
+因此 $\left(\bigcup_{n\in K}(n,n+1]\right)^C$ 落入 $\mathcal S$ 中. 这就证明了 $\mathcal S$ 是 $\sigma-$代数.
+
+\begin{example}
+    Borel 集具有平移不变性：若 $B$ 为 Borel 集，$t$ 为实数，则 $t+B$ 仍为 Borel 集.
+\end{example}
+这是因为平移操作 $f_t:\mathbb R\to\mathbb R,\ x\mapsto x+t$ 是连续函数，因而 $t+B= f_{-t}^{-1}(B)$ 为 Borel 可测集. 
+
+\begin{example}
+    存在函数 $f:X\to\mathbb R,$ 其本身不是可测的，但其绝对值 $|f|$ 是可测的.
+\end{example}
+当然，这里需要假设 $\mathcal S$ 是 $X$ 的幂集的真子集，也即存在 $\mathcal S-$不可测集. 设 $V$ 为一个 $\mathcal S-$不可测集，那么其示性函数 $\chi_V$ 是不可测的，但其绝对值 $|\chi_V|$ 恒为 $1,$ 因而是可测的.
+
+\begin{example}
+    小数展开中存在无限多个 $5$ 的实数全体所做成的集合 $B$ 是 Borel 集.
+\end{example}
+需要特别注意的是，如果实数 $x$ 可表示为有限小数，那么 $x$ 的小数表示是不唯一的. 譬如说 $1=0.9999\cdots,\ 1.01=1.0999\cdots.$ 
+不过好在这些有限小数都不在 $B$ 中. 并且由于有限小数都是有理数，故全体有限小数所做成的集合 $D$ 为可数集. 因而 $D=\bigcup_{x\in D}\{x\}$ 为 Borel 可测集.
+
+记 $f_k:D^C\to \mathbb R$ 为将实数 $x$ 映为其小数展开中小数点后第 $k$ 位的函数，那么 $f_k$ 是局部常值函数，因而是连续的. 当然了，$D^C$ 不是连通的，否则 $f_k$ 就必定是常值函数了.
+总之，$f_k^{-1}(5)$ 为 Borel 可测集，因此 $B=\liminf_n f_n^{-1}(5)$ 是 Borel 可测集. 
+
+\begin{example}
+    设 $f:\mathbb R\to\mathbb R$ 为函数.
+    \begin{enumerate}[label=\alph*)]
+        \item 对每个正整数 $k,$ 定义 $G_k=\{a\in\mathbb R|\ \text{存在 $\delta>0$ 使得} |f(x)-f(y)|<1/k,\ \forall\ x,y\in (a-\delta,a+\delta) \},$ 那么 $G_k$ 是开集.
+        \item $f$ 的连续点全体所做成的集合等于 $\bigcap_k G_k.$ 
+        \item $f$ 的连续点全体所做成的集合是 Borel 集.
+    \end{enumerate}
+\end{example}
+这实际上是说，函数振幅为零的点所做成的集合是 Borel 集. 譬如，见梅加强的书 \cite{Mei_2011} pp.98 习题 3.4.11.
+
+要证明 $G_k$ 为开集，只需注意到，若 $a\in G_k,$ 那么只要 $|b-a|<\delta,$ 取 $\delta'=\delta-|b-a|,$ 那么就有 
+$(b-\delta',b+\delta')\subset (a-\delta,a+\delta).$ 也就是说 $b$ 也落入 $G_k$ 中，这就证明了 $G_k$ 为开集. 
+
+另一方面，若 $f$ 在 $a$ 处连续，那么显然 $a$ 落入每一个 $G_k$ 中. 反之，若 $a\in\bigcap_k G_k,$ 那么由函数连续性的 $\varepsilon-\delta$ 定义即知 $f$ 在 $a$ 处连续. 
+因此 $\bigcap_k G_k$ 恰为 $f$ 的全体连续点所做成的集合. 自然，这是一个 Borel 可测集.
 
 
 
+
+
+
+
+
+
+\section{测度}
 
 \nocite{*}
 \bibliographystyle{plain}
