@@ -6,4 +6,4 @@
 \contentsline {section}{\numberline {6}$\sigma -$代数}{13}{section.0.6}%
 \contentsline {section}{\numberline {7}可测空间与可测函数}{15}{section.0.7}%
 \contentsline {section}{\numberline {8}广义实数轴}{18}{section.0.8}%
-\contentsline {section}{\numberline {9}测度}{22}{section.0.9}%
+\contentsline {section}{\numberline {9}测度}{23}{section.0.9}%

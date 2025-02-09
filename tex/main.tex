@@ -631,10 +631,10 @@ $f^{-1}((a,+\infty))$ 的下确界 $b$ 应当不小于 $x,$ 这就与 $x>b$ 的�
 作为一个特殊情况，实值可测函数列的极限函数也是可测的. 并且由于引入了广义实数轴的概念，我们可以将 $\lim_n f_n(x)=\pm\infty$ 的情形算作是 $f_n$ ``收敛''到了 $\pm\infty.$ 也就是说，一般来说实值函数列的极限会是一个 $\overline{\mathbb R}-$值函数. 
 这样，函数列的极限函数的概念就变得略为宽松一些. 这也是广义实数轴所带来的便利之一.
 
-\begin{example}
-    令 $\mathcal S=\{\bigcup_{n\in K}(n,n+1]|\ K\subset\mathbb N\}\cup\{\emptyset\}.$ 则 $\mathcal S$ 是 $\mathbb R$ 上的一个 $\sigma-$代数.
+\begin{example}\label{ex:sigma_algebra_partition}
+    令 $\mathcal S=\{\bigcup_{n\in K}(n,n+1]|\ K\subset\mathbb Z\}\cup\{\emptyset\}.$ 则 $\mathcal S$ 是 $\mathbb R$ 上的一个 $\sigma-$代数.
 \end{example}
-显然 $\mathbb R=\bigcup_{n\in\mathbb N}(n,n+1]$ 落入 $\mathcal S$ 中. 另一方面，由于 $\mathbb N$ 的任意可数个子集的并集仍是 $\mathbb N$ 的子集，故 
+显然 $\mathbb R=\bigcup_{n\in\mathbb Z}(n,n+1]$ 落入 $\mathcal S$ 中. 另一方面，由于 $\mathbb Z$ 的任意可数个子集的并集仍是 $\mathbb Z$ 的子集，故 
 $\mathcal S$ 对可数并封闭(事实上对任意并都封闭).
 注意到 
 $(n,m]=\bigcup_{n\leq k<m}(n,n+1]$ 以及 $(-\infty,n]=\bigcup_{k<n}(n,n+1],\ (n,+\infty)=\bigcup_{k\geq n}(n,n+1],$ 因此 $(n,m],(-\infty,n],(n,+\infty)$ 均落入 $\mathcal S$ 中.
@@ -647,11 +647,40 @@ $(n,m]=\bigcup_{n\leq k<m}(n,n+1]$ 以及 $(-\infty,n]=\bigcup_{k<n}(n,n+1],\ (n
 考虑到对于 $n<m,$ 有 $((-\infty,n]\cup (n+1,+\infty))\cap ((-\infty,m]\cup (m+1,+\infty))=(-\infty,n]\cup (n+1,m]\cup (m+1,+\infty),$ 因此当 $\#(K)=2$ 时，$(\bigcup_{n\in K}(n,n+1])^C$ 也落入 $\mathcal S$ 中. 
 由归纳法可知，当 $K$ 为有限集时，$(\bigcup_{n\in K}(n,n+1])^C$ 可表示为形如 $(n,m],(-\infty,n],(n,+\infty)$ 的集合的并集，故落入 $\mathcal S$ 中.
 
-当 $K$ 为无限集时，可将 $K$ 写为数列 $a_1<a_2<\cdots$ 的形式. 此时就有 
+当 $K$ 为无限集时，若 $K$ 下有界，则可将 $K$ 写为数列 $a_1<a_2<\cdots$ 的形式. 此时就有 
 \begin{equation}
-    \left(\bigcup_{n\in K}(n,n+1]\right)^C = \bigcup_n (a_n+1,a_{n+1}]
+    \left(\bigcup_{n\in K}(n,n+1]\right)^C = (-\infty,a_1]\cup \left(\bigcup_{n\in\mathbb N} (a_n+1,a_{n+1}]\right)\in\mathcal S
 \end{equation}
+若 $K$ 上有界，则可将 $K$ 写为数列 $a_1>a_2>\cdots$ 的形式，于是 $\left(\bigcup_{n\in K}(n,n+1]\right)^C = (a_1,+\infty)\cup\left(\bigcup_{n\in\mathbb N} (a_{n+1}+1,a_{n}]\right)$ 也落入 $\mathcal S$ 中. 
+
+若 $K$ 既是上无界的也是下无界的，那么设 $a\in K,$ 则可将 $K$ 分为 $K_1=\{n\in K|\ n\leq a\}$ 和 $K_2=\{n\in K|\ n\geq a\}$ 两个部分，这两个集合分别是上有界和下有界的. 自然，$K_1$ 可写为 $a_1>a_2>\cdots,$ $K_2$ 可写为 $b_1<b_2<\cdots,$ 其中 $a_1=b_1=a.$ 于是 
+\begin{equation}
+    \bigcup_{n\in K}(n,n+1] = \left(\bigcup_{n<0} (a_{-n},a_{-n}+1]\right) \cup \left(\bigcup_{n>0} (b_n,b_{n}+1]\right)
+\end{equation}
+于是就有 
+\begin{equation}
+    \left(\bigcup_{n\in K}(n,n+1]\right)^C =\left(\bigcup_{n<0} (a_{1-n}+1,a_{-n}]\right) \cup \left(\bigcup_{n>0} (b_n+1,b_{n+1}]\right)
+\end{equation}
+
+
 因此 $\left(\bigcup_{n\in K}(n,n+1]\right)^C$ 落入 $\mathcal S$ 中. 这就证明了 $\mathcal S$ 是 $\sigma-$代数.
+
+例 \ref{ex:sigma_algebra_partition} 可推广如下：
+\begin{example}
+    设 $E_1,E_2,\cdots$ 为集合 $X$ 的一个 partition, 令 $\mathcal S=\{\bigcup_{k\in K}E_k|\ K\subset\mathbb N\}\cup\{\emptyset\}.$ 
+    \begin{enumerate}[label=\alph*)]
+        \item $\mathcal S$ 是 $X$ 上的一个 $\sigma-$代数.
+        \item 函数 $f:X\to\mathbb R$ 可测当且仅当 $f$ 在每个 $E_k$ 上为常值函数.
+    \end{enumerate}
+\end{example}
+
+
+
+
+
+
+
+
 
 \begin{example}
     Borel 集具有平移不变性：若 $B$ 为 Borel 集，$t$ 为实数，则 $t+B$ 仍为 Borel 集.
@@ -688,10 +717,29 @@ $(b-\delta',b+\delta')\subset (a-\delta,a+\delta).$ 也就是说 $b$ 也落入 $
 另一方面，若 $f$ 在 $a$ 处连续，那么显然 $a$ 落入每一个 $G_k$ 中. 反之，若 $a\in\bigcap_k G_k,$ 那么由函数连续性的 $\varepsilon-\delta$ 定义即知 $f$ 在 $a$ 处连续. 
 因此 $\bigcap_k G_k$ 恰为 $f$ 的全体连续点所做成的集合. 自然，这是一个 Borel 可测集.
 
+\begin{example}
+    设 $(X,\mathcal S)$ 为测度空间，$E_1,\cdots,E_n$ 为 $X$ 的互不相交的子集，$c_1,\cdots,c_n$ 为两两不同的非零实数，那么函数 $c_1\chi_{E_1}+\cdots+c_n\chi_{E_n}$ 可测当前仅当每个 $E_i$ 都是 $\mathcal S-$可测集.
+\end{example}
 
+自然，若每个 $E_i$ 都是可测的，那么由 $\chi_{E_i}$ 的可测性即知函数 $f=c_1\chi_{E_1}+\cdots+c_n\chi_{E_n}$ 为可测函数. 
+另一方面，由于 $E_i$ 是两两不交的，因此 $f^{-1}(c_i)=E_i,$ 因此由 $f$ 的可测性可导出 $E_i$ 的 $\mathcal S-$可测性.
 
+下面这个例子表明，实值实变函数列的收敛点全体所做成的集合是 Borel 集. 这表明测度论可以巧妙地揭示函数列的极限性质.
+\begin{example}
+    设 $\{f_n\}_{n\in\mathbb N}$ 为 $X$ 到 $\mathbb R$ 的一列函数. 
+    \begin{enumerate}[label=\alph*)]
+        \item $\{x\in X|\ f_n(x)\ \text{收敛到某个实数}\}=\bigcap_{n\in\mathbb N}\bigcup_{j\in\mathbb N}\bigcap_{k\geq j} (f_j-f_k)^{-1}((-1/n,1/n))$
+        \item 设 $\mathcal S$ 为 $X$ 上的一个 $\sigma-$代数，并且 $f_n$ 为可测函数. 则 $\{x\in X|\ f_n(x)\ \text{收敛到某个实数}\}$ 为 $\mathcal S-$可测集.
+    \end{enumerate}
+\end{example}
 
+记 $f_n$ 的收敛点(这里是指收敛到某个实数)全体所做成的集合为 $B,$ 那么由 Cauchy 准则可知 $x\in B$ 当且仅当对于任意的 $n,$ 均存在某个 $j,$ 使得只要 $k\geq j,$ 就有 $|f_j(x)-f_k(x)|<1/n.$ 因为此时，若 $k'$ 是另一个大于 $j$ 的正整数，那么就有 $|f_k(x)-f_{k'}(x)|<2/n.$
+也就是说，$x\in B$ 当且仅当对于每个 $n,$ 均有 $x\in \bigcup_{j\in\mathbb N}\bigcap_{k\geq j} (f_j-f_k)^{-1}((-1/n,1/n)),$ 因此
+\begin{equation}
+    B=\bigcap_{n\in\mathbb N}\bigcup_{j\in\mathbb N}\bigcap_{k\geq j} (f_j-f_k)^{-1}((-1/n,1/n))
+\end{equation}
 
+自然，若 $f_n$ 为可测函数，那么 $f_j-f_k$ 也是可测函数，因此 $B$ 是 Borel 可测集. 
 
 
 
