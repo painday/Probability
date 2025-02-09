@@ -640,9 +640,6 @@ $\mathcal S$ 对可数并封闭(事实上对任意并都封闭).
 $(n,m]=\bigcup_{n\leq k<m}(n,n+1]$ 以及 $(-\infty,n]=\bigcup_{k<n}(n,n+1],\ (n,+\infty)=\bigcup_{k\geq n}(n,n+1],$ 因此 $(n,m],(-\infty,n],(n,+\infty)$ 均落入 $\mathcal S$ 中.
 当然了，这三类集合的任意(不局限于至多可数，因为 $\mathbb N$ 的任意子集类的并集仍是 $\mathbb N$ 的子集)并集也落入 $\mathcal S$ 中. 注意到
 
-\begin{equation}
-    \left(\bigcup_{n\in K}(n,n+1]\right)^C=\bigcap_{n\in K} (n,n+1]^C=\bigcap_{n\in K}((-\infty,n]\cup (n+1,+\infty))
-\end{equation}
 当 $\#(K)=1$ 时，$(\bigcup_{n\in K}(n,n+1])^C=(-\infty,n]\cup (n+1,+\infty)$ 落入 $\mathcal S$ 中. 
 考虑到对于 $n<m,$ 有 $((-\infty,n]\cup (n+1,+\infty))\cap ((-\infty,m]\cup (m+1,+\infty))=(-\infty,n]\cup (n+1,m]\cup (m+1,+\infty),$ 因此当 $\#(K)=2$ 时，$(\bigcup_{n\in K}(n,n+1])^C$ 也落入 $\mathcal S$ 中. 
 由归纳法可知，当 $K$ 为有限集时，$(\bigcup_{n\in K}(n,n+1])^C$ 可表示为形如 $(n,m],(-\infty,n],(n,+\infty)$ 的集合的并集，故落入 $\mathcal S$ 中.
@@ -666,7 +663,7 @@ $(n,m]=\bigcup_{n\leq k<m}(n,n+1]$ 以及 $(-\infty,n]=\bigcup_{k<n}(n,n+1],\ (n
 因此 $\left(\bigcup_{n\in K}(n,n+1]\right)^C$ 落入 $\mathcal S$ 中. 这就证明了 $\mathcal S$ 是 $\sigma-$代数.
 
 例 \ref{ex:sigma_algebra_partition} 可推广如下：
-\begin{example}
+\begin{example}\label{ex:sigma_algebra_partition_general}
     设 $E_1,E_2,\cdots$ 为集合 $X$ 的一个 partition, 令 $\mathcal S=\{\bigcup_{k\in K}E_k|\ K\subset\mathbb N\}\cup\{\emptyset\}.$ 
     \begin{enumerate}[label=\alph*)]
         \item $\mathcal S$ 是 $X$ 上的一个 $\sigma-$代数.
@@ -674,11 +671,33 @@ $(n,m]=\bigcup_{n\leq k<m}(n,n+1]$ 以及 $(-\infty,n]=\bigcup_{k<n}(n,n+1],\ (n
     \end{enumerate}
 \end{example}
 
+仿照例 \ref{ex:sigma_algebra_partition} 中的论证即知 $\mathcal S$ 对任意并封闭，并且 $X\in\mathcal S.$ 下面证明每个 $E_n^C$ 都落入 $\mathcal S$ 中. 这是因为，
+由于 $E_1,E_2,\cdots$ 构成 $X$ 的一个分割，因此 $E_1,E_2,\cdots,E_{n-1},E_n,\cdots$ 构成 $E_n^C$ 的一个分割，故 $E_n^C$ 可表示为至多可数个 $E_k$ 的并集，从而有 $E_n^C\in\mathcal S.$ 
+也就是说，在考虑表达式 
+\begin{equation}
+    \left(\bigcup_{n\in K}E_n\right)^C=\bigcap_{n\in K} E_n^C
+\end{equation}
+时，每个 $E_n^C$ 都可写为并集 $E_n^C=\bigcup_{k\in K_n}E_k$ 的形式. 当 $\bigcap_{n\in K} E_n^C=\emptyset$ 时，它自然落入 $\mathcal S$ 中. 下面设 $\bigcap_{n\in K}E_n^C$ 非空.
+此时由于 $E_k$ 两两不交，因此就有
+\begin{equation}\label{eq:complement_of_E_n_union}
+    \bigcap_{n\in K} E_n^C=\bigcap_{n\in K}\bigcup_{k\in K_n}E_k = \bigcup_{k\in \bigcap_{n\in K}K_n}E_k\in\mathcal S
+\end{equation}
+容易验证 $\bigcup_{k\in \bigcap_{n\in K}K_n}E_k$ 含于 $\bigcap_{n\in K}\bigcup_{k\in K_n}E_k.$ 要证明反向的包含不等式，只需注意到，若 $x\in \bigcap_{n\in K}\bigcup_{k\in K_n}E_k,$ 那么对于每个 $n,$ 均存在某个 $k_n\in K_n,$ 使得 $x\in E_{k_n}.$ 由于 $E_k$ 两两不交，因此指标 $k_n$ 是唯一的. 于是有 $x\in \bigcap_{n\in K}E_{k_n}.$ 自然，由于 $E_k$ 两两不交，因此必定有 $k_1=k_2=\cdots,$ 记这个公共值为 $k,$ 那么就有 $k\in\bigcap_n K_n,$ 这就证明了 
+$\bigcap_{n\in K}\bigcup_{k\in K_n}E_k$ 含于 $\bigcup_{k\in \bigcap_{n\in K}K_n}E_k,$ 因此 \eqref{eq:complement_of_E_n_union} 式成立.
+这就证明了 $\mathcal S$ 是 $X$ 上的一个 $\sigma-$代数.
 
+设 $f:X\to\mathbb R$ 为可测函数，$c\in\mathrm{Im}(f),$ 那么 $f^{-1}(c)$ 可写为 $f^{-1}(c)=\bigcup_{k\in K_c}E_k.$ 自然，$f$ 在这些 $E_k$ 上取常值. 将 $c$ 取遍 $\mathrm{Im}(f)$ 就得到一系列的指标集 $K_c\subset \mathbb N.$ 自然， 
+\begin{equation}
+    \bigcup_{c\in\mathrm{Im}(f)}\bigcup_{k\in K_c}E_k=\bigcup_{c\in \mathrm{Im}(f)} f^{-1}(c)=X
+\end{equation}
+这表明 $\bigcup_{k\in\bigcup_{c\in\mathrm{Im}(f)}K_c}E_k=X,$ 因此指标集 $\bigcup_{c\in \mathrm{Im}(f)}K_c$ 必定等于 $\mathbb N,$ 也即 $f$ 在每个 $E_k$ 上均取常值. 
+另一方面，若 $f$ 在每个 $E_k$ 上都取常值，那么 $f^{-1}(c)$ 作为 $E_k$ 的至多可数并落入 $\mathcal S$ 中. 进一步地，由于 $\mathcal S$ 对任意并封闭，因此对于 $\mathbb R$ 的任意子集 $B,$ 有 
+\begin{equation}
+    f^{-1}(B)=\bigcup_{c\in B}f^{-1}(c)\in\mathcal S
+\end{equation}
+也即 $f$ 是可测的.
 
-
-
-
+例 \ref{ex:sigma_algebra_partition_general} 的问题背景更加一般，因而更加能够抽象出问题的关键：$\mathcal S$ 对补集运算的封闭性直接来源于 $E_n$ 的互不相交性质.
 
 
 
@@ -701,7 +720,7 @@ $(n,m]=\bigcup_{n\leq k<m}(n,n+1]$ 以及 $(-\infty,n]=\bigcup_{k<n}(n,n+1],\ (n
 记 $f_k:D^C\to \mathbb R$ 为将实数 $x$ 映为其小数展开中小数点后第 $k$ 位的函数，那么 $f_k$ 是局部常值函数，因而是连续的. 当然了，$D^C$ 不是连通的，否则 $f_k$ 就必定是常值函数了.
 总之，$f_k^{-1}(5)$ 为 Borel 可测集，因此 $B=\liminf_n f_n^{-1}(5)$ 是 Borel 可测集. 
 
-\begin{example}
+\begin{example}\label{ex:continuous_point_set_is_Borel_measurable}
     设 $f:\mathbb R\to\mathbb R$ 为函数.
     \begin{enumerate}[label=\alph*)]
         \item 对每个正整数 $k,$ 定义 $G_k=\{a\in\mathbb R|\ \text{存在 $\delta>0$ 使得} |f(x)-f(y)|<1/k,\ \forall\ x,y\in (a-\delta,a+\delta) \},$ 那么 $G_k$ 是开集.
@@ -716,6 +735,19 @@ $(b-\delta',b+\delta')\subset (a-\delta,a+\delta).$ 也就是说 $b$ 也落入 $
 
 另一方面，若 $f$ 在 $a$ 处连续，那么显然 $a$ 落入每一个 $G_k$ 中. 反之，若 $a\in\bigcap_k G_k,$ 那么由函数连续性的 $\varepsilon-\delta$ 定义即知 $f$ 在 $a$ 处连续. 
 因此 $\bigcap_k G_k$ 恰为 $f$ 的全体连续点所做成的集合. 自然，这是一个 Borel 可测集.
+
+\begin{example}
+    设 $X$ 为 Borel 集，函数 $f:X\to\mathbb R$ 的不连续点全体所做成的集合为至多可数集，那么 $f$ 是 Borel 可测的.
+\end{example}
+
+记 $f$ 的连续点全体所做成的集合为 $D,$ 那么对于任意的 Borel 可测集 $B,$ 其原像可写为
+$f^{-1}(B)=(f^{-1}(B)\cap D)\cup (f^{-1}(B)\cap D^C).$ 由于 $f^{-1}(B)\cap D^C$ 是至多可数集，因而 Borel 可测，因此只需证明 $f^{-1}(B)\cap D$ 为 Borel 可测集即可. 注意到
+\begin{equation}
+    f^{-1}(B)\cap D=(f|_D)^{-1}(B)
+\end{equation}
+重复例 \ref{ex:continuous_point_set_is_Borel_measurable} 中的论证可知 $D$ 为 Borel 可测集.
+而 $f|_D:D\to\mathbb R$ 为连续函数，故 $(f|_D)^{-1}(B)$ 是 Borel 可测集，这就证明了 $f$ 的可测性.
+
 
 \begin{example}
     设 $(X,\mathcal S)$ 为测度空间，$E_1,\cdots,E_n$ 为 $X$ 的互不相交的子集，$c_1,\cdots,c_n$ 为两两不同的非零实数，那么函数 $c_1\chi_{E_1}+\cdots+c_n\chi_{E_n}$ 可测当前仅当每个 $E_i$ 都是 $\mathcal S-$可测集.
@@ -740,6 +772,36 @@ $(b-\delta',b+\delta')\subset (a-\delta,a+\delta).$ 也就是说 $b$ 也落入 $
 \end{equation}
 
 自然，若 $f_n$ 为可测函数，那么 $f_j-f_k$ 也是可测函数，因此 $B$ 是 Borel 可测集. 
+
+\begin{example}\label{ex:sigma_algebra_frozen_restriction}
+    设 $(X,\mathcal S)$ 为可测空间，$A\subset X.$ 令 $\mathcal S_A=\{E\in\mathcal S|\ A\subset E\ \text{或}\ A\cap E=\emptyset\}.$
+    \begin{enumerate}[label=\alph*)]
+        \item $\mathcal S_A$ 是 $X$ 上的 $\sigma-$代数.
+        \item 函数 $f:X\to \mathbb R$ 是 $\mathcal S_A-$可测的当且仅当 $f$ 是 $\mathcal S-$可测的，并且 $f$ 在 $A$ 上为常值函数.
+    \end{enumerate}
+\end{example}
+
+显然有 $X\in \mathcal S_A.$ 设 $E\in \mathcal S_A,$ 那么若 $A\subset E,$ 则有 $A\cap E^C=\emptyset,$ 故 $E^C\in\mathcal S_A.$ 反之，若 $A\cap E=\emptyset,$ 则 $A\subset E^C,$ 故 $E^C\in\mathcal S_A.$ 
+因此 $\mathcal S_A$ 对补集运算封闭.
+
+设 $E_n$ 为 $\mathcal S_A$ 中集列，那么若 $A$ 含于某个 $E_n,$ 则 $A\subset\bigcup_n E_n,$ 故 $\bigcup_n E_n$ 落入 $\mathcal S_A$ 中. 另一方面，若每个 $E_n$ 与 $A$ 均不交，那么它们的并集自然也与 $A$ 不交，从而落入 $\mathcal S_A$ 中. 
+这就证明了 $\mathcal S_A$ 是 $X$ 上的一个 $\sigma-$代数. 
+
+若 $f$ 是 $\mathcal S_A-$可测的，那么由 $\mathcal S_A\subset\mathcal S$ 即知 $f$ 是 $\mathcal S-$可测的. 此外，设 $c\in f(A),$ 那么 $f^{-1}(c)\in\mathcal S_A$ 并且与 $A$ 相交，于是就有 $A\subset f^{-1}(c),$ 也即 $f$ 在 $A$ 上恒等于 $c.$ 
+
+另一方面，设 $f$ 是 $\mathcal S-$可测的，并且在 $A$ 上取常值 $c,$ 那么对于任意的 Borel 集 $B,$ 若 $c\notin B,$ 则其原像是一个与 $A$ 不交的 $\mathcal S-$可测集，故落入 $\mathcal S_A$ 中.
+若 $c\in B,$ 那么就有 $f^{-1}(B)=f^{-1}(B\setminus\{c\})\cup A$ 为 $\mathcal S_A-$可测集. 这就证明了 $f$ 是 $\mathcal S_A-$可测的.
+
+在例 \ref{ex:sigma_algebra_frozen_restriction} 中，
+$\mathcal S_A$ 就是将 $A$ 中元素``冻结''(视为不可分割的一整块)所得到的一个子代数，并且仍保留承载集为 $X.$ 
+
+
+
+\begin{example}
+    设函数 $f:\mathbb R\to\mathbb R$ 处处可微，那么 $f':\mathbb R\to\mathbb R$ 是 Borel 可测函数.
+\end{example}
+
+见梅加强的书 \cite{Mei_2011} pp.162 定理 5.1.2.
 
 
 
