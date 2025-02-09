@@ -512,8 +512,8 @@ $\sigma-$代数 $\mathcal S$ 中的元素也就摇身一变有了一个新名字
 
 以下是一些五花八门的可测函数判别准则以及构作可测函数的基本方法，这些结论可以为可测函数的判定提供极大的便利.
 
-\begin{example}
-    设 $(X,\mathcal S)$ 为可测空间，$E$ 为 $X$ 的子集. 那么 $E$ 是 $\mathcal S-$可测集当前仅当其示性函数
+\begin{example}\label{ex:indicator_function__measurability}
+    设 $(X,\mathcal S)$ 为可测空间，$E$ 为 $X$ 的子集. 那么 $E$ 是 $\mathcal S-$可测集当且仅当其示性函数
     \begin{equation}
         \chi_E:X\to\mathbb R,\ x\mapsto\chi_E(x)=\begin{cases}
             1,&x\in E\\
@@ -525,6 +525,7 @@ $\sigma-$代数 $\mathcal S$ 中的元素也就摇身一变有了一个新名字
 事实上，$\mathbb R$ 的子集关于 $\chi_E$ 的原像无非 $\emptyset,E,E^C,X$ 四种情况. 并且这四种情况可被 Borel 集所遍及. 
 因而 $\chi_E^\leftarrow(\mathcal B)=\{\emptyset,E,E^C,X\}.$ 因而函数 $\chi_E$ 的可测性与集合 $E$ 的 $\mathcal S-$可测性等价.
 
+根据例 \ref{ex:indicator_function__measurability}, 也可以先定义可测函数类，然后再定义可测集的概念. 类似地，可以先定义 Lesbegue 积分(Daniell integral)，然后再定义 Lesbegue 测度. 这是文献 \cite{Willem_2022} 的做法.
 
 若 $X$ 为 $\mathbb R$ 的 Borel 可测子集，那么可以定义 $X$ 上的一个 $\sigma-$代数为一切含于 $X$ 的 Borel 可测集所做成的集类 $\mathcal S.$ 这其实也等同于 $X$ 的子空间拓扑所伴随的 Borel 代数.
 
