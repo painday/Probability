@@ -573,23 +573,6 @@ $f^{-1}((a,+\infty))$ 的下确界 $b$ 应当不小于 $x,$ 这就与 $x>b$ 的�
 由例 \ref{ex:composition_of_measurable_functions} 立刻可导出，若 $f:X\to\mathbb R$ 为可测函数，那么 $-f,f^2,|f|$ 均可测. 若 $\lambda$ 为实数，则 $\lambda f$ 也可测. 若 $f$ 恒不为零，则 $1/f$ 也可测.
 
 
-
-
-为了方便测度和积分理论的叙述，可以将实值可测函数的值域略微扩充一下，也即考虑取值在广义实数轴 $\overline{\mathbb R}=[-\infty,+\infty]$ 内的函数. 广义实数集 $\overline{\mathbb R}$ 上可定义一个 $\sigma-$代数 $\mathcal B(\overline{\mathbb R})$ 为与 $\mathbb R$ 的交集为 Borel 可测集的 $\overline{\mathbb R}$ 的子集全体所做成的集类.
-也说这些集合是(广义)Borel 可测集. 不过这些集合的确也与 $\mathbb R$ 上的 Borel 可测集相差无几. 
-\begin{example}\label{ex:generalized_borel_algebra}
-    $\mathcal B(\overline{\mathbb R})$ 由 Borel 集、Borel 集与 $\{+\infty\}$ 的并集、Borel 集与 $\{-\infty\}$ 的并集和 Borel 集与 $\{-\infty,+\infty\}$ 的并集组成.
-\end{example}
-容易验证这四类集合与 $\mathbb R$ 的交集均是 Borel 可测集.  另一方面，由于 $\overline{\mathbb R}$ 仅比 $\mathbb R$ 多了两个元素 $\pm\infty,$ 因而广义 Borel 可测集也必定居于这四类其一.
-
-将 $\sigma-$代数扩充到一个更大的承载集上的想法对一般的测度空间也成立：若 $(X,\mathcal S)$ 为测度空间，$X\subset Y,$ 那么就可以在 $Y$ 上定义一个由 $\mathcal S$ 扩张来的 $\sigma-$代数为 
-由与 $X$ 的交集为 $\mathcal S-$可测集的 $Y$ 的子集全体所做成的集类 $\mathcal T.$ 
-
-\begin{example}
-    $f:X\to [-\infty,+\infty]$ 可测当且仅当 $f^\leftarrow(\mathcal B)\subset\mathcal S$ 以及 $f^{-1}(+\infty),f^{-1}(-\infty)\in\mathcal S.$
-\end{example}
-这是例 \eqref{ex:generalized_borel_algebra} 中结论的直接推论.
-
 \begin{example}
     可测函数类对代数运算封闭. 若 $f,g:X\to\mathbb R$ 为可测函数，则 $f+g,f-g,fg$ 均可测. 此外，若 $g$ 恒不为零，则 $f/g$ 为可测函数.
 \end{example}
@@ -602,27 +585,51 @@ $f^{-1}((a,+\infty))$ 的下确界 $b$ 应当不小于 $x,$ 这就与 $x>b$ 的�
 由 $-g$ 的可测性即得 $f-g$ 可测. 至于 $fg$ 的可测性，可从等式 $fg = {(f+g)^2-f^2-g^2\over 2}$ 和 $f^2,\lambda f$ 的可测性得到. 
 最后，当 $g$ 恒不为零时，由 $1/g$ 的可测性即知 $f/g$ 可测.
 
+\section{广义实数轴}
+为了方便测度和积分理论的叙述，可以将实值可测函数的值域略微扩充一下，也即考虑取值在广义实数轴 $\overline{\mathbb R}=[-\infty,+\infty]$ 内的函数. 广义实数集 $\overline{\mathbb R}$ 上可定义一个 $\sigma-$代数 $\mathcal B(\overline{\mathbb R})$ 为与 $\mathbb R$ 的交集为 Borel 可测集的 $\overline{\mathbb R}$ 的子集全体所做成的集类.
+也说这些集合是(广义)Borel 可测集. 不过这些集合的确也与 $\mathbb R$ 上的 Borel 可测集相差无几. 
+\begin{example}\label{ex:generalized_borel_algebra}
+    $\mathcal B(\overline{\mathbb R})$ 由 Borel 集、Borel 集与 $\{+\infty\}$ 的并集、Borel 集与 $\{-\infty\}$ 的并集和 Borel 集与 $\{-\infty,+\infty\}$ 的并集组成.
+\end{example}
+容易验证这四类集合与 $\mathbb R$ 的交集均是 Borel 可测集.  另一方面，由于 $\overline{\mathbb R}$ 仅比 $\mathbb R$ 多了两个元素 $\pm\infty,$ 因而广义 Borel 可测集也必定居于这四类其一.
+
+将 $\sigma-$代数扩充到一个更大的承载集上的想法对一般的测度空间也成立：若 $(X,\mathcal S)$ 为测度空间，$X\subset Y,$ 那么就可以在 $Y$ 上定义一个由 $\mathcal S$ 扩张来的 $\sigma-$代数为 
+由与 $X$ 的交集为 $\mathcal S-$可测集的 $Y$ 的子集全体所做成的集类 $\mathcal T.$ 自然，此时有等式
+\begin{equation}
+    \mathcal T=\{B\cup C|\ B\in\mathcal S, C\subset (Y\setminus X)\}
+\end{equation}
+
 \begin{example}
-    可测函数列的上下确界函数也是可测的.
+    $f:X\to [-\infty,+\infty]$ 可测当且仅当 $f^\leftarrow(\mathcal B)\subset\mathcal S$ 以及 $f^{-1}(+\infty),f^{-1}(-\infty)\in\mathcal S.$ 
+\end{example}
+这是例 \eqref{ex:generalized_borel_algebra} 中结论的直接推论. 特别的，若 $f$ 的取值全为实数，那么 $f$ 的可测性与限制值域后的函数 $f|^{\mathbb R}:X\to\mathbb R$ 的可测性等价.  
+这表明取值在 $\overline{\mathbb R}$ 中的函数的可测性的概念是实值函数的可测性概念的自然推广.
+
+\begin{example}
+    $f:X\to [-\infty,+\infty]$ 可测当且仅当每一个右半无界区间 $(a,+\infty]$ 的原像 $f^{-1}((a,+\infty])=\{x\in X|\ f(x)>a\}$ 都是 $\mathcal S-$可测的.
+\end{example}
+只需验证右半无界区间所做成的集类为 $\mathcal U$ 可生成广义 Borel 代数即可.
+首先，由于 $\{+\infty\}=\bigcap_n (n,+\infty],$ 因此 $\{+\infty\}$ 落入 $\sigma(\mathcal U)$ 中. 特别的，$(a,+\infty)=(a,+\infty]\setminus\{+\infty\}$ 也落入 $\sigma(\mathcal U)$ 中. 
+这就表明 $\mathcal B\subset \sigma(\mathcal U).$ 最后，由 $[-\infty,a]=(a,+\infty]^C$ 可知 $\{-\infty\}=\bigcap_n [-\infty,n]$ 落入 $\sigma(\mathcal U)$ 中，这就证明了 $\sigma(\mathcal U)=\mathcal B(\overline{\mathbb R}).$
+
+\begin{example}\label{ex:supremum_infimum_of_measurable_function_sequence}
+    可测 $\overline{\mathbb R}-$值函数列的上下确界函数也是可测的.
 \end{example}
 这是因为，设 $\{f_n\}_{n\in\mathbb N}$ 为 $X$ 到 $[-\infty,+\infty]$ 的一列可测函数，记 $f=\sup_n f_n,$
 那么就有
 \begin{equation}
-    f^{-1}([a,+\infty))=\bigcap_n f_n^{-1}([a,+\infty))
+    f^{-1}((a,+\infty])=\bigcup_n f_n^{-1}((a,+\infty])
 \end{equation}
-因而 $f^{-1}([a,+\infty))$ 是 $\mathcal S-$可测集.
-另一方面，
-\begin{equation}\label{eq:inverse_image_of_positive_infinity}
-    f^{-1}(+\infty)=\bigcap_n \bigcup_{k} f_k^{-1}([n,+\infty))
-\end{equation}
-这是因为，若 $x\in \bigcap_n \bigcup_{k} f_k^{-1}([n,+\infty)),$ 那么对于每个 $n,$ 均存在某个 $k\in\mathbb N,$ 使得 $f_k(x)\geq n.$ 满足该条件的 $x$ 必定满足 $f(x)=+\infty.$ 另一方面，若 $f(x)=+\infty,$ 那么要么 $f_n(x)$ 对某个 $n$ 为 $+\infty,$ 要么 $\{f_n(x)\}_{n\in\mathbb N}$ 为上无界序列. 在这两种情况下，自然都有 $x\in \bigcap_n \bigcup_k f_k^{-1}([n,+\infty))$ 成立. 这就证明了等式 \eqref{eq:inverse_image_of_positive_infinity}. 类似地有
-\begin{equation}\label{eq:inverse_image_of_negative_infinity}
-    f^{-1}(-\infty)=\bigcap_n \bigcup_{k} f_k^{-1}((-\infty,-n])
-\end{equation}
-这就证明了 $f^{-1}(+\infty)$ 和 $f^{-1}(-\infty)$ 都是 $\mathcal S-$可测集，从而证明了 $f$ 的可测性. 类似可知 $\inf_n f_n$ 是可测的.
+因而 $f^{-1}((a,+\infty])$ 是 $\mathcal S-$可测集，因而 $f$ 是可测的. 类似可知 $\inf_n f_n$ 是可测的.
 
+例 \eqref{ex:supremum_infimum_of_measurable_function_sequence} 的一个自然推论就是，可测函数列的上下极限亦可测.
+\begin{example}
+    可测 $\overline{\mathbb R}-$值函数列的上下极限函数也是可测的. 特别的，若其收敛，则极限函数可测.
+\end{example}
+这是因为 $\limsup_n f_n=\inf_n \sup_{k\geq n} f_k,\ \liminf_n f_n=\sup_n \inf_{k\geq n} f_k.$ 由例 \ref{ex:supremum_infimum_of_measurable_function_sequence} 中结论即知 $\limsup_n f_n$ 和 $\liminf_n f_n$ 都是可测的. 
 
-
+作为一个特殊情况，实值可测函数列的极限函数也是可测的. 并且由于引入了广义实数轴的概念，我们可以将 $\lim_n f_n(x)=\pm\infty$ 的情形算作是 $f_n$ ``收敛''到了 $\pm\infty.$ 也就是说，一般来说实值函数列的极限会是一个 $\overline{\mathbb R}-$值函数. 
+这样，函数列的极限函数的概念就变得略为宽松一些. 这也是广义实数轴所带来的便利之一.
 
 
 
