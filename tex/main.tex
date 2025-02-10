@@ -814,7 +814,7 @@ $\mathcal S_A$ 就是将 $A$ 中元素``冻结''(视为不可分割的一整块)
 
 可以证明，导函数 $f'$ 的不连续点集为 $F_\sigma$ 集，并且也是 Baire 第一纲集.
 
-\begin{example}
+\begin{example}\label{ex:monotone_function_discontinuous_point_set_at_most_countable}
     设 $X\subset\mathbb R,$ $f:B\to\mathbb R$ 为单调递增函数，那么 $f$ 的不连续点集是至多可数的.
 \end{example}
 
@@ -823,7 +823,7 @@ $\mathcal S_A$ 就是将 $A$ 中元素``冻结''(视为不可分割的一整块)
 自然，必定有 $f(x-)<f(x+).$ 因此 $f$ 的每个不连续点 $x$ 都对应了一个非空开区间 $(f(x-),f(x+)).$ 
 若 $x<y,$ 那么由 $f$ 的单调性即知 $(f(x-),f(x+))\cap (f(y-),f(y+))=\emptyset.$ 因此 $f$ 的不连续点对应了一族互不相交的开区间. 自然，由于从每个开区间中可以(利用选择公理)选取一个有理数，因此这些开区间是至多可数的. 这就证明了 $f$ 的不连续点集是至多可数的. 
 
-\begin{example}
+\begin{example}\label{ex:strictly_monotone_function_inverse_continuous}
     设 $f:\mathbb R\to\mathbb R$ 为严格单调递增函数，那么其反函数 $f^{-1}:\mathrm{Im}(f)\to \mathbb R$ 为连续函数. 
 \end{example}
 
@@ -837,6 +837,36 @@ $\mathcal S_A$ 就是将 $A$ 中元素``冻结''(视为不可分割的一整块)
 
 \begin{example}
     设 $B$ 为 Borel 集，$f:B\to\mathbb R$ 为单调递增函数，那么其像 $f(B)$ 也是 Borel 集.
+\end{example}
+
+首先证明，$f$ 必定可以延拓为一个定义在整个实数轴上的单调递增函数. 事实上，只需定义 $f$ 的延拓为 
+\begin{equation}
+    g(x):=\sup_{x\in (-\infty,x]\cap B} f(x)
+\end{equation}
+即可. 由于 $f(B)=g(B),$ 因此接下来就只需要证明，每一个定义在实轴上的单调递增函数 $g$ 都将 Borel 集映为 Borel 集即可. 
+
+事实上，记 $f$ 的不连续点集为 $D,$ 那么由例 \ref{ex:monotone_function_discontinuous_point_set_at_most_countable} 中结论可知 $D$ 是至多可数的，因而是 Borel 集合.
+令 $\mathcal S=\{B\in\mathcal B|\ g(B) \text{是 Borel 可测集}\},$ 那么显然 $\mathcal S$ 对补集运算和可数并封闭. 要证明 $\mathcal S=\mathcal B,$ 只需证明每个有界非空开区间都落入 $\mathcal S$ 中即可. 
+事实上，设 $a<b,$ 那么若 $g$ 在 $(a,b)$ 上连续，那么 $g((a,b))$ 就是一个区间，因而是 Borel 可测集. 若 $(a,b)\cap D\neq\emptyset,$ 那么
+若 $\min_n a_n$ 存在，则可将 $a_n$ 枚举为 $a_1<a_2<\cdots,$ 于是由 
+\begin{equation}
+    g((a,b)) =  (f(a),f(a_1-))\cup \{f(a_1)\}\cup (f(a_1+),f(a_2-))\cup \{f(a_2)\}\cup\cdots 
+\end{equation}
+可知 $g((a,b))$ 为 Borel 可测集.  若 $\max_n a_n$ 存在，则可将 $(a,b)\cap D$ 枚举为 $a_1>a_2>\cdots,$ 于是有
+\begin{equation}
+    g((a,b)) =  (f(a_1+),f(b))\cup \{f(a_1)\}\cup (f(a_2+),f(a_1-))\cup \{f(a_2)\}\cup\cdots 
+\end{equation}
+可知 $g((a,b))$ 为 Borel 可测集.  若 $a_n$ 既没有最大元，也没有最小元，则可取某个 $x\in (a,b)\cap D,$ 并将 $a_n$ 枚举为 $x=a_1<a_2<\cdots,$ 与 $x=b_1>b_2>\cdots,$ 于是有
+\begin{equation}
+    \begin{aligned}
+        g((a,b)) =& \left( (f(x),f(a_1-))\cup \{f(a_1)\}\cup (f(a_1+),f(a_2-))\cup \{f(a_2)\}\cup\cdots\right) \\
+        &\cup \left((f(b_1+),f(x))\cup \{f(b_1)\}\cup (f(b_2+),f(b_1-))\cup \{f(b_2)\}\cup\cdots \right)
+    \end{aligned}
+\end{equation}
+可知 $g((a,b))$ 为 Borel 可测集. 这就证明了 $\mathcal S=\mathcal B,$ 故 $f(B)=g(B)$ 为 Borel 集.
+
+\begin{example}
+    设 $B$ 为 Borel 集， $f:B\to\mathbb R$ 为单调递增函数，那么存在一列严格单调递增函数 $f_n:B\to\mathbb R,$ 使得 $f=\lim_n f_n.$
 \end{example}
 
 
