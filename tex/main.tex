@@ -623,13 +623,15 @@ $f^{-1}((a,+\infty))$ 的下确界 $b$ 应当不小于 $x,$ 这就与 $x>b$ 的�
 因而 $f^{-1}((a,+\infty])$ 是 $\mathcal S-$可测集，因而 $f$ 是可测的. 类似可知 $\inf_n f_n$ 是可测的.
 
 例 \eqref{ex:supremum_infimum_of_measurable_function_sequence} 的一个自然推论就是，可测函数列的上下极限亦可测.
-\begin{example}
+\begin{example}\label{ex:limit_of_measurable_function_sequence}
     可测 $\overline{\mathbb R}-$值函数列的上下极限函数也是可测的. 特别的，若其收敛，则极限函数可测.
 \end{example}
 这是因为 $\limsup_n f_n=\inf_n \sup_{k\geq n} f_k,\ \liminf_n f_n=\sup_n \inf_{k\geq n} f_k.$ 由例 \ref{ex:supremum_infimum_of_measurable_function_sequence} 中结论即知 $\limsup_n f_n$ 和 $\liminf_n f_n$ 都是可测的. 
 
 作为一个特殊情况，实值可测函数列的极限函数也是可测的. 并且由于引入了广义实数轴的概念，我们可以将 $\lim_n f_n(x)=\pm\infty$ 的情形算作是 $f_n$ ``收敛''到了 $\pm\infty.$ 也就是说，一般来说实值函数列的极限会是一个 $\overline{\mathbb R}-$值函数. 
 这样，函数列的极限函数的概念就变得略为宽松一些. 这也是广义实数轴所带来的便利之一.
+
+例 \eqref{ex:limit_of_measurable_function_sequence} 表明 $\overline{\mathbb R}-$值可测函数类关于函数列的点态极限封闭. 另一方面，实值函数列的点态极限函数的值域可能包含 $\pm\infty,$ 因而不是实值的. 也就是说实值可测函数类对于函数列的点态极限并不封闭. 这再次体现了广义实数轴的概念的优越性.
 
 \begin{example}\label{ex:sigma_algebra_partition}
     令 $\mathcal S=\{\bigcup_{n\in K}(n,n+1]|\ K\subset\mathbb Z\}\cup\{\emptyset\}.$ 则 $\mathcal S$ 是 $\mathbb R$ 上的一个 $\sigma-$代数.
@@ -801,9 +803,41 @@ $\mathcal S_A$ 就是将 $A$ 中元素``冻结''(视为不可分割的一整块)
     设函数 $f:\mathbb R\to\mathbb R$ 处处可微，那么 $f':\mathbb R\to\mathbb R$ 是 Borel 可测函数.
 \end{example}
 
-见梅加强的书 \cite{Mei_2011} pp.162 定理 5.1.2.
+这个结论又一次体现了可测函数概念的宽松性质，其可以将难以用连续性准确刻画的函数类包含在内.
+一开始我还没想到证明的思路，后来由 deepseek 指点才想到. 
 
+定义函数列 $f_n:\mathbb R\to\mathbb R$ 为 $f_n(x) = (f(x+1/n)-f(x))/(1/n),$ 那么每个 $f_n$ 都是连续的，并且
+\begin{equation}
+    f'=\lim_{n}f_n
+\end{equation}
+也就是说，导函数 $f'$ 是一列 Borel 可测函数的点态极限，因而是可测的.
 
+可以证明，导函数 $f'$ 的不连续点集为 $F_\sigma$ 集，并且也是 Baire 第一纲集.
+
+\begin{example}
+    设 $X\subset\mathbb R,$ $f:B\to\mathbb R$ 为单调递增函数，那么 $f$ 的不连续点集是至多可数的.
+\end{example}
+
+若 $X$ 为空集，那么结论显然成立. 下面设 $X$ 非空.
+自然，由于 $f$ 为单调函数，因此在每一点处都具有左右极限(只要该点在 $B$ 中的左右去心邻域存在).  若 $x$ 为 $f$ 的不连续点，那么 $x$ 必定在 $B$ 中具有左右去心邻域. 这是因为，若 $x$ 只有单边去心邻域或者 $x$ 为 $B$ 的孤立点，那么 $f$ 必定在 $x$ 处连续. 
+自然，必定有 $f(x-)<f(x+).$ 因此 $f$ 的每个不连续点 $x$ 都对应了一个非空开区间 $(f(x-),f(x+)).$ 
+若 $x<y,$ 那么由 $f$ 的单调性即知 $(f(x-),f(x+))\cap (f(y-),f(y+))=\emptyset.$ 因此 $f$ 的不连续点对应了一族互不相交的开区间. 自然，由于从每个开区间中可以(利用选择公理)选取一个有理数，因此这些开区间是至多可数的. 这就证明了 $f$ 的不连续点集是至多可数的. 
+
+\begin{example}
+    设 $f:\mathbb R\to\mathbb R$ 为严格单调递增函数，那么其反函数 $f^{-1}:\mathrm{Im}(f)\to \mathbb R$ 为连续函数. 
+\end{example}
+
+这里需要注意的是 $\mathrm{Im}(f)$ 上装备的是子空间拓扑. 
+
+要证明 $f^{-1}$ 是连续函数，只需证明 $f$ 将开区间映为 $\mathrm{Im}(f)$ 中开集即可. 事实上，设 $a<b\in\mathbb R,$ 那么由 $f$ 的严格单调性可知 
+\begin{equation}
+    f((a,b))=(f(a),f(b))\cap\mathrm{Im}(f)
+\end{equation}
+这就证明了 $f^{-1}$ 的连续性. 
+
+\begin{example}
+    设 $B$ 为 Borel 集，$f:B\to\mathbb R$ 为单调递增函数，那么其像 $f(B)$ 也是 Borel 集.
+\end{example}
 
 
 \section{测度}
