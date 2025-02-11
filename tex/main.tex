@@ -553,7 +553,7 @@ $\mathcal B=\sigma(\mathcal O)\subset\sigma(\mathcal U).$ 现在就有
 
 类似地，如果 $f^{-1}((-\infty,a))$ 对每个实数 $a$ 均是 $\mathcal S-$可测集，那么函数 $f$ 是可测的.
 
-\begin{example}
+\begin{example}\label{ex:monotone_function_is_measurable}
     设 $X$ 为 $\mathbb R$ 的一个 Borel 可测子集，那么 $X$ 上的任意实值单调函数都是可测的.
 \end{example}
 不妨设函数 $f:X\to\mathbb R$ 单调递增，那么容易验证 $f^{-1}((a,+\infty))$ 可表为某个区间 $I$ 与 $X$ 的交集. 首先，若 $f^{-1}((a,+\infty))=\emptyset,$ 那么结论显然成立. 下面设 $f^{-1}((a,+\infty))$ 非空. 
@@ -711,7 +711,7 @@ $\bigcap_{n\in K}\bigcup_{k\in K_n}E_k$ 含于 $\bigcup_{k\in \bigcap_{n\in K}K_
 \begin{example}
     存在函数 $f:X\to\mathbb R,$ 其本身不是可测的，但其绝对值 $|f|$ 是可测的.
 \end{example}
-当然，这里需要假设 $\mathcal S$ 是 $X$ 的幂集的真子集，也即存在 $\mathcal S-$不可测集. 设 $V$ 为一个 $\mathcal S-$不可测集，那么其示性函数 $\chi_V$ 是不可测的，但其绝对值 $|\chi_V|$ 恒为 $1,$ 因而是可测的.
+当然，这里需要假设 $\mathcal S$ 是 $X$ 的幂集的真子集，也即存在 $\mathcal S-$不可测集. 设 $V$ 为一个 $\mathcal S-$不可测集，那么 $\chi_V-\chi_{V^C}$ 是不可测的，但其绝对值 $|\chi_V-\chi_{V^C}|$ 恒为 $1,$ 因而是可测的.
 
 \begin{example}
     小数展开中存在无限多个 $5$ 的实数全体所做成的集合 $B$ 是 Borel 集.
@@ -775,6 +775,21 @@ $f^{-1}(B)=(f^{-1}(B)\cap D)\cup (f^{-1}(B)\cap D^C).$ 由于 $f^{-1}(B)\cap D^C
 
 自然，若 $f_n$ 为可测函数，那么 $f_j-f_k$ 也是可测函数，因此 $B$ 是 Borel 可测集. 
 
+
+\begin{example}\label{ex:sigma_algebra_restriction}
+    设 $(X,\mathcal S)$ 为可测空间，$A\in\mathcal S.$ 令 $\mathcal S|_A=\{E\in\mathcal S|\ E\subset A\}.$
+    \begin{enumerate}[label=\alph*)]
+        \item $\mathcal S|_A=\{F\cap A|\ F\in\mathcal S\}.$
+        \item $\mathcal S|_A$ 是 $A$ 上的 $\sigma-$代数.
+    \end{enumerate}
+\end{example}
+事实上，对于 $\mathcal S-$可测集 $E$ 来说，若 $E$ 含于 $A,$ 那么就有 $E=E\cap A.$ 另一方面，若 $F$ 为 $\mathcal S-$可测集，那么 $F\cap A$ 就是一个含于 $A$ 的 $\mathcal S-$可测集，
+这就证明了 $\mathcal S|_A=\{F\cap A|\ F\in\mathcal S\}.$ 特别的，考虑到 $A\in \mathcal S|_A,$ 并且 $A\setminus(F\cap A)=F^C\cap A,\ \bigcup_n(F_n\cap A)=(\bigcup_n F_n)\cap A,$ 因此 $\mathcal S|_A$ 对关于 $A$ 的补集运算以及可数并封闭，从而是 $A$ 上的一个 $\sigma-$代数.
+
+
+上述例子给出了 $\sigma-$代数在子集合上的限制的概念.
+
+
 \begin{example}\label{ex:sigma_algebra_frozen_restriction}
     设 $(X,\mathcal S)$ 为可测空间，$A\subset X.$ 令 $\mathcal S_A=\{E\in\mathcal S|\ A\subset E\ \text{或}\ A\cap E=\emptyset\}.$
     \begin{enumerate}[label=\alph*)]
@@ -835,11 +850,11 @@ $\mathcal S_A$ 就是将 $A$ 中元素``冻结''(视为不可分割的一整块)
 \end{equation}
 这就证明了 $f^{-1}$ 的连续性. 
 
-\begin{example}
+\begin{example}\label{ex:monotone_function_maps_Borel_set_to_Borel_set}
     设 $B$ 为 Borel 集，$f:B\to\mathbb R$ 为单调递增函数，那么其像 $f(B)$ 也是 Borel 集.
 \end{example}
 
-这个证明花了我很长时间，尝试了很多办法. 看起来可选的思路很多，最后还是用了比较蛮力的方法.
+这个证明花了我很长时间，尝试了很多办法. 看起来可选的思路很多，最后还是靠 deepseek 指点才想到. 
 
 首先证明，$f$ 必定可以延拓为一个定义在整个实数轴上的单调递增函数. 事实上，只需定义 $f$ 的延拓为 
 \begin{equation}
@@ -847,29 +862,64 @@ $\mathcal S_A$ 就是将 $A$ 中元素``冻结''(视为不可分割的一整块)
 \end{equation}
 即可. 由于 $f(B)=g(B),$ 因此接下来就只需要证明，每一个定义在实轴上的单调递增函数 $g$ 都将 Borel 集映为 Borel 集即可. 
 
-事实上，记 $f$ 的不连续点集为 $D,$ 那么由例 \ref{ex:monotone_function_discontinuous_point_set_at_most_countable} 中结论可知 $D$ 是至多可数的，因而是 Borel 集合.
-令 $\mathcal S=\{B\in\mathcal B|\ g(B) \text{是 Borel 可测集}\},$ 那么显然 $\mathcal S$ 对补集运算和可数并封闭. 要证明 $\mathcal S=\mathcal B,$ 只需证明每个有界非空开区间都落入 $\mathcal S$ 中即可. 
-事实上，设 $a<b,$ 那么若 $g$ 在 $(a,b)$ 上连续，那么 $g((a,b))$ 就是一个区间，因而是 Borel 可测集. 若 $(a,b)\cap D\neq\emptyset,$ 那么
-若 $\min_n a_n$ 存在，则可将 $a_n$ 枚举为 $a_1<a_2<\cdots,$ 于是由 
+首先，对于任意的 $y\in \mathrm{Im}(g),$ 要么 $g^{-1}(y)$ 为单点集，要么 $g^{-1}(y)$ 至少包含两个元素. 对于后一种情况，若 $a<b\in g^{-1}(y),$ 则由 $f$ 的单调性可知介于 $a$ 和 $b$ 之间的一切实数都落入 $g^{-1}(y)$ 中，这表明 $g^{-1}(y)$ 必定是一个非退化区间. 
+自然，这些区间 $g^{-1}(y)$ 必定是互不相交的，从而是至多可数的，这表明满足 $\#(g^{-1}(y))\geq 2$ 的元素 $y$ 的数目是至多可数的.
+记这些元素 $y$ 全体所做成的集合为 $F,$ 那么 $F$ 中元素可枚举为 $y_1,y_2,\cdots,$ 并且每个 $f^{-1}(y_n)$ 都是一个区间，因此 
 \begin{equation}
-    g((a,b)) =  (f(a),f(a_1-))\cup \{f(a_1)\}\cup (f(a_1+),f(a_2-))\cup \{f(a_2)\}\cup\cdots 
+    \tilde F:=\bigcup_{y\in F}f^{-1}(F)=\bigcup_{n}f^{-1}(y_n)
 \end{equation}
-可知 $g((a,b))$ 为 Borel 可测集.  若 $\max_n a_n$ 存在，则可将 $(a,b)\cap D$ 枚举为 $a_1>a_2>\cdots,$ 于是有
+为 Borel 集, 并且 $g(\tilde F)=F$ 为至多可数集.
+
+记 $f$ 的不连续点集为 $D,$ 那么由例 \ref{ex:monotone_function_discontinuous_point_set_at_most_countable} 中结论可知 $D$ 是至多可数的. 
+因此集合 $E:=D\cup \tilde F$ 在 $g$ 下的像集 $g(E)$ 是至多可数集，故 $g(B\cap E)$ 是 Borel 集. 自然，$g$ 在 $E^C$ 上处处连续，并且严格单调递增. 令 $h=g|_{E^C},$ 那么由
 \begin{equation}
-    g((a,b)) =  (f(a_1+),f(b))\cup \{f(a_1)\}\cup (f(a_2+),f(a_1-))\cup \{f(a_2)\}\cup\cdots 
+    g(B) = g(B\cap E)\cup g(B\cap E^C) = g(B\cap E)\cup h(B\setminus E)
 \end{equation}
-可知 $g((a,b))$ 为 Borel 可测集.  若 $a_n$ 既没有最大元，也没有最小元，则可取某个 $x\in (a,b)\cap D,$ 并将 $a_n$ 枚举为 $x=a_1<a_2<\cdots,$ 与 $x=b_1>b_2>\cdots,$ 于是有
+可知，要证明 $g(B)$ 是 Borel 集，只需证明 $h(B\setminus E)$ 是 Borel 集即可. 
+
+事实上，可以证明，$E^C$ 是至多可数个开区间的并集. 这是因为，记 $E$ 的一个列举为 $a_1,a_2,\cdots,$ 那么若 
+$\min_n a_n$ 存在，则排序后可将 $a_n$ 枚举为 $a_1<a_2<\cdots,$ 于是有 
+\begin{equation}
+    E^C =  (-\infty,a_1)\cup (a_1,a_2)\cup (a_2,a_3)\cup \cdots
+\end{equation}
+若 $\max_n a_n$ 存在，则排序后可将 $a_n$ 枚举为 $a_1>a_2>\cdots,$ 于是有
+\begin{equation}
+    E^C =  (a_1,+\infty)\cup (a_2,a_1)\cup (a_3,a_2)\cup\cdots
+\end{equation}
+若 $a_n$ 既没有最大元，也没有最小元，则可取某个 $x\in (a,b)\cap D,$ 并将 $a_n$ 枚举为 $x=a_1<a_2<\cdots,$ 与 $x=b_1>b_2>\cdots,$ 于是有
 \begin{equation}
     \begin{aligned}
-        g((a,b)) =& \left( (f(x),f(a_1-))\cup \{f(a_1)\}\cup (f(a_1+),f(a_2-))\cup \{f(a_2)\}\cup\cdots\right) \\
-        &\cup \left((f(b_1+),f(x))\cup \{f(b_1)\}\cup (f(b_2+),f(b_1-))\cup \{f(b_2)\}\cup\cdots \right)
+        E^C =& \left( (x,a_2)\cup (a_2,a_3)\cup (a_3,a_4)\cup\cdots\right) \\
+        &\cup \left( (b_2,x)\cup (b_3,b_2)\cup (b_4,b_3)\cup\cdots\right)
     \end{aligned}
 \end{equation}
-可知 $g((a,b))$ 为 Borel 可测集. 这就证明了 $\mathcal S=\mathcal B,$ 故 $f(B)=g(B)$ 为 Borel 集.
+因而 $E^C$ 总可表为至多可数个开区间的并，也即 $E^C$ 总可写为 $E^C=\bigcup_n I_n.$ 自然，由 $h$ 的连续性和严格单调性可知每个 $h(I_n)$ 都是开区间，并且 $h:I_n\to h(I_n)$ 为拓扑同胚. 这是因为，由于 $h$ 连续且严格单调，故将开区间映为开区间，也即开区间在 $h^{-1}$ 下的原像为开区间，这就证明了 $h^{-1}:h(I_n)\to I_n$ 的连续性. 
+特别地，令 $h_n=h|_{I_n}^{h(I_n)},$ 那么 $h_n$ 将 $I_n$ 的 Borel 子集映为 Borel 集. 这是因为，令
+$\mathcal S=\{K\ \text{为 $I_n$ 的 Borel 子集}|\ h_n(K)\ \text{为 Borel 集}\},$ 那么 $I_n\in\mathcal S,$ 并且 $\mathcal S$ 对(关于 $I_n$ 的)补集运算和可数并封闭，并且包含 $I_n$ 中的一切开区间. 由于 $I_n$ 的全体 Borel 子集所做成的 $I_n$ 上的 $\sigma$ 代数 $\mathcal B(I_n)=\mathcal B|_{I_n}$ 可由 $I_n$ 中的开区间生成，因此就有 $\mathcal S=\mathcal B(I_n).$ 
+特别的，每个 $h_n((B\setminus E)\cap I_n)$ 都是 Borel 集. 这就证明了 
+\begin{equation}
+    h(B\setminus E) = \bigcup_{n\in\mathbb N} h_n((B\setminus E)\cap I_n)
+\end{equation}
+为 Borel 集，也即 $f(B)=g(B)$ 为 Borel 可测集.
+
+\begin{example}\label{ex:approximate_of_monotone_function_by_strictly_monotone_function_sequence}
+    设 $B\subset\mathbb R$ 非空， $f:B\to\mathbb R$ 为单调递增函数，那么存在一列严格单调递增函数 $f_n:B\to\mathbb R,$ 使得 $f=\lim_n f_n.$
+\end{example}
+
+我把这个问题想得复杂了，想用鼓包函数来在 $f$ 的常值区间上作过渡. 实际上没必要这么麻烦，加上一个趋于零的严格单调递增函数即可.
+
+令 $f_n(x)=f(x)+x/n$ 即可.
 
 \begin{example}
-    设 $B$ 为 Borel 集， $f:B\to\mathbb R$ 为单调递增函数，那么存在一列严格单调递增函数 $f_n:B\to\mathbb R,$ 使得 $f=\lim_n f_n.$
+    设 $B\subset\mathbb R$ 非空，$f:B\to\mathbb R$ 为有界单调递增函数，那么 $f$ 可扩张为定义在整个实轴上的单调递增函数 $g.$
 \end{example}
+
+令 $g(x)=\sup_{y\in (-\infty,x]\cap B} f(y)$ 即可.
+
+\begin{example}
+    存在可测空间 $(X,\mathcal S)$ 和函数 $f:X\to [-\infty,+\infty],$ 其满足 $f^{-1}((a,+\infty))$ 对每个实数 $a$ 均是 $\mathcal S-$可测集，但 $f$ 不是 Borel 可测的.
+\end{example}
+事实上，只需令 $f^{-1}(+\infty)$ 或 $f^{-1}(-\infty)$ 不可测即可. 
 
 
 \section{测度}

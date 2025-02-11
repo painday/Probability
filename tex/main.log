@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.16)  10 FEB 2025 23:08
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.16)  11 FEB 2025 22:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -918,7 +918,12 @@ Overfull \hbox (78.90468pt too wide) in paragraph at lines 766--767
 []\TU/SimSun(0)/m/n/12 设 $\OMS/cmsy/m/n/12 S$ \TU/SimSun(0)/m/n/12 为 $\OML/cmm/m/it/12 X$ \TU/SimSun(0)/m/n/12 上 的 一 个 $\OML/cmm/m/it/12 ^^[\OMS/cmsy/m/n/12 ^^@$ \TU/SimSun(0)/m/n/12 代 数，|  并 且 $\OML/cmm/m/it/12 f[]$ \TU/SimSun(0)/m/n/12 为 可 测 函 数\TU/lmr/m/n/12 . \TU/SimSun(0)/m/n/12 则 $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 x \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 X\OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) []\OMS/cmsy/m/n/12 g$
  []
 
-[24] [25] [26] [27] (./main.bbl [28]) [29
+[24] [25] [26] [27] [28] [29]
+Overfull \hbox (19.60641pt too wide) in paragraph at lines 920--921
+[][]\TU/SimSun(0)/b/n/12 例 \TU/lmr/bx/n/12 8.23. []\TU/SimSun(0)/m/n/12 存 在 可 测 空 间 $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X; \OMS/cmsy/m/n/12 S\OT1/cmr/m/n/12 )$ \TU/SimSun(0)/m/n/12 和 函 数 $\OML/cmm/m/it/12 f \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 X \OMS/cmsy/m/n/12 ! \OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12 ^^@1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 +\OMS/cmsy/m/n/12 1\OT1/cmr/m/n/12 ]\OML/cmm/m/it/12 ;$ \TU/SimSun(0)/m/n/12 其 满 足 $\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 ((\OML/cmm/m/it/12 a; \OT1/cmr/m/n/12 +\OMS/cmsy/m/n/12 1\OT1/cmr/m/n/12 ))$
+ []
+
+(./main.bbl [30]) [31
 
 ] (./main.aux)
  ***********
@@ -929,12 +934,12 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 1F0FDECAD4F28EED004BD47B165CBAA5;864.
  ) 
 Here is how much of TeX's memory you used:
- 37150 strings out of 474773
- 922635 string characters out of 5761289
+ 37154 strings out of 474773
+ 922827 string characters out of 5761289
  1940842 words of memory out of 5000000
- 58680 multiletter control sequences out of 15000+600000
+ 58684 multiletter control sequences out of 15000+600000
  575795 words of font info for 129 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  103i,13n,107p,727b,2131s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (33 pages, 340828 bytes).
+Output written on main.xdv (35 pages, 357880 bytes).
