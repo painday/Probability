@@ -525,7 +525,7 @@ $\sigma-$代数 $\mathcal S$ 中的元素也就摇身一变有了一个新名字
 事实上，$\mathbb R$ 的子集关于 $\chi_E$ 的原像无非 $\emptyset,E,E^C,X$ 四种情况. 并且这四种情况可被 Borel 集所遍及. 
 因而 $\chi_E^\leftarrow(\mathcal B)=\{\emptyset,E,E^C,X\}.$ 因而函数 $\chi_E$ 的可测性与集合 $E$ 的 $\mathcal S-$可测性等价.
 
-根据例 \ref{ex:indicator_function__measurability}, 也可以先定义可测函数类，然后再定义可测集的概念. 类似地，可以先定义 Lesbegue 积分(Daniell integral)，然后再定义 Lesbegue 测度. 这是文献 \cite{Willem_2022} 的做法.
+根据例 \ref{ex:indicator_function__measurability}, 也可以先定义可测函数类，然后再定义可测集的概念. 类似地，可以先定义 Lebesgue 积分(Daniell integral)，然后再定义 Lebesgue 测度. 这是文献 \cite{Willem_2022} 的做法.
 
 若 $X$ 为 $\mathbb R$ 的 Borel 可测子集，那么可以定义 $X$ 上的一个 $\sigma-$代数为一切含于 $X$ 的 Borel 可测集所做成的集类 $\mathcal S\subset \mathcal B.$ 这其实也等同于 $X$ 的子空间拓扑所伴随的 Borel 代数.
 
@@ -906,7 +906,7 @@ $\mathcal S=\{K\ \text{为 $I_n$ 的 Borel 子集}|\ h_n(K)\ \text{为 Borel 集
     设 $B\subset\mathbb R$ 非空， $f:B\to\mathbb R$ 为单调递增函数，那么存在一列严格单调递增函数 $f_n:B\to\mathbb R,$ 使得 $f=\lim_n f_n.$
 \end{example}
 
-我把这个问题想得复杂了，想用鼓包函数来在 $f$ 的常值区间上作过渡. 实际上没必要这么麻烦，加上一个趋于零的严格单调递增函数即可.
+我把这个问题想得复杂了，想用鼓包函数(梅加强的书 \cite{Mei_2011} pp.350 图 9.5)来在 $f$ 的常值区间上作过渡. 实际上没必要这么麻烦，加上一个趋于零的严格单调递增函数即可.
 
 令 $f_n(x)=f(x)+x/n$ 即可.
 
@@ -919,7 +919,55 @@ $\mathcal S=\{K\ \text{为 $I_n$ 的 Borel 子集}|\ h_n(K)\ \text{为 Borel 集
 \begin{example}
     存在可测空间 $(X,\mathcal S)$ 和函数 $f:X\to [-\infty,+\infty],$ 其满足 $f^{-1}((a,+\infty))$ 对每个实数 $a$ 均是 $\mathcal S-$可测集，但 $f$ 不是 Borel 可测的.
 \end{example}
-事实上，只需令 $f^{-1}(+\infty)$ 或 $f^{-1}(-\infty)$ 不可测即可. 
+事实上，只需令 $f^{-1}(+\infty)$ 或 $f^{-1}(-\infty)$ 不可测即可. 令 $X=\mathbb R,\ \mathcal S$ 为 $\mathbb R$ 中全体至多可数集及其补集所组成的 $\sigma-$代数，并令 
+\begin{equation}
+    f(x)=\begin{cases}
+        \infty&x<0\\
+        +\infty&x\geq 0
+    \end{cases}
+\end{equation}
+即可.
+
+
+\begin{example}
+    设 $B$ 为 Borel 集，$f:B\to\mathbb R$ 为 Borel 可测函数，那么函数 
+    \begin{equation}
+        g:\mathbb R\to\mathbb R,\ g(x)=\begin{cases}
+            f(x)&x\in B\\
+            0&x\notin B
+        \end{cases}
+    \end{equation}
+    也是 Borel 可测的.
+\end{example}
+事实上，对于任意的 Borel 集 $F$ 来说，有 $g^{-1}(F)=g^{-1}(F\cap\{0\})\cup g^{-1}(F\setminus\{0\})=f^{-1}(0)\cup B\cup f^{-1}(F\setminus\{0\}).$ 
+自然，这三个集合都是 Borel 可测的，这就证明了 $g$ 是可测函数.
+
+\begin{example}
+    存在可测空间 $(X,\mathcal S)$ 以及一族可测函数 $\{f_t:X\to [0,1]\}_{t\in\mathbb R},$ 使得 $\sup_t f_t$ 不是 $\mathcal S-$可测的.
+\end{example}
+
+令 $X=\mathbb R,\ \mathcal S$ 为 $\mathbb R$ 中全体至多可数集及其补集所组成的 $\sigma-$代数，并令 
+\begin{equation}
+    f_t(x) = \begin{cases}
+        \chi_{\{t\}}(x)&t>0\\
+        0&t\leq 0
+    \end{cases}
+\end{equation}
+那么每个 $f_t$ 都是 $\mathcal S-$可测的，但 $\sup_t f_t=\chi_{\bigcup_{t>0}\{t\}}=\chi_{(0,+\infty)}$ 不是可测函数.
+
+\begin{example}[Lebesgue]
+    \begin{equation}
+        \lim_{j\to\infty}\lim_{k\to\infty}\cos(j!\pi x)^{2k} = \begin{cases}
+            1&x\ \text{为有理数}\\
+            0&x\ \text{为无理数}
+        \end{cases}
+    \end{equation}
+\end{example}
+
+
+
+
+
 
 
 \section{测度}
