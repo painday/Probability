@@ -225,7 +225,7 @@ $|\mathcal U-\overline{\int}|,|\mathcal L-\underline{\int}|< \varepsilon.$ 自�
 
 容易验证闭区间上的连续函数是 Riemann 可积的. 这主要用到了其一致连续性.
 
-\section{Riemann 积分的若干缺陷}
+\section{Riemann 积分的若干缺陷}\label{sec:deficiencies_of_Riemann_integral}
 
 Riemann 积分的一些缺陷：
 \begin{enumerate}
@@ -758,7 +758,7 @@ $f^{-1}(B)=(f^{-1}(B)\cap D)\cup (f^{-1}(B)\cap D^C).$ 由于 $f^{-1}(B)\cap D^C
 自然，若每个 $E_i$ 都是可测的，那么由 $\chi_{E_i}$ 的可测性即知函数 $f=c_1\chi_{E_1}+\cdots+c_n\chi_{E_n}$ 为可测函数. 
 另一方面，由于 $E_i$ 是两两不交的，因此 $f^{-1}(c_i)=E_i,$ 因此由 $f$ 的可测性可导出 $E_i$ 的 $\mathcal S-$可测性.
 
-下面这个例子表明，实值实变函数列的收敛点全体所做成的集合是 Borel 集. 这表明测度论可以巧妙地揭示函数列的极限性质.
+下面这个例子表明，实值实变可测函数列的收敛点全体所做成的集合是 Borel 集. 这表明测度论可以巧妙地揭示函数列的极限性质.
 \begin{example}
     设 $\{f_n\}_{n\in\mathbb N}$ 为 $X$ 到 $\mathbb R$ 的一列函数. 
     \begin{enumerate}[label=\alph*)]
@@ -955,7 +955,7 @@ $\mathcal S=\{K\ \text{为 $I_n$ 的 Borel 子集}|\ h_n(K)\ \text{为 Borel 集
 \end{equation}
 那么每个 $f_t$ 都是 $\mathcal S-$可测的，但 $\sup_t f_t=\chi_{\bigcup_{t>0}\{t\}}=\chi_{(0,+\infty)}$ 不是可测函数.
 
-\begin{example}[Lebesgue]
+\begin{example}[Lebesgue]\label{ex:limit_of_Riemann_integrable_function_can_be_not_integrable}
     \begin{equation}
         \lim_{j\to\infty}\lim_{k\to\infty}\cos(j!\pi x)^{2k} = \begin{cases}
             1&x\ \text{为有理数}\\
@@ -963,8 +963,15 @@ $\mathcal S=\{K\ \text{为 $I_n$ 的 Borel 子集}|\ h_n(K)\ \text{为 Borel 集
         \end{cases}
     \end{equation}
 \end{example}
+若 $x=m/n$ 为有理数，那么当 $j$ 充分大时，$j!x$ 就必定为整数，也即 $\cos(j!\pi x)^{2k}=1.$ 也就是说，只要 $j$ 充分大，那么数列 $\{\cos(j!\pi x)^{2k}\}_{k\in\mathbb N}$ 就是常数列，因此有 
+$\lim_j\lim_k \cos(j!\pi x)^{2k}=1.$ 
 
+若 $x$ 为无理数，那么 $-1<\cos(j!\pi x)<1.$ 因此对任意固定的 $j,$ 有 $\lim_{k\to\infty}\cos(j!\pi x)^{2k}=0.$ 这就证明了 $\lim_{j}\lim_{k}\cos(j!\pi x)^{2k}=0.$ 
 
+例 \ref{ex:limit_of_Riemann_integrable_function_can_be_not_integrable} 表明，即便 Riemann 可积的函数列 $f_n$ 满足一致有界条件，也不能保证其点态极限函数的 Riemann 可积性. 
+因此 \ref{sec:deficiencies_of_Riemann_integral} 小节所叙述的有关 Riemann 积分与极限的交换性定理中，极限函数 $f=\lim_n f_n$ 的可积性假设不能去掉. 
+
+相比之下，可测函数类关于极限运算的封闭性再次体现了 Lebesgue 积分理论的优越性.
 
 
 
