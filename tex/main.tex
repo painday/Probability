@@ -367,7 +367,7 @@ $\sum_n \ell(I_n)\geq b-a.$ 这就证明了 $|[a,b]|=b-a,$ 因而开区间 $(a,b
 事实上，由于可数集的外测度为零，而非空区间的外测度都大于零，因而非空区间不可能是可数集. 这就证明了结论.
 
 \section{外测度的缺点：不可加性} Vitali 提供了集合的不交并的外测度不等于各自外测度之和的一个例子. 
-\begin{example}\label{ex:non_additivity_of_outer_measure}
+\begin{example}[Vitali]\label{ex:non_additivity_of_outer_measure}
     存在不交的实数集 $A$ 和 $B$，使得 $|A\cup B|\neq |A|+|B|.$
 \end{example}
 对于区间 $[-1,1]$ 内的任意实数 $a,$ 定义相伴的集合 $\tilde a$ 为 $[-1,1]$ 内所有与 $a$ 只相差一个有理移位的元素之全体，那么若 $\tilde a\cap\tilde b\neq \emptyset,$ 譬如说 $c\in\tilde a\cap\tilde b,$ 那么就有 
@@ -981,9 +981,101 @@ $\lim_j\lim_k \cos(j!\pi x)^{2k}=1.$
 \end{equation}
 对任意的互不相交的 $\mathcal S-$可测集列 $\{E_n\}_{n\in\mathbb N}$ 均成立.
 
-测度的可数可加性当然是它的核心性质. 由此也可以推出其与集合包含关系的兼容性以及次可数可加性. 可以说测度论中大部分的极限定理都起源于测度的可数可加性质，其余的则纯粹依赖有理数在实数集中的稠密性以及正整数集的 Archimedean 性质.
+测度的可数可加性当然是它的核心性质. 由此也可以推出其与集合包含关系的兼容性以及有限可加性和次可数可加性. 可以说测度论中大部分的极限定理都起源于测度的可数可加性质，其余的则纯粹依赖有理数在实数集中的稠密性以及正整数集的 Archimedean 性质.
 
+\begin{example}[计数测度]
+    设 $X$ 为集合，那么其上的计数测度 $\mu$ 定义在 $X$ 的全体子集所做成的 $\sigma-$代数上，并且 $\mu$ 将有限集映为其元素数目，将无限集映为 $+\infty.$
+\end{example}
+容易验证计数测度 $\mu$ 确是一个测度. 事实上，显然有 $\mu(\emptyset)=0.$ 其次，设 $\{E_n\}_{n\in\mathbb N}$ 为互不相交的集列，那么若其中只有有限多个 $E_{n_1},\cdots,E_{n_k}$ 非空，则有 
+\begin{equation}
+    \mu\left(\bigcup_n E_n\right)=\#\left(\bigcup_{j=1}^k E_{n_j}\right)=\sum_j \#(E_{n_j})=\sum_j \mu(E_{n_j})=\sum_n \mu(E_n)
+\end{equation}
+反之，若 $E_n$ 中有无限多个非空集，那么就有
+\begin{equation}
+    \mu\left(\bigcup_n E_n\right)=+\infty=\sum_n \mu(E_n)
+\end{equation}
 
+\begin{example}[Dirac 测度]
+    设 $X$ 为非空集合，$\mathcal S$ 为 $X$ 上的一个 $\sigma-$代数，$c\in X,$ 那么可定义相应的 Dirac 测度 $\delta_c$ 为 
+    \begin{equation}
+        \delta_c(E)=\begin{cases}
+            1&c\in E\\
+            0&c\notin E
+            \end{cases}
+    \end{equation}
+\end{example}
+
+显然有 $\delta_c$ 在空集上取值为零. 其次，若 设 $\{E_n\}_{n\in\mathbb N}$ 为互不相交的 $\mathcal S-$可测集列，那么若 $x\in \bigcup_n E_n,$ 那么 $x$ 必定只落入其中一个集合中，于是有
+\begin{equation}
+    \delta_c\left(\bigcup_n E_n\right) = 1 = \sum_n \delta_c(E_n)
+\end{equation}
+反之，若 $x\notin \bigcup_n E_n,$ 那么就有
+\begin{equation}
+    \delta_c\left(\bigcup_n E_n\right) = 0 = \sum_n \delta_c(E_n)
+\end{equation}
+因此 Dirac 测度 $\delta_c$ 确实是 $(X,\mathcal S)$ 上的一个测度.
+
+当然了，Dirac 测度的基本性质与 $\sigma-$代数的选择无关.
+
+\begin{example}
+    设 $(X,\mathcal S)$ 为可测空间，$w:X\to [0,+\infty]$ 为函数，那么可定义一个相应的测度 $\mu$ 为
+    \begin{equation}
+        \mu(E)=\sum_{x\in E}w(x)
+    \end{equation}
+这里和式 $\sum_{x\in E}w(x)$ 的值是通过考虑定义在 $X$ 的全体有限子集所构成的集类 $\mathcal F$ 上的 net 
+\begin{equation}
+    f:\mathcal F\to [0,+\infty],\ F\mapsto \sum_{x\in F}w(x)
+\end{equation}
+的极限来确定的. 这里集类 $\mathcal F$ 的 directed set 结构是由集合的包含偏序 $\subset$ 给出的. 自然，net $f$ 的极限恰是 $f$ 的上确界，也即
+\begin{equation}
+    \mu(E)=\sup_{F\ \text{为 $X$ 的有限子集}}\sum_{x\in F}w(x)
+\end{equation}
+\end{example}
+
+显然有 $\mu(\emptyset)=0.$ 其次，若 $\{E_n\}_{n\in\mathbb N}$ 为互不相交的 $\mathcal S-$可测集列，那么对于 $\bigcup_n E_n$ 任意一个有限子集 $F$ 都可表为有限多个 $E_n$ 的有限子集 $F_{n_1}\subset E_{n_1},\cdots,F_{n_k}\subset E_{n_k}$ 的不交并，于是就有 
+\begin{equation}
+    \sum_{x\in F}w(x)=\sum_{j=1}^k \sum_{x\in F_{n_j}}w(x)\leq \sum_j \sum_{x\in E_{n_j}}w(x) = \sum_j \mu(E_{n_j})\leq \sum_n \mu(E_n)
+\end{equation}
+故 
+\begin{equation}
+    \mu\left(\bigcup_n E_n\right)\leq \sum_n \mu(E_n)
+\end{equation}
+另一方面，对于任意固定的正整数 $m$ 以及任意的 $\varepsilon>0,$ 存在 $E_1,E_2,\cdots,E_m$ 的有限子集 $F_1,\cdots,F_m,$ 使得
+\begin{equation}
+    \sum_{x\in F_j}w(x)> \sum_{x\in E_j}w(x) - {\varepsilon\over 2^j},\ j=1,\cdots,m
+\end{equation}
+于是就有
+\begin{equation}
+    \sum_{j=1}^m\mu(E_j)=\sum_{j=1}^m \sum_{x\in E_j}w(x)<\sum_{j}\sum_{x\in F_j}w(x)+\varepsilon=\sum_{x\in\bigcup_j F_j} w(x)+\varepsilon\leq \mu\left(\bigcup_n E_n\right)+\varepsilon
+\end{equation}
+由 $\varepsilon$ 的任意性即知
+\begin{equation}
+    \sum_{j=1}^m \mu(E_j)\leq \mu\left(\bigcup_n E_n\right)
+\end{equation}
+再由 $m$ 的任意性即得 $\mu\left(\bigcup_n E_n\right)=\sum_n \mu(E_n).$ 这就证明了 $\mu$ 确实是 $(X,\mathcal S)$ 上的一个测度.
+
+\begin{example}
+    设 $\mathcal S$ 为集合 $X$ 的全体至多可数子集及其补集所做成的 $\sigma-$代数，那么可定义其上的一个测度 $\mu$ 为 
+    \begin{equation}
+        \mu(E) = \begin{cases}
+            0&E\ \text{为可数集}\\
+            3&E\ \text{为不可数集}
+        \end{cases}
+    \end{equation}
+\end{example}
+
+显然有 $\mu(\emptyset)=0.$ 其次，若 $\{E_n\}_{n\in\mathbb N}$ 为互不相交的 $\mathcal S-$可测集列，那么若 $E_n$ 中的某个 $E_{n_1}$ 为不可数集，那么其余的 $E_n$ 都含于 $E_{n_1}^C$ 中，因而是至多可数的. 于是就有
+\begin{equation}
+    \mu\left(\bigcup_n E_n\right) = 3 = \mu(E_{n_1})= \sum_n \mu(E_n)
+\end{equation}
+反之，若每一个 $E_n$ 都是可数集，那么就有
+\begin{equation}
+    \mu\left(\bigcup_n E_n\right) = 0 = \sum_n \mu(E_n)
+\end{equation}
+因而 $\mu$ 确实是 $(X,\mathcal S)$ 上的一个测度.
+
+自然，由例 \eqref{ex:non_additivity_of_outer_measure} 可知外测度并不是 $\mathbb R$ 的全体子集所做成的 $\sigma-$代数上的一个测度. 
+不过可以证明当其定义域限制到 Borel 代数时，外测度就摇身一变成为一个测度了. 这当然就是大名鼎鼎的 Lebesgue 测度了.
 
 \nocite{*}
 \bibliographystyle{plain}
