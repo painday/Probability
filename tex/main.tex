@@ -1080,10 +1080,18 @@ $\lim_j\lim_k \cos(j!\pi x)^{2k}=1.$
 可测空间连同其上的一个测度所组成的三元组就称为一个测度空间. 这恐怕也是测度论和概率论的书中出现频率最高的词汇了.
 
 
+\begin{example}[测度的次可数可加性]
+    若 $\{E_n\}_{n\in\mathbb N}$ 为测度空间 $(X,\mathcal S,\mu)$ 中的 $\mathcal S-$可测集列，那么 $\mu(\bigcup_n E_n)\leq \sum_n \mu(E_n).$
+\end{example}
+这是因为，$\bigcup_n E_n$ 可分拆为以下的互不相交的 $\mathcal S-$可测集列之并集：
+\begin{equation}
+    E_1,\ E_2\setminus E_1,\ E_3\setminus(E_1\cup E_2),\ E_4\setminus(E_1\cup E_2\cup E_3),\cdots
+\end{equation}
+这列集合中的第 $n$ 个集合的测度不大于 $E_n$ 的测度，因此就有 $\mu(\bigcup_n E_n)\leq \sum_n \mu(E_n).$
 
-
-
-
+\begin{example}[测度与集列极限的可交换性]
+    若
+\end{example}
 
 \nocite{*}
 \bibliographystyle{plain}
