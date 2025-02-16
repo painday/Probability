@@ -1234,6 +1234,27 @@ $\lim_j\lim_k \cos(j!\pi x)^{2k}=1.$
 \end{equation}
 即可.
 
+以下例子说明，两个测度在某个生成了其定义域的子集类上相等并不能推出这两个测度相等.
+\begin{example}
+    存在可测空间 $(X,\mathcal S)$ 以及 $X$ 的子集类 $\mathcal A,$ 使得 $\sigma(A)=\mathcal S,$ 并且存在测度 $\mu\neq \nu,$ 使得 $\mu$ 与 $\nu$ 在 $\mathcal A$ 上相等.
+\end{example}
+令 $X=\mathbb N\cup\{0\},\ \mathcal S=2^X,\ \mathcal A=2^{\mathbb N}$ 即可. 此时可令 
+\begin{equation}
+    \mu(\{n\}) = \begin{cases}
+        2^{-n},&n>0\\
+        3,&n= 0
+    \end{cases},\ \nu(\{n\}) = \begin{cases}
+        2^{-n},&n>0\\
+        0,&n= 0
+    \end{cases}
+\end{equation}
+显然有 $\mu|_{\mathcal A}=\nu|_{\mathcal A}$ 以及 $\mu\neq\nu.$
+
+\begin{example}
+    存在测度空间 $(X,\mathcal S,\mu)$ 以及一列递减的 $\mathcal S-$可测集 $\{E_n\}_{n\in\mathbb N},$ 使得 $\mu(\bigcap_n E_n)\neq\lim_n \mu(E_n).$
+\end{example}
+令 $X=\mathbb N,\mathcal S=2^{\mathbb N},\mu$ 为计数测度，以及 $E_n=\{n,n+1,n+2,\cdots\}$ 即可. 
+
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{../Ref/reference.bib}
