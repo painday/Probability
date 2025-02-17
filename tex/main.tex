@@ -1276,6 +1276,16 @@ $\lim_j\lim_k \cos(j!\pi x)^{2k}=1.$
     \mu(C\cup D\cup E)=\mu(C)+\mu(D)+\mu(E)-\mu(C\cap D)-\mu(C\cap E)-\mu(D\cap E)+\mu(C\cap D\cap E)
 \end{equation}
 
+\begin{example}
+    设 $X$ 为非空集合，$\mathcal S$ 为 $X$ 的全体至多可数子集及其补集所做成的 $\sigma-$代数. 列举 $(X,\mathcal S)$ 上的全体测度.
+\end{example}
+只需描述 $\mu$ 在 $X$ 的至多可数子集上的取值即可. 设 $\mu\{(x)\}=a_x,$ 那么就有
+\begin{equation}
+    \mu(E)=\sum_{x\in E}a_x
+\end{equation}
+对每一个至多可数的 $\mathcal S-$可测集成立. 考虑到若 $F,G$ 为两个补集为至多可数集的 $\mathcal S-$可测集，那么 $F$ 与 $G$ 只相差至多可数个元素，也即 $\mu(F)$ 与 $\mu(G)$ 的差异可由 $\sum_{x\in E}a_x$ 描述. 
+自然，只需确定 $\mu(X),$ 任意的 $\mu(F)$ 都只与 $\mu(X)$ 相差一个 $\sum_{x\in E}a_x.$ 
+
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{../Ref/reference.bib}
