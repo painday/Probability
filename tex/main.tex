@@ -1122,7 +1122,7 @@ $\lim_j\lim_k \cos(j!\pi x)^{2k}=1.$
 
 自然，假设中的 $\mu(E_1)<+\infty$ 是不能去掉的. 一个反例就是，半无界开区间列 $\{(n,+\infty)\}_{n\in\mathbb N}$ 是单调递减的，其中每个集合的测度均为 $+\infty,$ 但其交集为空集！
 
-\begin{example}[容斥原理]
+\begin{example}[容斥原理]\label{容斥原理}
     设 $D,E$ 为测度空间 $(X,\mathcal S,\mu)$ 中的两个集合，并且 $\mu(D\cup E)<+\infty,$ 那么 $\mu(D\cup E)=\mu(D)+\mu(E)-\mu(D\cap E).$
 \end{example}
 这是因为 $\mu(D)=\mu(D\setminus E)+\mu(D\cap E)$ 以及 $\mu(E)=\mu(E\setminus D)+\mu(E\cap D).$
@@ -1254,6 +1254,27 @@ $\lim_j\lim_k \cos(j!\pi x)^{2k}=1.$
     存在测度空间 $(X,\mathcal S,\mu)$ 以及一列递减的 $\mathcal S-$可测集 $\{E_n\}_{n\in\mathbb N},$ 使得 $\mu(\bigcap_n E_n)\neq\lim_n \mu(E_n).$
 \end{example}
 令 $X=\mathbb N,\mathcal S=2^{\mathbb N},\mu$ 为计数测度，以及 $E_n=\{n,n+1,n+2,\cdots\}$ 即可. 
+
+\begin{example}
+    设 $(X,\mathcal S,\mu)$ 为测度空间，$C,D,E$ 为 $\mathcal S-$可测集，并且它们的两两交集的测度均有限. 那么 
+    $\mu(C\cup D\cup E)=\mu(C)+\mu(D)+\mu(E)-\mu(C\cap D)-\mu(C\cap E)-\mu(D\cap E)+\mu(C\cap D\cap E).$
+\end{example}
+
+事实上，由两个集合的并集的测度公式 \eqref{容斥原理} 即得
+\begin{equation}\label{three sets union measure}
+    \mu(C\cup D\cup E)=\mu(C\cup D)+\mu(E)-\mu((C\cup D)\cap E)=\mu(C\cup D)+\mu(E)-\mu((C\cap E)\cup (D\cap E))
+\end{equation}
+再分别对 $C\cup D$ 和 $(C\cap E)\cup(D\cap E)$ 用容斥原理即得
+\begin{equation}\label{容斥3}
+    \begin{aligned}
+        \mu(C\cup D)=&\mu(C)+\mu(D)-\mu(C\cap D)\\
+        \mu((C\cap E)\cup(D\cap E))=&\mu(C\cap E)+\mu(D\cap E)-\mu(C\cap D\cap E)
+    \end{aligned}
+\end{equation}
+将式 \eqref{容斥3} 代入等式 \eqref{three sets union measure} 中即得
+\begin{equation}
+    \mu(C\cup D\cup E)=\mu(C)+\mu(D)+\mu(E)-\mu(C\cap D)-\mu(C\cap E)-\mu(D\cap E)+\mu(C\cap D\cap E)
+\end{equation}
 
 \nocite{*}
 \bibliographystyle{plain}
