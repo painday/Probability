@@ -1294,6 +1294,34 @@ $\lim_j\lim_k \cos(j!\pi x)^{2k}=1.$
     若 $A,G$ 为 $\mathbb R$ 的两个不交的子集，并且 $G$ 为开集，那么 $|A\cup G|=|A|+|G|.$
 \end{example}
 首先，若 $|G|=+\infty,$ 那么显然有 $|A\cup G|=+\infty=|A|+|G|.$ 下面设 $|G|<+\infty.$
+首先证明当 $G=(a,b)$ 为非空开区间时结论成立. 容易验证 $A\cup G$ 与 $(A\cup G)\setminus\{a,b\}$ 的外测度相同. 事实上，
+我们有 $|(A\cup G)\setminus\{a,b\}|\leq |A\cup G|$ 以及 $|A\cup G|\leq |(A\cup G)\setminus\{a,b\}|+|\{a\}|+|\{b\}|=|(A\cup G)\setminus\{a,b\}|,$ 这就证明了 $|A\cup G|=|(A\cup G)\setminus\{a,b\}|.$ 
+考虑到 $(A\cup G)\setminus\{a,b\}=(A\setminus\{a,b\})\cup G,$ 令 $A'=A\setminus(a,b),$ 那么只需证明 $|A'\cup G|=|A'|+|G|$ 即可.
+
+事实上，设 $\{I_n\}_{n\in\mathbb N}$ 是一列覆盖了 $A'\cup G$ 的开区间，那么可定义 
+\begin{equation}
+    J_n=I_n\cap (-\infty,a),\ K_n=I_n\cap (a,b),\ L_n=I_n\cap (b,+\infty)
+\end{equation}
+自然，开区间列 $K_n$ 覆盖了 $(A'\cup G)\cap (a,b).$ 由 $A$ 与 $G$ 不交可知 $K_n$ 实际上覆盖了 $(a,b).$ 类似地，$J_n$ 和 $L_n$ 共同覆盖了 $A'.$ 此外，有 
+$|I_n|=|J_n|+|K_n|+|L_n|.$ 于是就有
+\begin{equation}
+    \sum_n |I_n|=\sum_n |J_n|+\sum_n |L_n|+\sum_n |K_n|\geq |A'|+|G|
+\end{equation}
+这就证明了 $|A'\cup G|\geq |A'|+|G|,$ 进而有 $|A'\cup G|=|A'|+|G|.$
+
+下面考虑 $G$ 为一般的开集的情形. 注意到 $G$ 可表示为可数个开区间 $U_n$ 的不交并，因此对任意的正整数 $n$ 均有
+\begin{equation}
+    |A'\cup G|=\left|A'\cup \left(\bigcup_n U_n\right)\right|\geq \left|A'\cup \left(\bigcup_{k=1}^n U_k\right)\right|
+\end{equation}
+反复利用之前证明的结论即得
+\begin{equation}
+    \left|A'\cup \left(\bigcup_{k=1}^n U_k\right)\right|=|A|+\sum_{k=1}^n |U_k|
+\end{equation}
+于是
+\begin{equation}
+    |A'\cup G|\geq |A|+\sum_{k=1}^n |U_k|
+\end{equation}
+由 $n$ 的任意性即得 $|A'\cup G|\geq |A'|+\sum_{k\in\mathbb N}|U_k|\geq |A'|+|G|.$ 这就证明了 $|A'\cup G|=|A'|+|G|.$
 
 \nocite{*}
 \bibliographystyle{plain}
