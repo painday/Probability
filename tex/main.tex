@@ -1327,6 +1327,17 @@ $|I_n|=|J_n|+|K_n|+|L_n|.$ 于是就有
     若 $A,F$ 为 $\mathbb R$ 的两个不交的子集，并且 $F$ 为闭集，那么 $|A\cup F|=|A|+|F|.$
 \end{example}
 
+利用例 \eqref{additivity of outer measure if one of the sets is open} 中结论即可. 设 $\{I_n\}_{n\in\mathbb N}$ 为一列覆盖了 $A\cup F$ 的开区间，令 $G=\bigcup_n I_n,$ 那么 $G$ 本身就是一个开集，并且包含 $A\cup F.$ 
+特别的，有 $A\subset G\setminus F.$ 注意到 $G\setminus F$ 为开集，故由 $G=F\cup (G\setminus F)$ 以及例 \eqref{additivity of outer measure if one of the sets is open} 中结论即知
+\begin{equation}
+    |G|=|F|+|G\setminus F|\geq |F|+|A|
+\end{equation}
+进一步地，有
+\begin{equation}
+    \sum_n |I_n|\geq |G|\geq |F|+|A|
+\end{equation}
+这就证明了 $|A\cup F|=|A|+|F|.$
+
 
 \nocite{*}
 \bibliographystyle{plain}
