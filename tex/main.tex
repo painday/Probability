@@ -1338,11 +1338,51 @@ $|I_n|=|J_n|+|K_n|+|L_n|.$ 于是就有
 \end{equation}
 这就证明了 $|A\cup F|=|A|+|F|.$
 
-下面的结论实际上是在说 Lebesgue 测度的内正则性.
+下面的结论实际上是在说 Lebesgue 测度的内正则性. 证明中用到了很多有趣的巧思！
 \begin{example}
     若 $B\subset\mathbb R$ 为 Borel 集，那么对于任意的 $\varepsilon>0,$ 均存在 $B$ 的闭子集 $F,$ 使得 $|B\setminus F|<\varepsilon.$
 \end{example}
 
+令 $\mathcal L$ 为那些可被闭子集在外测度上进行任意逼近的 Borel 集之全体所做成的集类，也即
+\begin{equation}
+    \mathcal L=\{B\in\mathcal B|\ \forall\varepsilon>0,\ \exists B\ \text{的闭子集} F\in\mathcal C,\ \text{使得}\ |B\setminus F|<\varepsilon\}
+\end{equation}
+那么显然 $\mathbb R$ 中所有闭集都落入 $\mathcal L$ 中. 因此只需证明 $\mathcal L$ 是一个 $\sigma-$代数即可.
+
+首先，显然 $X\in \mathcal L.$ 其次，设 $\{B_n\}_{n\in\mathbb N}$ 为 $\mathcal L$ 中的一列集合，那么对每一个 $B_n,$ 可找到一个闭子集 $F_n,$ 使得 
+$|B_n\setminus F_n|<\varepsilon/2^n.$ 特别地，$F:=\bigcap_n F_n$ 就是交集 $B:=\bigcap_n B_n$ 的一个闭子集，并且由
+\begin{equation}
+    B\setminus F=B\cap\left(\bigcup_n F_n^C\right)=\bigcup_n (B\cap F_n^C)\subset\bigcup_n (B_n\setminus F_n)
+\end{equation}
+即得
+\begin{equation}
+    |B\setminus F|\leq\sum_n |B_n\setminus F_n|<\varepsilon
+\end{equation}
+这就证明了 $\mathcal L$ 对可数交运算的封闭性.
+
+最后证明 $\mathcal L$ 对补集运算的封闭性. 设 $B\in\mathcal L,$ 需要证明其补集也落入 $\mathcal L$ 中. 首先设 $|B|<+\infty.$
+自然，对于任意的 $\varepsilon>0,$ 存在含于 $B$ 的闭集 $F,$ 使得 $|B\setminus F|<\varepsilon/2.$ 另一方面，由外测度的定义可知，
+存在一列覆盖了 $B$ 的开区间 $\{I_n\}_{n\in\mathbb N},$ 满足 $\sum_n |I_n|<|B|+\varepsilon/2.$ 
+令 $G=\bigcup_n I_n,$ 那么 $G$ 就是一个包含了 $B$ 的开集，并且有 $G^C\subset B^C\subset F^C.$
+于是就有
+\begin{equation}
+    |B^C\setminus G^C|\leq |F^C\setminus G^C|=|F^C\cap G|=|G\setminus F|
+\end{equation}
+注意到 $G=(G\setminus F)\cup F,$ 因此由例 \ref{additivity of outer measure if one of the sets is closed} 中结论即得
+$|G\setminus F|=|G|-|F|.$ 类似的有 $|B\setminus F|=|B|-|F|.$ 于是就有
+\begin{equation}
+    \begin{aligned}
+        |B^C\setminus G^C|\leq& |G|-|F|\\
+        \leq& |G|-|B|+|B|-|F|\\
+        \leq&\sum_n |I_n|-|B|+|B|-|F|\\
+        <&{\varepsilon\over 2}+{\varepsilon\over 2}\\
+        =&\varepsilon
+    \end{aligned}
+\end{equation}
+这就证明了 $B^C\in\mathcal L.$ 
+
+下面考虑 $|B|=+\infty$ 的情况. 这需要用到先前证明的可数交的封闭性. 此时令 $B_k=B\cap [-k,k],\ (k\in\mathbb N),$ 那么 $B_k$ 的外测度就是有限的，并且其是 $\mathcal L$ 中两个集合的交集，故落入 $\mathcal L$ 中，从而 $B_k^C$ 落入 $\mathcal L$ 中.
+因此 $B=\bigcup_k B_k=\bigcap_k B_k^C$ 也落入 $\mathcal L$ 中. 这就证明了 $\mathcal L$ 为一个 $\sigma-$代数，从而有 $\mathcal L=\mathcal B.$
 
 \nocite{*}
 \bibliographystyle{plain}
