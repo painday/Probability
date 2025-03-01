@@ -1339,7 +1339,7 @@ $|I_n|=|J_n|+|K_n|+|L_n|.$ 于是就有
 这就证明了 $|A\cup F|=|A|+|F|.$
 
 下面的结论实际上是在说 Lebesgue 测度的内正则性. 证明中用到了很多有趣的巧思！
-\begin{example}
+\begin{example}\label{inner regularity of Lebesgue measure}
     若 $B\subset\mathbb R$ 为 Borel 集，那么对于任意的 $\varepsilon>0,$ 均存在 $B$ 的闭子集 $F,$ 使得 $|B\setminus F|<\varepsilon.$
 \end{example}
 
@@ -1383,6 +1383,46 @@ $|G\setminus F|=|G|-|F|.$ 类似的有 $|B\setminus F|=|B|-|F|.$ 于是就有
 
 下面考虑 $|B|=+\infty$ 的情况. 这需要用到先前证明的可数交的封闭性. 此时令 $B_k=B\cap [-k,k],\ (k\in\mathbb N),$ 那么 $B_k$ 的外测度就是有限的，并且其是 $\mathcal L$ 中两个集合的交集，故落入 $\mathcal L$ 中，从而 $B_k^C$ 落入 $\mathcal L$ 中.
 因此 $B=\bigcup_k B_k=\bigcap_k B_k^C$ 也落入 $\mathcal L$ 中. 这就证明了 $\mathcal L$ 为一个 $\sigma-$代数，从而有 $\mathcal L=\mathcal B.$
+
+在做了以上三条铺垫之后，就可以证明外测度在 Borel 集类上具有可加性了：
+\begin{example}\label{additivity of outer measure if one of the sets is Borel}
+    若 $A,B$ 为 $\mathbb R$ 的两个不交的子集，并且 $B$ 为 Borel 集，那么 $|A\cup B|=|A|+|B|.$
+\end{example}
+事实上，由例 \ref{inner regularity of Lebesgue measure} 中结论可知，存在 $B$ 的一个闭子集列 $\{F_n\}_{n\in\mathbb N},$ 使得 $\lim_n |F_n|=|B|.$ 
+另一方面，每一个 $F_n$ 都是与 $A$ 不交的闭集，于是由例 \ref{additivity of outer measure if one of the sets is closed} 中结论即得 
+\begin{equation}
+    |A\cup F_n|=|A|+|F_n|
+\end{equation}
+于是就有
+\begin{equation}
+    |A\cup B|\geq \sup_n |A\cup F_n|=|A|+\sup_n |F_n|\geq |A|+\lim_n |F_n|=|A|+|B|
+\end{equation}
+这就证明了 $|A\cup B|=|A|+|B|.$
+
+现在立刻就知道了，外测度限制到 Borel 集类 $\mathcal B$ 上就做成 $(\mathbb R,\mathcal B)$ 上的一个测度. 这就是千呼万唤始出来的 Lebesgue 测度了.
+\begin{example}[Lebesgue 测度]
+    外测度限制到 Borel 集类 $\mathcal B$ 上做成 $(\mathbb R,\mathcal B)$ 上的一个测度.
+\end{example}
+显然 $|\emptyset|=0.$ 下面证明 $|\cdot|_{\mathcal B}$ 的可数可加性. 设 $\{B_n\}_{n\in\mathbb N}$ 为一列两两不交的 Borel 集合，那么对于任意有限的 $n,$ 由例 \ref{additivity of outer measure if one of the sets is Borel} 中结论即知
+\begin{equation}
+    \left|\bigcup_{k=1}^n B_k\right|=\sum_{k=1}^n |B_k|
+\end{equation}
+于是就有
+\begin{equation}
+    \left|\bigcup_k B_k\right|\geq \sup_n \left|\bigcup_{k=1}^n B_k\right|=\sup_n \left(\sum_{k=1}^n |B_k|\right)\geq \lim_n \sum_{k=1}^n |B_k|=\sum_k |B_k|
+\end{equation}
+这就证明了结论.
+
+顺便一提，现在就可以由 Vitali 的例 \eqref{ex:non_additivity_of_outer_measure} 得到非 Borel 可测集的存在性：
+\begin{example}\label{ex:existence of non-Borel measurable sets}
+    存在 $\mathbb R$ 的非 Borel 可测的子集 $B,$ 并且其外测度有限.
+\end{example}
+
+事实上，根据例 \eqref{ex:non_additivity_of_outer_measure} 中结论可知，存在不交的实数集 $A,B,$ 使得 $|A\cup B|\neq |A|+|B|.$ 
+现在由例 \eqref{additivity of outer measure if one of the sets is Borel} 中结论可知，此时 $A,B$ 必定都不是 Borel 可测集. 并且，考虑到若 $A,B$ 中至少有一个的外测度为
+$+\infty,$ 那么等式 $|A\cup B|=|A|+|B|$ 就必定成立，因此 $A,B$ 的外测度也必定是有限的.
+
+\section{Lebesgue 测度的若干性质}
 
 \nocite{*}
 \bibliographystyle{plain}
