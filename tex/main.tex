@@ -1426,6 +1426,20 @@ $+\infty,$ 那么等式 $|A\cup B|=|A|+|B|$ 就必定成立，因此 $A,B$ 的�
 实数集 $A$ 称为是 Lebesgue 可测集，若其包含一个 Borel 子集 $B,$ 使得 $A\setminus B$ 的外测度为零. 换言之，所谓 Lebesgue 可测集类 $\overline{\mathcal B}$ 不过就是那些由 Borel 集与零外测度集的并集所构成的一个集类. 自然，Borel 可测集都是 Lebesgue 可测的. 
 文献 \cite{Axler_2020} 的作者强调，虽然 Lebesgue 可测集类确实比 Borel 可测集要大，但在数学实践中基本不会碰到那些 Lebesgue 可测但 Borel 不可测的集合.
 
+Lebesgue 可测集具有许多等价的定义：
+\begin{example}[Lebesgue 可测集的等价定义]\label{ex:equivalent definitions of Lebesgue measurable sets}
+    设 $A$ 为实数集. 以下诸条件等价：
+    \begin{enumerate}[label=\alph*)]
+        \item $A$ 为 Lebesgue 可测集.
+        \item 对任意的 $\varepsilon>0,$ 均存在 $A$ 的闭子集 $F,$ 使得 $|A\setminus F|<\varepsilon.$
+        \item 存在 $A$ 的闭子集列 $\{F_n\}_{n\in\mathbb N},$ 使得 $|A\setminus\bigcup_n F_n|=0.$ 
+        \item 存在 $A$ 的 Borel 子集 $B,$ 使得 $A\setminus B$ 的外测度为零.
+        \item 对任意的 $\varepsilon>0,$ 均存在包含 $A$ 的开集 $G,$ 使得 $|G\setminus A|<\varepsilon.$
+        \item 存在包含 $A$ 的开集列 $\{G_n\}_{n\in\mathbb N},$ 使得 $|\bigcap_n G_n\setminus A|=0.$ 
+        \item 存在包含 $A$ 的 Borel 集 $B,$ 使得 $B\setminus A$ 的外测度为零.
+    \end{enumerate}
+\end{example}
+
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{../Ref/reference.bib}
