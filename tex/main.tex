@@ -1399,7 +1399,7 @@ $|G\setminus F|=|G|-|F|.$ 类似的有 $|B\setminus F|=|B|-|F|.$ 于是就有
 \end{equation}
 这就证明了 $|A\cup B|=|A|+|B|.$
 
-现在立刻就知道了，外测度限制到 Borel 集类 $\mathcal B$ 上就做成 $(\mathbb R,\mathcal B)$ 上的一个测度. 这就是千呼万唤始出来的 Lebesgue 测度了.
+现在立刻就知道了，外测度限制到 Borel 集类 $\mathcal B$ 上就做成 Borel 测度空间 $(\mathbb R,\mathcal B)$ 上的一个测度. 这就是千呼万唤始出来的 Lebesgue 测度了.
 \begin{example}[Lebesgue 测度]
     外测度限制到 Borel 集类 $\mathcal B$ 上做成 $(\mathbb R,\mathcal B)$ 上的一个测度.
 \end{example}
@@ -1439,6 +1439,57 @@ Lebesgue 可测集具有许多等价的定义：
         \item 存在包含 $A$ 的 Borel 集 $B,$ 使得 $B\setminus A$ 的外测度为零.
     \end{enumerate}
 \end{example}
+
+按照定义，Lebesgue 可测集指的就是满足条件 d) 的实数集. 因此只需证明条件 $\rm b)\sim g)$ 彼此等价即可. 对于任意固定的 $\varepsilon>0,$ 记 $\mathcal L$ 为所有那些存在满足 $|A\setminus F|<\varepsilon$ 的闭子集 $F$ 的实数集 $A$ 所做成的集类，那么重复例 \ref{inner regularity of Lebesgue measure} 中的论证即知 $\mathcal L$ 为 $\mathbb R$ 上的一个
+$\sigma-$代数. 显然，任意外测度为零的实数集都落入 $\mathcal L$ 中.
+
+首先证明 $\rm b)\Longrightarrow c).$ 事实上，此时对于任意的 $n,$ 均存在 $A$ 的闭子集 $F_n,$ 使得 $|A\setminus F_n|<1/n.$ 于是就有 
+$|A\setminus\bigcup_n F_n|\leq \inf_n |A\setminus F_n|=0.$
+
+再证明 $\rm c)\Longrightarrow d).$ 这是显然的.
+
+再证明 $\rm d)\Longrightarrow e).$ 此时就存在 $A$ 的 Borel 子集 $B,$ 使得 $|A\setminus B|<\varepsilon/2.$ 由外测度的定义，存在一列覆盖了 $A$ 的开区间 $\{I_n\}_{n\in\mathbb N},$ 使得
+$\sum_n |I_n|\leq |A|+\varepsilon/2.$ 令 $G=\bigcup_n I_n,$ 那么 $G$ 就是一个包含了 $A$ 的开集. 
+
+若 $|B|<+\infty,$ 也即 $|A|<+\infty,$ 那么由例 \ref{additivity of outer measure if one of the sets is Borel} 中结论即知
+$|G\setminus A|\leq |G\setminus B|\leq |G|-|B|=|G|-|A|+|A|-|B|\leq \sum_n |I_n|-|A|+|A\setminus B|<\varepsilon.$
+
+若 $|B|=+\infty,$ 也即 $|A|=+\infty,$ 那么就可以考虑区间列 $\{[-k,k]\}_{k\in\mathbb N},$ 此时每一个集合 $A_k:=A\cap[-k,k]$ 的外测度都是有限的，因而存在包含 $A_k$ 的开集 $G_k,$ 使得 
+$|G_k\setminus A|<\varepsilon/2^k.$ 令 $G=\bigcup_k G_k,$ 那么 $G$ 就包含了 $A,$ 并且有
+\begin{equation}
+    \left|G\setminus A\right|\leq\sum_k |G_k\setminus A|\leq \sum_k |G_k\setminus A_k|<\varepsilon
+\end{equation}
+
+再证明 $\rm e)\Longrightarrow f).$ 事实上，此时对于任意的 $n,$ 均存在包含 $A$ 的开集 $G_n,$ 使得 $|G_n\setminus A|<1/n.$ 于是就有 
+$|\bigcap_n G_n\setminus A|\leq \inf_n |G_n\setminus A|=0.$
+
+再证明 $\rm f)\Longrightarrow g).$ 这是显然的.
+
+最后证明 $\rm g)\Longrightarrow b).$ 事实上，此时注意到 
+\begin{equation}
+    A = \emptyset\cup A=B\cap(B\setminus A)^C
+\end{equation}
+由 $|B\setminus A|=0$ 可知 $B\setminus A$ 落入集类 $\mathcal L$ 中，再由 $\mathcal L$ 对补集和交集运算的封闭性即知 $A$ 落入 $\mathcal L$ 中.
+
+
+
+自然，现在我们就知道 $\mathcal L$ 其实就等于一切 Lebesgue 可测集所做成的集类. 这是 $\mathbb R$ 上的一个 $\sigma-$代数，其专门记为 $\overline{\mathcal B}.$ 理所当然地，外测度也是 Lebesgue 测度空间 $(\mathbb R,\overline{\mathcal B})$ 上的一个测度：
+\begin{example}[Lebesgue 测度]
+    外测度限制到 Lebesgue 可测集类 $\overline{\mathcal B}$ 上做成 $(\mathbb R,\overline{\mathcal B})$ 上的一个测度.
+\end{example}
+
+显然有 $|\emptyset|=0.$ 下面证明 $|\cdot|_{\overline{\mathcal B}}$ 的可数可加性. 设 $\{E_n\}_{n\in\mathbb N}$ 为一列两两不交的 Lebesgue 可测集，那么对每一个 $E_n,$ 均存在 Borel 可测子集 $B_n,$ 使得
+$|E_n\setminus B_n|=0.$ 自然，$\{B_n\}_{n\in\mathbb N}$ 也是两两不交的，于是就有
+\begin{equation}
+    \sum_n |E_n|\leq \sum_n |E_n\setminus B_n|+\sum_n |B_n|=\sum_n |B_n|= \left|\bigcup_n B_n\right|\leq \sum_n \left|\bigcup_n E_n\right|
+\end{equation}
+这就证明了结论.
+
+外测度在 Lebesgue 可测集类上的限制也被称为 Lebesgue 测度. 这就多少造成了一些混乱：在文献中，Lebesgue 测度的定义域到底是 Borel 集类还是 Lebesgue 可测集类，常常是含混不清的. 按照文献 \cite{Axler_2020} 的作者的意见，
+定义域到底是两者中的哪一个一般来说并不影响结论的普遍性，并且在实践中人们一般也只会碰到 Borel 集，因此默认 Lebesgue 测度的定义域为 Borel 集类 $\mathcal B$ 是最安全合理的.
+
+Lebesgue 测度的符号通常记为 $\lambda.$
+
 
 \nocite{*}
 \bibliographystyle{plain}
