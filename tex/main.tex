@@ -1490,6 +1490,50 @@ $|E_n\setminus B_n|=0.$ 自然，$\{B_n\}_{n\in\mathbb N}$ 也是两两不交的
 
 Lebesgue 测度的符号通常记为 $\lambda.$
 
+\section{Cantor 集}
+
+Cantor 集提供了分析中的许多反例. 其中最重要的一条恐怕就是提供了一个外测度为零的不可数集的例子.
+
+Cantor 集 $C$ 定义为 $C=[0,1]\setminus\bigcup_n G_n,$ 其中 $G_1=(1/3,2/3),$ 而对于 $n>1,$ $G_n$ 被归纳地定义为集合 $[0,1]\setminus\bigcup_{k=1}^{n-1} G_k$ 中各个小区间的 1/3 中部的开区间之并集. 换言之，
+设 $G_1,G_2,\cdots,G_{n-1}$ 为开区间 $(a_1,b_1),\cdots,(a_m,b_m)$ 之并集，其中 $a_1<b_1<\cdots<a_m<b_m,$ 那么就有
+\begin{equation}\label{Cantor set induction def}
+    G_n=\bigcup_{k=0}^{m} \left({2c_k+d_k\over 3},{c_k+2d_k\over 3}\right)
+\end{equation}
+其中 $c_1=0, c_m=b_m, d_{m}=1,$ 而对于 $1\leq k\leq m-1,$ 有 $c_k=b_k,\ d_k=a_{k+1}.$
+
+显然，$G_n$ 是两两不交的开集. 因而 Cantor 集 $C$ 为 Borel 集.
+
+Cantor 集的结构可用实数的三进制表示来描述. 不过实数的三进制表示也不是唯一的：${1\over 3}=0.1_3=(0.022222\cdots)_3.$ 然而，容易验证，$G_1$ 正是那些所有可能的三进制表示的小数点后第一位均为 $1$ 的那些 $[0,1]$ 中实数所做成的集合. 这是因为 $G_1=(1/3,2/3)$ 中元素大于 $3^{-1},$ 但小于 $2\times 3^{-1}.$ 
+类似地，$G_2$ 正是那些所有可能的三进制表示的小数点后第一位不为 $1,$ 但第二位为 $1$ 的那些实数所组成的集合. 这是因为 $G_2$ 与 $G_1$ 不交，而 $G_1=(1/9,2/9)\cup (7/9,8/9)$ 分别是所有可能的三进制表示的小数点后第一位为零，第二位为一和第一位为二，第二位为一的那些 $[0,1]$ 中实数所做成的集合.
+
+一般的，可以证明 
+\begin{equation}\label{structure of Cantor set}
+    \begin{aligned}
+        G_n =& \bigcup_{x_k}\left(\sum_{k=1}^{n} {x_k\over 3^k}, \sum_{k=1}^{n} {x_k\over 3^k}+{1\over 3^{n}}\right)
+    \end{aligned}
+\end{equation}
+其中 $x_k\in\{0,1,2\},\ x_1,\cdots,x_{n-1}\neq 1,\ x_n=1.$
+事实上，设式 \eqref{structure of Cantor set} 对于 $n\leq s$ 成立，那么注意到满足 $x_k\in\{0,1,2\},\ x_1,\cdots,x_{n-1}\neq 1,\ x_n=1$ 的序列全体可枚举为 
+\begin{equation}
+    (u_1,u_2,\cdots,u_{n-1},1),\ u_1,\cdots,u_{n-1}\in \{0,2\}^{n-1}
+\end{equation}
+因此 $G_n$ 可表示为
+\begin{equation}
+    G_n = \bigcup_{(u_1,\cdots,u_{n-1})\in\{0,2\}^{n-1}}\left(\sum_{k=1}^{n-1} {a_k\over 3^k}+{1\over 3^{n}}, \sum_{k=1}^{n-1} {a_k\over 3^k}+{2\over 3^{n}}\right)
+\end{equation}
+因此当 $n=s+1$ 时，由 \eqref{Cantor set induction def} 即得 $m=\sum_{k=1}^n 2^{k-1}=2^n-1,$ 并且
+\begin{equation}
+    c_0=0,c_m=\sum_{k=1}^{n-1} {a_k\over 3^k}+{2\over 3^{n}}.
+\end{equation}
+$a_1,b_1,\cdots,a_m,b_m$ 就是端点集
+\begin{equation}
+    \bigcup_{t=1}^n\left[\bigcup_{(x_1,\cdots,x_{t-1})\in\{0,2\}^{t-1}}\left\{\sum_{k=1}^{t-1} {x_k\over 3^{k}}+{1\over 3^t}, \sum_{k=1}^{t-1} {x_k\over 3^k}+{2\over 3^{t}}\right\}\right]
+\end{equation}
+的一个升序排列.
+
+
+类似地，可以证明 $\bigcup_{k=1}^n G_k$ 是所有可能的三进制表示的小数点后前 $n$ 位至少有一个为 $1$ 的那些 $[0,1]$ 中实数所做成的集合.
+
 
 \nocite{*}
 \bibliographystyle{plain}
