@@ -1540,7 +1540,7 @@ $a_1,b_1,\cdots,a_m,b_m$ 就是端点集
         a_1=&(0.\underbrace{0\cdots 001}_{n})_3,\ b_1=(0.\underbrace{0\cdots 002}_{n})_3\\
         a_2=&(0.\underbrace{0\cdots 010}_{n})_3,\ b_2=(0.\underbrace{0\cdots 020}_{n})_3\\
         a_3=&(0.\underbrace{0\cdots 021}_{n})_3,\ b_3=(0.\underbrace{0\cdots 022}_{n})_3\\
-        a_4=&(0.\underbrace{0\cdots 100}_{n})_3,\ b_4=(0.\underbrace{0\cdots 110}_{n})_3\\
+        a_4=&(0.\underbrace{0\cdots 100}_{n})_3,\ b_4=(0.\underbrace{0\cdots 200}_{n})_3\\
         a_5=&(0.\underbrace{0\cdots 201}_{n})_3,\ b_5=(0.\underbrace{0\cdots 202}_{n})_3\\
         a_6=&(0.\underbrace{0\cdots 210}_{n})_3,\ b_6=(0.\underbrace{0\cdots 220}_{n})_3\\
         a_7=&(0.\underbrace{0\cdots 221}_{n})_3,\ b_7=(0.\underbrace{0\cdots 222}_{n})_3\\
@@ -1557,19 +1557,40 @@ $a_1,b_1,\cdots,a_m,b_m$ 就是端点集
     \end{aligned}\right.
 \end{equation}
 也就是说，$a_k$ 的第一项对应于 $3$ 进制的 $n$ 位小数只有最后一位不为零的情形(并且最后一个不为零的位只能为 $1,$ 且 $1$ 只出现一次)，接下来的两项对应于 $3$ 进制的 $n$ 位小数只有最后两位不为零的情形(倒数第二位不为零，并且最后一个不为零的位只能为 $1,$ 且 $1$ 只出现一次). 
-再接着的四项对应于只有最后三位不为零的情形. 可以看到，如果将只有最后 $k$ 项不等于零(倒数第 $k$ 位不等于零，并且最后一个不为零的位只能为 $1,$ 且 $1$ 只出现一次)的那些长度为 $n$ 的序列 $\{x_j\}$ 所做成的集合记为 $A_k,$ 那么就有递归公式
+再接着的四项对应于只有最后三位不为零的情形. 可以看到，如果将第一个不为零的项恰好为倒数第 $k$ 项(并且最后一个不为零的位只能为 $1,$ 且 $1$ 只出现一次)的那些长度为 $n$ 的序列 $\{x_j\}$ 所做成的集合记为 $A_k,$ 那么就有递推公式
 \begin{equation}
-    A_{k+1}=\left\{{1\over 3^{n-k}}\right\}\cup \left[\bigcup_{1\leq j\leq k}\left(A_k+{1\over 3^{n-k}}\right)\right]
+    A_{k+1}=\left\{{1\over 3^{n-k}}\right\}\cup \left[\bigcup_{1\leq j\leq k}\left(A_j+{2\over 3^{n-k}}\right)\right]
+\end{equation}
+或者说 $a_k$ 的递推关系为
+\begin{equation}
+    a_{2^k}={1\over 3^{n-k}},a_{2^k+1}=a_1+{2\over 3^{n-k}}, a_{2^k+2}=a_{2}+{2\over 3^{n-k}},\cdots,a_{2^{k+1}-1}=a_{2^{k}-1}+{2\over 3^{n-k}},\ k=0,1,2,3,\cdots
+\end{equation}
+类似可得
+\begin{equation}
+    b_{2^k}={2\over 3^{n-k}},b_{2^k+1}=b_1+{2\over 3^{n-k}}, b_{2^k+2}=b_{2}+{2\over 3^{n-k}},\cdots,b_{2^{k+1}-1}=b_{2^{k}-1}+{2\over 3^{n-k}},\ k=0,1,2,3,\cdots
 \end{equation}
 
-总之，此时就有
+总之，此时由 \eqref{Cantor set induction def} 即得
+\begin{equation}
+    \left\{\begin{aligned}
+        {2c_{2^k}+d_{2^k}\over 3}=&{2b_{2^k}+a_{2^k+1}\over 3}={4\over 3^{n-k+1}}+{a_1\over 3}+{2\over 3^{n-k+1}}={a_1\over 3}+{2\over 3^{n-k}}\\
+        {2c_{2^k+1}+d_{2^k+1}\over 3}=&{2b_{2^k+1}+a_{2^k+2}\over 3}={2b_1\over 3}+{4\over 3^{n-k+1}}+{a_2\over 3}+{2\over 3^{n-k+1}}={2 b_1 + a_2\over 3}+{2\over 3^{n-k}}\\
+        \cdots&\\
+        {2c_{2^{k+1}-1}+d_{2^{k+1}-1}\over 3}=&{2b_{2^{k+1}-1}+a_{2^{k+1}}\over 3}={2b_{2^k-1}\over 3}+{4\over 3^{n-k+1}}+{a_{2^k}\over 3}+{2\over 3^{n-k+1}}\\
+        =&{2 b_{2^k-1} + a_{2^k}\over 3}+{2\over 3^{n-k}}
+    \end{aligned}\right.
+\end{equation}
+
+因此，只要能够归纳地证明 ${a_1\over 3}+{2\over 3^{n-k}},\cdots,{2 b_{2^k-1} + a_{2^k}\over 3}+{2\over 3^{n-k}}$ 恰好构成 $A_{n-k}$ 即可. 
+
+
 \begin{equation}
     \left\{\begin{aligned}
         c_0=&0,\ d_0=(0.\underbrace{0\cdots 001}_{n})_3\\
         c_1=&(0.\underbrace{0\cdots 002}_{n})_3,\ d_1=(0.\underbrace{0\cdots 010}_{n})_3\\
         c_2=&(0.\underbrace{0\cdots 020}_{n})_3,\ d_2=(0.\underbrace{0\cdots 021}_{n})_3\\
         c_3=&(0.\underbrace{0\cdots 022}_{n})_3,\ d_3=(0.\underbrace{0\cdots 100}_{n})_3\\
-        c_4=&(0.\underbrace{0\cdots 110}_{n})_3,\ d_4=(0.\underbrace{0\cdots 201}_{n})_3\\
+        c_4=&(0.\underbrace{0\cdots 200}_{n})_3,\ d_4=(0.\underbrace{0\cdots 201}_{n})_3\\
         c_5=&(0.\underbrace{0\cdots 202}_{n})_3,\ d_5=(0.\underbrace{0\cdots 210}_{n})_3\\
         c_6=&(0.\underbrace{0\cdots 220}_{n})_3,\ d_6=(0.\underbrace{0\cdots 221}_{n})_3\\
         c_7=&(0.\underbrace{0\cdots 222}_{n})_3,\ d_7=(0.\underbrace{0\cdots 1000}_{n})_3\\
@@ -1593,7 +1614,7 @@ $a_1,b_1,\cdots,a_m,b_m$ 就是端点集
         e_1=&(0.\underbrace{0\cdots 021}_{n+1})_3,\ d_1=(0.\underbrace{0\cdots 022}_{n+1})_3\\
         c_2=&(0.\underbrace{0\cdots 020}_{n})_3,\ d_2=(0.\underbrace{0\cdots 021}_{n})_3\\
         c_3=&(0.\underbrace{0\cdots 022}_{n})_3,\ d_3=(0.\underbrace{0\cdots 100}_{n})_3\\
-        c_4=&(0.\underbrace{0\cdots 110}_{n})_3,\ d_4=(0.\underbrace{0\cdots 201}_{n})_3\\
+        c_4=&(0.\underbrace{0\cdots 200}_{n})_3,\ d_4=(0.\underbrace{0\cdots 201}_{n})_3\\
         c_5=&(0.\underbrace{0\cdots 202}_{n})_3,\ d_5=(0.\underbrace{0\cdots 210}_{n})_3\\
         c_6=&(0.\underbrace{0\cdots 220}_{n})_3,\ d_6=(0.\underbrace{0\cdots 221}_{n})_3\\
         c_7=&(0.\underbrace{0\cdots 222}_{n})_3,\ d_7=(0.\underbrace{0\cdots 1000}_{n})_3\\
