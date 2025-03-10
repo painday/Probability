@@ -1504,9 +1504,66 @@ Cantor 集 $C$ 定义为 $C=[0,1]\setminus\bigcup_n G_n,$ 其中 $G_1=(1/3,2/3),
 显然，$G_n$ 是两两不交的开集. 因而 Cantor 集 $C$ 为 Borel 集.
 
 Cantor 集的结构可用实数的三进制表示来描述. 不过实数的三进制表示也不是唯一的：${1\over 3}=0.1_3=(0.022222\cdots)_3.$ 然而，容易验证，$G_1$ 正是那些所有可能的三进制表示的小数点后第一位均为 $1$ 的那些 $[0,1]$ 中实数所做成的集合. 这是因为 $G_1=(1/3,2/3)$ 中元素大于 $3^{-1},$ 但小于 $2\times 3^{-1}.$ 
-类似地，$G_2$ 正是那些所有可能的三进制表示的小数点后第一位不为 $1,$ 但第二位为 $1$ 的那些实数所组成的集合. 这是因为 $G_2$ 与 $G_1$ 不交，而 $G_1=(1/9,2/9)\cup (7/9,8/9)$ 分别是所有可能的三进制表示的小数点后第一位为零，第二位为一和第一位为二，第二位为一的那些 $[0,1]$ 中实数所做成的集合.
 
-一般的，可以证明 
+一般的，可以证明
+\begin{equation}\label{structure of Cantor set}
+    \begin{aligned}
+        G_n =& \bigcup_{x_k}\left(\sum_{k=1}^{n} {x_k\over 3^k}, \sum_{k=1}^{n} {x_k\over 3^k}+{1\over 3^{n}}\right)
+    \end{aligned}
+\end{equation}
+其中 $x_k\in\{0,1,2\},\ x_1,\cdots,x_{n-1}\neq 1,\ x_n=1,$ 并且
+\begin{equation}
+    \bigcup_{k=0}^{n-1} G_k = \bigcup_{j=1}^{2^n-1}(a_j,b_j),\ n=2,3,4,\cdots
+\end{equation}
+并且 
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            a_j =& \sum_{k=1}^{n} {x_k\over 3^k},\\
+            b_j =& \sum_{k=1}^{n} {x_k\over 3^k}+{1\over 3^{n}}
+        \end{aligned}
+    \right.
+\end{equation}
+这里 
+
+$a_k$ 的递推关系为
+\begin{equation}
+    a_{2^k}={1\over 3^{n-k}},a_{2^k+1}=a_1+{2\over 3^{n-k}}, a_{2^k+2}=a_{2}+{2\over 3^{n-k}},\cdots,a_{2^{k+1}-1}=a_{2^{k}-1}+{2\over 3^{n-k}},\ k=0,1,2,3,\cdots
+\end{equation}
+类似可得
+\begin{equation}
+    b_{2^k}={2\over 3^{n-k}},b_{2^k+1}=b_1+{2\over 3^{n-k}}, b_{2^k+2}=b_{2}+{2\over 3^{n-k}},\cdots,b_{2^{k+1}-1}=b_{2^{k}-1}+{2\over 3^{n-k}},\ k=0,1,2,3,\cdots
+\end{equation}
+
+也即
+\begin{equation}
+    a_{2^{k+1}-j}-a_{2^k-j}={2\over 3^{n-k}},\ k=0,1,2,3,\cdots,n-1,\ j=1,2,3,\cdots,2^{k}-1
+\end{equation}
+因此只要 $k'<k$ 以及 $1<j<2^{k'},$ 那么就有
+\begin{equation}
+    a_{2^{k+1}-j}=a_{2^{k'}-j}+\sum_{i=k'}^k {2\over 3^{n-i}}=a_{2^{k'}-j}+\sum_{i=k'}^k {2\over 3^{n-i}}=(0.\underbrace{{0\cdots 0\overbrace{2\cdots 2}^{k-k'+1}}\overbrace{0\cdots 01}^{k'} }_{n}),\ k=0,1,2,\cdots,n-1
+\end{equation}
+也就是说，若 $j$ 的二进制表示为 $j=(j_1j_2\cdots j_{s})_2,$ 其中 $j_1\neq 0,\ 0<s<k,$ 
+记 $J_i:=(j_{s-i+1}\cdots j_s)_s,\ i=1,2,\cdots,s$ 那么就有
+\begin{equation}
+    a_{2^{k+1}-j}=a_{2^{s}-j}+\sum_{i=k'}^k {2\over 3^{n-i}}
+\end{equation}
+
+用 $a_{2^k+j}$ 的递推公式更好一些.
+
+
+
+若正整数 $1\leq m\leq 2^n-1$ 的二进制表示为 $m=(m_1m_2\cdots m_{s})_2,$ 其中 $m_1\neq 0,\ 0<s<n,$ 那么令 $k=s,\ j=2^{k+1}-m$ 即得
+\begin{equation}
+    a_m=a_{2^{s+1}-}
+\end{equation}
+
+那么就有
+\begin{equation}
+    a_m = a_{\sum_{j} 2^j}=a_{2^{j_{\max}}+\sum_{j\neq j_{\rm max}} 2^j}=
+\end{equation}
+
+\begin{comment}
 \begin{equation}\label{structure of Cantor set}
     \begin{aligned}
         G_n =& \bigcup_{x_k}\left(\sum_{k=1}^{n} {x_k\over 3^k}, \sum_{k=1}^{n} {x_k\over 3^k}+{1\over 3^{n}}\right)
@@ -1630,7 +1687,7 @@ $a_1,b_1,\cdots,a_m,b_m$ 就是端点集
         c_{2^n-1}=&(0.\underbrace{2\cdots 2222}_{n})_3,\ d_{2^n-1}=1
     \end{aligned}\right.
 \end{equation}
-
+\end{comment}
 
 \nocite{*}
 \bibliographystyle{plain}
