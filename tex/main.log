@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.16)  13 MAR 2025 23:49
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.16)  13 MAR 2025 23:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -968,17 +968,7 @@ Overfull \hbox (3.27101pt too wide) in paragraph at lines 1610--1612
 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 k[] [] k[]\OT1/cmr/m/n/12 0)[]\OML/cmm/m/it/12 ;  k \OT1/cmr/m/n/12 + 1 = (\OML/cmm/m/it/12 k[] [] k[]\OT1/cmr/m/n/12 1)[]\OML/cmm/m/it/12 :$ \TU/SimSun(0)/m/n/12 若 $\OML/cmm/m/it/12 q > \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ;$ \TU/SimSun(0)/m/n/12 则 有 $\OML/cmm/m/it/12 k \OT1/cmr/m/n/12 = ([] 0 [])[]\OML/cmm/m/it/12 ;  k \OT1/cmr/m/n/12 +
  []
 
-
-Overfull \hbox (68.21777pt too wide) in paragraph at lines 1613--1616
-[]\TU/SimSun(0)/m/n/12 那 么 就 有 $\OML/cmm/m/it/12 k \OT1/cmr/m/n/12 + 1 = ([] [] [])[]\OML/cmm/m/it/12 :$ \TU/SimSun(0)/m/n/12 此 时 $\OML/cmm/m/it/12 a[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] \OT1/cmr/m/n/12 1 [])[]\OML/cmm/m/it/12 ;  b[] \OT1/cmr/m/n/12 =
- []
-
-
-Overfull \hbox (24.31256pt too wide) in paragraph at lines 1613--1616
-\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 : [] []\OT1/cmr/m/n/12 )[]\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 2\OML/cmm/m/it/12 b[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] \OT1/cmr/m/n/12 1 [] 1)[]\OML/cmm/m/it/12 ;$ \TU/SimSun(0)/m/n/12 因 此 $[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] [] \OT1/cmr/m/n/12 1)[]\OML/cmm/m/it/12 :$ 
- []
-
-[50] Excluding 'comment' comment. (./main.bbl [51]) [52
+Excluding 'comment' comment. (./main.bbl [50]) [51
 
 ] (./main.aux)
  ***********
@@ -997,4 +987,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  103i,16n,107p,727b,2131s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (56 pages, 544164 bytes).
+Output written on main.xdv (55 pages, 542120 bytes).
