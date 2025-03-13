@@ -1497,7 +1497,7 @@ Cantor 集提供了分析中的许多反例. 其中最重要的一条恐怕就�
 Cantor 集 $C$ 定义为 $C=[0,1]\setminus\bigcup_n G_n,$ 其中 $G_1=(1/3,2/3),$ 而对于 $n>1,$ $G_n$ 被归纳地定义为集合 $[0,1]\setminus\bigcup_{k=1}^{n-1} G_k$ 中各个小区间的 1/3 中部的开区间之并集. 换言之，
 设 $G_1,G_2,\cdots,G_{n-1}$ 为开区间 $(a_1,b_1),\cdots,(a_m,b_m)$ 之并集，其中 $a_1<b_1<\cdots<a_m<b_m,$ 那么就有
 \begin{equation}\label{Cantor set induction def}
-    G_n=\bigcup_{k=0}^{m} \left({2c_k+d_k\over 3},{c_k+2d_k\over 3}\right)
+    G_n=\bigcup_{k=0}^{m} \left(e_k,f_k\right)=\bigcup_{k=0}^{m} \left({2c_k+d_k\over 3},{c_k+2d_k\over 3}\right)
 \end{equation}
 其中 $c_1=0, d_0=a_1,\ c_m=b_m, d_{m}=1,$ 而对于 $1\leq k\leq m-1,$ 有 $c_k=b_k,\ d_k=a_{k+1}.$
 
@@ -1527,7 +1527,7 @@ Cantor 集的结构可用实数的三进制表示来描述. 不过实数的三�
 这里 
 
 $a_k$ 的递推关系为
-\begin{equation}
+\begin{equation}\label{a_k recurrence relation}
     a_{2^k}={1\over 3^{n-k}},a_{2^k+1}=a_1+{2\over 3^{n-k}}, a_{2^k+2}=a_{2}+{2\over 3^{n-k}},\cdots,a_{2^{k+1}-1}=a_{2^{k}-1}+{2\over 3^{n-k}},\ k=0,1,2,3,\cdots
 \end{equation}
 类似可得
@@ -1562,6 +1562,59 @@ $a_k$ 的递推关系为
 \begin{equation}
     a_m = a_{\sum_{j} 2^j}=a_{2^{j_{\max}}+\sum_{j\neq j_{\rm max}} 2^j}=
 \end{equation}
+
+式 \eqref{a_k recurrence relation} 可以写为
+\begin{equation}
+    a_{2^k+j} = a_{j}+{2\over 3^{n-k}},\ k=0,1,2,\cdots,n-1,\ j=1,2,\cdots,2^k-1
+\end{equation}
+因此若 $m=2^{k_1}+ 2^{k_2}+\cdots+2^{k_s},$ 其中 $0\leq k_1<k_2<\cdots<k_s<n,$  那么当 $s>1$ 时就有
+\begin{equation}
+    \begin{aligned}
+        a_m = a_{2^{k_s}+2^{k_{s-1}}+\cdots+2^{k_1}}=&a_{2^{k_{s-1}}+\cdots+2^{k_1}}+{2\over 3^{n-k_s}}\\
+        =&a_{2^{k_{s-2}}+\cdots+2^{k_1}}+{2\over 3^{n-k_{s-1}}}+{2\over 3^{n-k_s}}\\
+        =&\cdots\\
+        =&a_{2^{k_1}}+{2\over 3^{n-k_2}}+\cdots+{2\over 3^{n-k_s}}\\
+        =&{1\over 3^{n-k_1}}+\sum_{j=2}^s {2\over 3^{n-k_j}}
+    \end{aligned}
+\end{equation}
+以及
+\begin{equation}
+    \begin{aligned}
+        b_m = b_{2^{k_s}+2^{k_{s-1}}+\cdots+2^{k_1}}=&b_{2^{k_{s-1}}+\cdots+2^{k_1}}+{2\over 3^{n-k_s}}\\
+        =&b_{2^{k_{s-2}}+\cdots+2^{k_1}}+{2\over 3^{n-k_{s-1}}}+{2\over 3^{n-k_s}}\\
+        =&\cdots\\
+        =&b_{2^{k_1}}+{2\over 3^{n-k_2}}+{2\over 3^{n-k_s}}\\
+        =&\sum_{j=1}^s {2\over 3^{n-k_j}}
+    \end{aligned}
+\end{equation}
+
+总之，定义函数 $f:\mathbb N\to\mathbb N\cup\{0\}$ 将正整数映射为其二进制表示的最低非零位，以及 $g:\mathbb N\to \mathbb R$ 为 $\sum_j m_j 2^j\mapsto \sum_j {2m_j\over 3^{n-j}},$ 那么
+对每一个 $1\leq k\leq 2^n-1$ 均有
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            a_k =& g(k)-{1\over 3^{n-f(k)}},\\
+            b_k =& g(k)
+        \end{aligned}
+    \right.
+\end{equation}
+
+由此可见端点集 $\{a_k\}_{1\leq k\leq 2^n-1}$ 恰好等于一切最后一位为 $1,$ 其余位均不为 $1$ 的不超过 $n$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{s-1}1)_3\ (0<s<n)$ 之全体所做成的集合. 类似地，端点集 $\{b_k\}_{1\leq k\leq 2^{n}-1}$ 
+恰好等于每一位都不为 $1$ 的不超过 $n$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{s-1}m_s)_3\ (0<s<n)$ 之全体所做成的集合.
+
+下面只需证明 ${2b_k+a_{k+1}\over 3}$ 一定是最后一位为 $1,$ 其余位均不为 $1$ 的位数为 $n+1$ 的 $3$ 进制正小数即可. 事实上，设 
+$k=(k_s\cdots k_1 k_{0})_2,$ 其中 $0\leq s<n,\ k_s\neq 0.$ 若 $k_{0},\cdots,k_s$ 均为 $1,$ 那么就有 $k+1=(1\underbrace{0\cdots 0}_{s+1})_2.$
+此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{0\cdots 0}_{s+1})_3,\ b_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1})_3,\ 2b_k=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{2\cdots 2}_{s}1)_3,$ 因此 
+${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1}1)_3.$
+
+否则，令 $q$ 为满足 $k_j=0$ 的最小指标 $j,$ 那么若 $q=0,$ 则有 $k=(k_s\cdots k_10)_2,\ k+1=(k_s \cdots k_1 1)_2.$
+若 $q>0,$ 则有 $k=(\underbrace{k_s\cdots k_{q+1}}_{s-q}0\underbrace{1\cdots 1}_{q})_2,\ k+1=(\underbrace{k_s\cdots k_{q+1}}_{s-q}1\underbrace{0\cdots 0}_{q})_2.$
+
+那么就有 $k+1=(\underbrace{k_s\cdots k_{q+1}}_{s-q}\underbrace{10\cdots 0}_{q-t} \underbrace{k_t\cdots k_0}_{t+1})_2.$ 
+此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{k_t\cdots k_0}_{t+1})_3,\ b_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1})_3,\ 2b_k=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{2\cdots 2}_{s}1)_3,$ 因此 
+${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1}1)_3.$
+
+
 
 \begin{comment}
 \begin{equation}\label{structure of Cantor set}
