@@ -1601,15 +1601,37 @@ $a_k$ 的递推关系为
 
 由此可见端点集 $\{a_k\}_{1\leq k\leq 2^n-1}$ 恰好等于一切最后一位为 $1,$ 其余位均不为 $1$ 的不超过 $n$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{s-1}1)_3\ (0<s<n)$ 之全体所做成的集合. 类似地，端点集 $\{b_k\}_{1\leq k\leq 2^{n}-1}$ 
 恰好等于每一位都不为 $1$ 的不超过 $n$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{s-1}m_s)_3\ (0<s<n)$ 之全体所做成的集合.
+自然，记 $b_k$ 的 $3$ 进制小数位数为 $s=h(b_k),$ 那么就有 
+\begin{equation}
+    a_k = b_k-{s\over 3^{s}}=g(k)-{h\circ g(k )\over 3^s}
+\end{equation}
+
 
 下面只需证明 ${2b_k+a_{k+1}\over 3}$ 一定是最后一位为 $1,$ 其余位均不为 $1$ 的位数为 $n+1$ 的 $3$ 进制正小数即可. 事实上，设 
 $k=(k_s\cdots k_1 k_{0})_2,$ 其中 $0\leq s<n,\ k_s\neq 0.$ 若 $k_{0},\cdots,k_s$ 均为 $1,$ 那么就有 $k+1=(1\underbrace{0\cdots 0}_{s+1})_2.$
 此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{0\cdots 0}_{s+1})_3,\ b_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1})_3,\ 2b_k=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{2\cdots 2}_{s}1)_3,$ 因此 
-${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1}1)_3.$
+${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1}1)_3.$ 
 
-否则，令 $q$ 为满足 $k_j=0$ 的最小指标 $j,$ 那么若 $q=0,$ 则有 $k=(k_s\cdots k_10)_2,\ k+1=(k_s \cdots k_1 1)_2.$
-若 $q>0,$ 则有 $k=(\underbrace{k_s\cdots k_{q+1}}_{s-q}0\underbrace{1\cdots 1}_{q})_2,\ k+1=(\underbrace{k_s\cdots k_{q+1}}_{s-q}1\underbrace{0\cdots 0}_{q})_2.$
 
+还需要讨论 $k_0=1,k_1=0$ 的情况. 此时就有
+
+
+否则，令 $q$ 为满足 $k_j=k_{j-1}=\cdots=k_0=0$ 的最大指标 $j,$ 那么就有 $k=(\underbrace{k_s\cdots k_{q+2} 1}_{s-q}\underbrace{0\cdots 0}_{q+1})_2,\ k+1=(\underbrace{k_s\cdots k_{q+2}1}_{s-q}\underbrace{0\cdots 01}_{q+1})_2.$
+
+此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_{q+2}]2}_{s-q}\underbrace{0\cdots 01}_{q+1})_3, \ b_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_{q+2}]2}_{s-q}\underbrace{0\cdots 0}_{q+1})_3,$
+注意到 $k_s=1,$ 因此 $2b_k=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{[k_s+k_{s-1}][k_{s-1}+k_{s-2}]\cdots [k_{q+2}+k_{q+1}]1}_{s-q}\underbrace{0\cdots 0}_{q+1})_3,$ 因此 
+${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}[1+k_s]\underbrace{[2k_{s-1}][2k_{s-2}]\cdots [2k_{q+2}][k_{q+1}+1]}_{s-q}\underbrace{0\cdots 01}_{q+1})_3,$ 也即
+\begin{equation}
+    e_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s][2k_{s-1}][2k_{s-2}]\cdots [2k_{q+2}][2k_{q+1}]}_{s-q+1}\underbrace{0\cdots 01}_{q+1})_3
+\end{equation}
+也就是说，对于任意的 $1\leq k\leq 2^{n}-1,$ 均有(在 $k$ 的二进制位全为 $1$ 时约定 $q=0$)
+\begin{equation}
+    e_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s][2k_{s-1}][2k_{s-2}]\cdots [2k_{q+2}][2k_{q+1}]}_{s-q+1}\underbrace{0\cdots 01}_{q+1})_3={a_{k+1}\over 3}
+\end{equation}
+成立. 自然，有
+\begin{equation}
+    f_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s][2k_{s-1}][2k_{s-2}]\cdots [2k_{q+2}][2k_{q+1}]}_{s-q+1}\underbrace{0\cdots 02}_{q+1})_3={b_{k+1}\over 3}
+\end{equation}
 
 
 \begin{comment}
