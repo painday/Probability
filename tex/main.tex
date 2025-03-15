@@ -1612,11 +1612,13 @@ $k=(k_s\cdots k_1 k_{0})_2,$ 其中 $0\leq s<n,\ k_s\neq 0.$ 若 $k_{0},\cdots,k
 此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{0\cdots 0}_{s+1})_3,\ b_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1})_3,\ 2b_k=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{2\cdots 2}_{s}1)_3,$ 因此 
 ${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1}1)_3.$ 
 
+接下来设 $k_0,\cdots,k_s$ 不全为 $1.$ 首先考虑 $k_0=1$ 的情况. 此时，若 $k_1=0,$
+那么就有 $k+1=(\underbrace{k_s\cdots k_2}_{s-1}10)_2.$
+此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_2]}_{s-1}10)_3,\ b_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_2]}_{s-1}02)_3,\ 2b_k=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{[k_s+k_{s-1}]\cdots [k_2+k_1]}_{s-1}11)_3,$ 因此 
+${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_2]0}_{s}21)_3={b_{k}\over 3}+{1\over 3^{n+1}}.$ 
 
-还需要讨论 $k_0=1,k_1=0$ 的情况. 此时就有
 
-
-否则，令 $q$ 为满足 $k_j=k_{j-1}=\cdots=k_0=0$ 的最大指标 $j,$ 那么就有 $k=(\underbrace{k_s\cdots k_{q+2} 1}_{s-q}\underbrace{0\cdots 0}_{q+1})_2,\ k+1=(\underbrace{k_s\cdots k_{q+2}1}_{s-q}\underbrace{0\cdots 01}_{q+1})_2.$
+否则，$k_1=0,$ 那么令 $q$ 为满足 $k_j=k_{j-1}=\cdots=k_0=0$ 的最大指标 $j,$ 则有 $j>1,$ 并且有 $k=(\underbrace{k_s\cdots k_{q+2} 1}_{s-q}\underbrace{0\cdots 0}_{q+1})_2,\ k+1=(\underbrace{k_s\cdots k_{q+2}1}_{s-q}\underbrace{0\cdots 01}_{q+1})_2.$
 
 此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_{q+2}]2}_{s-q}\underbrace{0\cdots 01}_{q+1})_3, \ b_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_{q+2}]2}_{s-q}\underbrace{0\cdots 0}_{q+1})_3,$
 注意到 $k_s=1,$ 因此 $2b_k=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{[k_s+k_{s-1}][k_{s-1}+k_{s-2}]\cdots [k_{q+2}+k_{q+1}]1}_{s-q}\underbrace{0\cdots 0}_{q+1})_3,$ 因此 
@@ -1632,6 +1634,21 @@ ${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}[1+k_s]\underbrace{[2k_{
 \begin{equation}
     f_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s][2k_{s-1}][2k_{s-2}]\cdots [2k_{q+2}][2k_{q+1}]}_{s-q+1}\underbrace{0\cdots 02}_{q+1})_3={b_{k+1}\over 3}
 \end{equation}
+
+一般地，
+\begin{equation}
+    a_{k+1}=a_k+{1\over 3^{n}}+{1\over 3^{n-f(k)}}=b_k+{1\over 3^n}
+\end{equation}
+因此
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            e_k =& b_k+{1\over 3^{n+1}},\\
+            f_k =& b_k+{2\over 3^{n+1}}
+        \end{aligned}
+    \right.
+\end{equation}
+因而 $e_k$ 遍历了一切最后一位为 $1,$ 其余位均不为 $1$ 的不超过 $n+1$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{s-1}m_s1)_3\ (0<s<n).$ 这就证明了结论.
 
 
 \begin{comment}
