@@ -1511,19 +1511,23 @@ Cantor 集的结构可用实数的三进制表示来描述. 不过实数的三�
         G_n =& \bigcup_{x_k}\left(\sum_{k=1}^{n} {x_k\over 3^k}, \sum_{k=1}^{n} {x_k\over 3^k}+{1\over 3^{n}}\right)
     \end{aligned}
 \end{equation}
-其中 $x_k\in\{0,1,2\},\ x_1,\cdots,x_{n-1}\neq 1,\ x_n=1,$ 并且
+其中 $x_k\in\{0,1,2\},$ 并且 $x_n$ 必定为 $1,$ 其余项都不等于 $1.$ 
 \begin{equation}
-    \bigcup_{k=0}^{n-1} G_k = \bigcup_{j=1}^{2^n-1}(a_j,b_j),\ n=2,3,4,\cdots
+    \bigcup_{k=1}^{n-1} G_k = \bigcup_{j=1}^{2^{n-1}-1}(a_j,b_j),\ n=2,3,4,\cdots
 \end{equation}
-并且 
-\begin{equation}
+并且对于任意的 $1\leq k\leq m=2^{n-1}-1,$ 若 $k$ 的二进制表示为 $k=\sum_{j=0}^s k_j2^j=(k_s\cdots k_1k_0)_2,$ 其中 $1\leq s<n,\ k_j\in\{0,1\},\ k_s=1,$ 那么就有
+\begin{equation}\label{endpoints of Cantor set}
     \left\{
         \begin{aligned}
-            a_j =& \sum_{k=1}^{n} {x_k\over 3^k},\\
-            b_j =& \sum_{k=1}^{n} {x_k\over 3^k}+{1\over 3^{n}}
+            a_k =&\sum_{j=r+1}^s {2k_j\over 3^{n'-j}}+{1\over 3^{n'-r}}=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{[2k_s][2k_{s-1}]\cdots [2k_{r+1}]}_{s}1)_3\\
+            b_k =&\sum_{j=0}^s {2k_j\over 3^{n'-j}}=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{[2k_s][2k_{s-1}]\cdots [2k_{0}]}_{s+1})_3=a_k+{1\over 3^{n'-r}}
         \end{aligned}
     \right.
 \end{equation}
+其中 $n'=n-1,\ 0\leq r\leq s$ 为满足 $k_r\neq 0$ 的最小指标.
+
+
+\begin{comment}
 这里 
 
 $a_k$ 的递推关系为
@@ -1598,57 +1602,47 @@ $a_k$ 的递推关系为
         \end{aligned}
     \right.
 \end{equation}
+\end{comment}
 
-由此可见端点集 $\{a_k\}_{1\leq k\leq 2^n-1}$ 恰好等于一切最后一位为 $1,$ 其余位均不为 $1$ 的不超过 $n$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{s-1}1)_3\ (0<s<n)$ 之全体所做成的集合. 类似地，端点集 $\{b_k\}_{1\leq k\leq 2^{n}-1}$ 
-恰好等于每一位都不为 $1$ 的不超过 $n$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{s-1}m_s)_3\ (0<s<n)$ 之全体所做成的集合.
-自然，记 $b_k$ 的 $3$ 进制小数位数为 $s=h(b_k),$ 那么就有 
-\begin{equation}
-    a_k = b_k-{s\over 3^{s}}=g(k)-{h\circ g(k )\over 3^s}
-\end{equation}
+可以看到，式 \eqref{structure of Cantor set} 是说 $G_n$ 中开区间的端点集 $\{e_k\}_{1\leq k\leq 2^{n'}-1}$ 恰好等于最后一位为 $1,$ 其余位均不为 $1$ 的 $n$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{n-1}m_n)_3$ 之全体所做成的集合.
+而式 \eqref{endpoints of Cantor set} 就是说，$\bigcup_{k=1}^{n-1}G_k$ 中开区间的端点集 $\{a_k\}_{1\leq k\leq 2^{n'}-1}$ 恰好等于一切最后一位为 $1,$ 其余位均不为 $1$ 的不超过 $n'$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{s-1}1)_3\ (0<s<n)$ 之全体所做成的集合. 类似地，端点集 $\{b_k\}_{1\leq k\leq 2^{n'}-1}$ 
+恰好等于每一位都不为 $1$ 的不超过 $n'$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{s-1}m_s)_3\ (0<s<n)$ 之全体所做成的集合.
 
+下面用归纳法来证明 \eqref{structure of Cantor set} 和 \eqref{endpoints of Cantor set} 式. 当 $n=2$ 时，结论显然成立. 设结论对 $n\leq u$ 成立，往证结论在 $n=u+1$ 时成立.
 
-下面只需证明 ${2b_k+a_{k+1}\over 3}$ 一定是最后一位为 $1,$ 其余位均不为 $1$ 的位数为 $n+1$ 的 $3$ 进制正小数即可. 事实上，设 
+只需证明 ${2b_k+a_{k+1}\over 3}$ 一定是最后一位为 $1,$ 其余位均不为 $1$ 的位数为 $n+1$ 的 $3$ 进制正小数即可. 事实上，设 
 $k=(k_s\cdots k_1 k_{0})_2,$ 其中 $0\leq s<n,\ k_s\neq 0.$ 若 $k_{0},\cdots,k_s$ 均为 $1,$ 那么就有 $k+1=(1\underbrace{0\cdots 0}_{s+1})_2.$
-此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{0\cdots 0}_{s+1})_3,\ b_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1})_3,\ 2b_k=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{2\cdots 2}_{s}1)_3,$ 因此 
-${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{2\cdots 2}_{s+1}1)_3.$ 
+此时由归纳假设可知 $\bigcup_{k=1}^{n-1}G_k$ 的端点集满足 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n'-s-2}1\underbrace{0\cdots 0}_{s+1})_3,\ b_k=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{2\cdots 2}_{s+1})_3,\ 2b_k=(0.\underbrace{0\cdots 0}_{n'-s-2}1\underbrace{2\cdots 2}_{s}1)_3,$ 因此 
+${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{2\cdots 2}_{s+1}1)_3=b_k+{1\over 3^{n}}.$ 
+也就是说，$G_n$ 的端点集满足 $e_k=b_k+{1\over 3^n}.$
 
 接下来设 $k_0,\cdots,k_s$ 不全为 $1.$ 首先考虑 $k_0=1$ 的情况. 此时，若 $k_1=0,$
 那么就有 $k+1=(\underbrace{k_s\cdots k_2}_{s-1}10)_2.$
-此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_2]}_{s-1}10)_3,\ b_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_2]}_{s-1}02)_3,\ 2b_k=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{[k_s+k_{s-1}]\cdots [k_2+k_1]}_{s-1}11)_3,$ 因此 
-${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_2]0}_{s}21)_3={b_{k}\over 3}+{1\over 3^{n+1}}.$ 
+此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{[2k_s]\cdots [2k_2]}_{s-1}10)_3,\ b_k=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{[2k_s]\cdots [2k_2]}_{s-1}02)_3,\ 2b_k=(0.\underbrace{0\cdots 0}_{n'-s-2}1\underbrace{[k_s+k_{s-1}]\cdots [k_2+k_1]}_{s-1}11)_3,$ 因此 
+${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{[2k_s]\cdots [2k_2]0}_{s}21)_3={b_{k}}+{1\over 3^{n}}.$ 
+
+另一方面，若 $k_1=1,$ 那么令 $t$ 为满足 $k_1=k_2=\cdots =k_j=1$ 的最大指标 $j,$ 那么 $1\leq j<s-1,\ k_{t+1}=0,$ 并且有 $k+1=(\underbrace{k_s\cdots k_{t+2}}_{s-t-1}1\underbrace{0\cdots 0}_{t+1}).$
+此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{[2k_s]\cdots [2k_{t+2}]}_{s-t-1}1\underbrace{0\cdots 0}_{t+1})_3,\ b_k=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{[2k_s]\cdots [2k_{t+2}]}_{s-t-1}0\underbrace{2\cdots 2}_{t+1})_3,\ 2b_k=(0.\underbrace{0\cdots 0}_{n'-s-2}1\underbrace{[k_s+k_{s-1}]\cdots [k_{t+2}+k_{t+1}]}_{s-t-1}1\underbrace{2\cdots 21}_{t+1})_3,$ 因此 
+\begin{equation}
+    {2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{[2k_s]\cdots [2k_{t+2}]0}_{s-t-1}\underbrace{2\cdots 21}_{t+2})_3={b_{k}}+{1\over 3^{n}}
+\end{equation}
 
 
-否则，$k_1=0,$ 那么令 $q$ 为满足 $k_j=k_{j-1}=\cdots=k_0=0$ 的最大指标 $j,$ 则有 $j>1,$ 并且有 $k=(\underbrace{k_s\cdots k_{q+2} 1}_{s-q}\underbrace{0\cdots 0}_{q+1})_2,\ k+1=(\underbrace{k_s\cdots k_{q+2}1}_{s-q}\underbrace{0\cdots 01}_{q+1})_2.$
+接下来考虑 $k_0=0$ 的情况. 此时令 $q$ 为满足 $k_j=k_{j-1}=\cdots=k_0=0$ 的最大指标 $j,$ 则有 $q\geq 0,\ k_{q+1}=1,$ 并且有 $k=(\underbrace{k_s\cdots k_{q+2} 1}_{s-q}\underbrace{0\cdots 0}_{q+1})_2,\ k+1=(\underbrace{k_s\cdots k_{q+2}1}_{s-q}\underbrace{0\cdots 01}_{q+1})_2.$
 
-此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_{q+2}]2}_{s-q}\underbrace{0\cdots 01}_{q+1})_3, \ b_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s]\cdots [2k_{q+2}]2}_{s-q}\underbrace{0\cdots 0}_{q+1})_3,$
-注意到 $k_s=1,$ 因此 $2b_k=(0.\underbrace{0\cdots 0}_{n-s-2}1\underbrace{[k_s+k_{s-1}][k_{s-1}+k_{s-2}]\cdots [k_{q+2}+k_{q+1}]1}_{s-q}\underbrace{0\cdots 0}_{q+1})_3,$ 因此 
-${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n-s-1}[1+k_s]\underbrace{[2k_{s-1}][2k_{s-2}]\cdots [2k_{q+2}][k_{q+1}+1]}_{s-q}\underbrace{0\cdots 01}_{q+1})_3,$ 也即
-\begin{equation}
-    e_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s][2k_{s-1}][2k_{s-2}]\cdots [2k_{q+2}][2k_{q+1}]}_{s-q+1}\underbrace{0\cdots 01}_{q+1})_3
-\end{equation}
-也就是说，对于任意的 $1\leq k\leq 2^{n}-1,$ 均有(在 $k$ 的二进制位全为 $1$ 时约定 $q=0$)
-\begin{equation}
-    e_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s][2k_{s-1}][2k_{s-2}]\cdots [2k_{q+2}][2k_{q+1}]}_{s-q+1}\underbrace{0\cdots 01}_{q+1})_3={a_{k+1}\over 3}
-\end{equation}
-成立. 自然，有
-\begin{equation}
-    f_k=(0.\underbrace{0\cdots 0}_{n-s-1}\underbrace{[2k_s][2k_{s-1}][2k_{s-2}]\cdots [2k_{q+2}][2k_{q+1}]}_{s-q+1}\underbrace{0\cdots 02}_{q+1})_3={b_{k+1}\over 3}
-\end{equation}
+此时 $a_{k+1}=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{[2k_s]\cdots [2k_{q+2}]2}_{s-q}\underbrace{0\cdots 01}_{q+1})_3, \ b_k=(0.\underbrace{0\cdots 0}_{n'-s-1}\underbrace{[2k_s]\cdots [2k_{q+2}]2}_{s-q}\underbrace{0\cdots 0}_{q+1})_3,$
+注意到 $k_s=1,$ 因此 $2b_k=(0.\underbrace{0\cdots 0}_{n'-s-2}1\underbrace{[k_s+k_{s-1}][k_{s-1}+k_{s-2}]\cdots [k_{q+2}+k_{q+1}]1}_{s-q}\underbrace{0\cdots 0}_{q+1})_3,$ 因此 
+${2b_k+a_{k+1}\over 3}=(0.\underbrace{0\cdots 0}_{n'-s-1}[1+k_s]\underbrace{[2k_{s-1}][2k_{s-2}]\cdots [2k_{q+2}][k_{q+1}+1]}_{s-q}\underbrace{0\cdots 01}_{q+1})_3=b_k+{1\over 3^{n}}.$ 
 
-一般地，
+也就是说，对于任意的 $0\leq k\leq 2^{n'}-1,$ 均有(约定 $b_0=0$)
 \begin{equation}
-    a_{k+1}=a_k+{1\over 3^{n}}+{1\over 3^{n-f(k)}}=b_k+{1\over 3^n}
+    e_k=b_k+{1\over 3^n}
 \end{equation}
-因此
+类似地可以证明
 \begin{equation}
-    \left\{
-        \begin{aligned}
-            e_k =& b_k+{1\over 3^{n+1}},\\
-            f_k =& b_k+{2\over 3^{n+1}}
-        \end{aligned}
-    \right.
+    f_k=b_k+{2\over 3^n}
 \end{equation}
-因而 $e_k$ 遍历了一切最后一位为 $1,$ 其余位均不为 $1$ 的不超过 $n+1$ 位的 $3$ 进制正小数 $(0.m_1m_2\cdots m_{s-1}m_s1)_3\ (0<s<n).$ 这就证明了结论.
+因而 $e_k$ 遍历了一切最后一位为 $1,$ 其余位均不为 $1$ 的 $n$ 位 $3$ 进制正小数 $(0.m_1m_2\cdots m_{n-1}1)_3\ (0<s<n),$ 以及 $f_k$ 遍历了一切每一位都不为 $1$ 且最后一位为 $2$ 的 $n$ 位 $3$ 进制小数 $(0.m_1m_2\cdots m_{n-1}m_n)_3\ (0<s<n).$ 这表明结论 \eqref{structure of Cantor set} 和 \eqref{endpoints of Cantor set} 在 $n=u+1$ 时成立，从而完成了证明.
 
 
 \begin{comment}
