@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.16)  15 MAR 2025 16:00
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.16)  16 MAR 2025 00:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -948,37 +948,62 @@ Overfull \hbox (10.64572pt too wide) detected at line 1277
 [][][]\OML/cmm/m/it/12 ^^V\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C \OMS/cmsy/m/n/12 [ \OML/cmm/m/it/12 D \OMS/cmsy/m/n/12 [ \OML/cmm/m/it/12 E\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 ^^V\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^V\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 D\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^V\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 E\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^V\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C \OMS/cmsy/m/n/12 \ \OML/cmm/m/it/12 D\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^V\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C \OMS/cmsy/m/n/12 \ \OML/cmm/m/it/12 E\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^V\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 D \OMS/cmsy/m/n/12 \ \OML/cmm/m/it/12 E\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^V\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C \OMS/cmsy/m/n/12 \ \OML/cmm/m/it/12 D \OMS/cmsy/m/n/12 \ \OML/cmm/m/it/12 E\OT1/cmr/m/n/12 )
  []
 
-[40] [41] [42] [43] [44] [45] [46] [47] Excluding 'comment' comment.
-Overfull \hbox (3.18904pt too wide) in paragraph at lines 1607--1610
+[40] [41] [42] [43] [44] [45] [46] [47] Excluding 'comment' comment. [48]
+Overfull \hbox (3.18904pt too wide) in paragraph at lines 1617--1620
 \TU/SimSun(0)/m/n/12 最 后 一 位 为 $\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ;$ \TU/SimSun(0)/m/n/12 其 余 位 均 不 为 $\OT1/cmr/m/n/12 1$ \TU/SimSun(0)/m/n/12 的 $\OML/cmm/m/it/12 n$ \TU/SimSun(0)/m/n/12 位 的 $\OT1/cmr/m/n/12 3$ \TU/SimSun(0)/m/n/12 进 制 正 小 数 $\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 :m[]m[] [] m[]m[]\OT1/cmr/m/n/12 )[]$
  []
 
-[48]
-Overfull \hbox (33.52078pt too wide) in paragraph at lines 1613--1618
+
+Overfull \hbox (33.52078pt too wide) in paragraph at lines 1623--1628
 \OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 : [] []\OT1/cmr/m/n/12 )[]\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 2\OML/cmm/m/it/12 b[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] \OT1/cmr/m/n/12 1 [] 1)[]\OML/cmm/m/it/12 ;$ \TU/SimSun(0)/m/n/12 因 此 $[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] [] \OT1/cmr/m/n/12 1)[] =
  []
 
 
-Overfull \hbox (0.64954pt too wide) in paragraph at lines 1619--1623
+Overfull \hbox (0.64954pt too wide) in paragraph at lines 1629--1633
 \TU/SimSun(0)/m/n/12 那 么 就 有 $\OML/cmm/m/it/12 k \OT1/cmr/m/n/12 + 1 = ([] 10)[]\OML/cmm/m/it/12 :$ \TU/SimSun(0)/m/n/12 此 时 $\OML/cmm/m/it/12 a[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] [] \OT1/cmr/m/n/12 10)[]\OML/cmm/m/it/12 ;  b[] \OT1/cmr/m/n/12 =
  []
 
 
-Overfull \hbox (58.72041pt too wide) in paragraph at lines 1624--1626
+Overfull \hbox (58.72041pt too wide) in paragraph at lines 1634--1636
 \OML/cmm/m/it/12 a[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] [] \OT1/cmr/m/n/12 1 [])[]\OML/cmm/m/it/12 ;  b[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] [] \OT1/cmr/m/n/12 0 [])[]\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 2\OML/cmm/m/it/12 b[] \OT1/cmr/m/n/12 =
  []
 
-
-Overfull \hbox (80.13875pt too wide) in paragraph at lines 1633--1636
+[49]
+Overfull \hbox (80.13875pt too wide) in paragraph at lines 1643--1646
 []\TU/SimSun(0)/m/n/12 此 时 $\OML/cmm/m/it/12 a[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] [] []\OT1/cmr/m/n/12 )[]\OML/cmm/m/it/12 ;  b[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] [] []\OT1/cmr/m/n/12 )[]\OML/cmm/m/it/12 ;$
  []
 
 
-Overfull \hbox (49.5239pt too wide) in paragraph at lines 1633--1636
+Overfull \hbox (49.5239pt too wide) in paragraph at lines 1643--1646
 \TU/SimSun(0)/m/n/12 注 意 到 $\OML/cmm/m/it/12 k[] \OT1/cmr/m/n/12 = 1\OML/cmm/m/it/12 ;$ \TU/SimSun(0)/m/n/12 因 此 $\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 b[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 : [] \OT1/cmr/m/n/12 1 [] [])[]\OML/cmm/m/it/12 ;$
  []
 
-[49] Excluding 'comment' comment. [50] (./main.bbl [51]) [52
+Excluding 'comment' comment. [50] [51]
+Overfull \hbox (36.42908pt too wide) detected at line 1859
+[][][]\OT1/cmr/m/n/12 ^^C : [0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1] \OMS/cmsy/m/n/12 ! \OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1]\OML/cmm/m/it/12 ;  x \OMS/cmsy/m/n/12 7! []
+ []
+
+[52] [53] [54]
+Overfull \hbox (1.9513pt too wide) detected at line 1919
+[][][]\OT1/cmr/m/n/12 ^^C(\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = [] [] \OMS/cmsy/m/n/12 ^^T [] [] \OT1/cmr/m/n/12 + [] \OMS/cmsy/m/n/12 ^^T [] [] \OML/cmm/m/it/12 < [] [] \OT1/cmr/m/n/12 + [] = ^^C(\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 )
+ []
+
+
+Overfull \hbox (16.16333pt too wide) in paragraph at lines 1931--1937
+\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 : [] []\OT1/cmr/m/n/12 )[]$ \TU/SimSun(0)/m/n/12 以 及 $\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 :b[]b[] [] b[]b[]\OT1/cmr/m/n/12 )[] + 3[] = (0\OML/cmm/m/it/12 : [] []\OT1/cmr/m/n/12 )[]\OML/cmm/m/it/12 ;$
+ []
+
+[55]
+Overfull \hbox (2.14586pt too wide) detected at line 1944
+[][][]\OT1/cmr/m/n/12 ^^C(\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = [] [] + [] \OMS/cmsy/m/n/12 ^^T [] [] \OT1/cmr/m/n/12 + [] \OMS/cmsy/m/n/12 ^^T [] [] ^^T [] [] \OT1/cmr/m/n/12 = ^^C(\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 )
+ []
+
+
+Overfull \hbox (55.6219pt too wide) detected at line 1948
+[][][]\OT1/cmr/m/n/12 ^^C(\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = [] [] + [] \OMS/cmsy/m/n/12 ^^T [] [] \OT1/cmr/m/n/12 + [] \OMS/cmsy/m/n/12 ^^T [] [] \OT1/cmr/m/n/12 + [] \OMS/cmsy/m/n/12 ^^T [] [] \OT1/cmr/m/n/12 + [] [] = ^^C(\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 )
+ []
+
+(./main.bbl [56]) [57
 
 ] (./main.aux)
  ***********
@@ -986,15 +1011,15 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 30B2B2836243A116611CF1CA3CDA9B78;1352.
+(rerunfilecheck)             Checksum: AB676D5642F5F1EE9F228125A392B569;1463.
  ) 
 Here is how much of TeX's memory you used:
- 37175 strings out of 474773
- 923557 string characters out of 5761289
- 1948842 words of memory out of 5000000
- 58705 multiletter control sequences out of 15000+600000
+ 37176 strings out of 474773
+ 923603 string characters out of 5761289
+ 1945842 words of memory out of 5000000
+ 58706 multiletter control sequences out of 15000+600000
  575795 words of font info for 129 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 103i,15n,107p,727b,2131s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,17n,107p,727b,2131s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (56 pages, 562060 bytes).
+Output written on main.xdv (61 pages, 609296 bytes).

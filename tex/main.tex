@@ -1426,6 +1426,16 @@ $+\infty,$ 那么等式 $|A\cup B|=|A|+|B|$ 就必定成立，因此 $A,B$ 的�
 实数集 $A$ 称为是 Lebesgue 可测集，若其包含一个 Borel 子集 $B,$ 使得 $A\setminus B$ 的外测度为零. 换言之，所谓 Lebesgue 可测集类 $\overline{\mathcal B}$ 不过就是那些由 Borel 集与零外测度集的并集所构成的一个集类. 自然，Borel 可测集都是 Lebesgue 可测的. 
 文献 \cite{Axler_2020} 的作者强调，虽然 Lebesgue 可测集类确实比 Borel 可测集要大，但在数学实践中基本不会碰到那些 Lebesgue 可测但 Borel 不可测的集合.
 
+\begin{example}\label{ex:existence of non-Lebesgue measurable sets}
+    存在 $\mathbb R$ 的非 Lebesgue 可测的子集 $B,$ 并且其外测度有限.
+\end{example}
+
+事实上，根据例 \eqref{ex:non_additivity_of_outer_measure} 中结论可知，存在不交的实数集 $A,B,$ 使得 $|A\cup B|\neq |A|+|B|.$ 
+现在由例 \eqref{additivity of outer measure if one of the sets is Borel} 中结论可知，若两个不交集合中至少有一个为 Lebesgue 可测集，那么它们的并集的外测度就等于各自外测度之和.
+因此 $A,B$ 必定都不是 Lebesgue 可测集. 并且，考虑到若 $A,B$ 中至少有一个的外测度为
+$+\infty,$ 那么等式 $|A\cup B|=|A|+|B|$ 就必定成立，因此 $A,B$ 的外测度也必定是有限的.
+
+
 Lebesgue 可测集具有许多等价的定义：
 \begin{example}[Lebesgue 可测集的等价定义]\label{ex:equivalent definitions of Lebesgue measurable sets}
     设 $A$ 为实数集. 以下诸条件等价：
@@ -1816,7 +1826,139 @@ $a_1,b_1,\cdots,a_m,b_m$ 就是端点集
 \begin{equation}
     \mu(n)={2\over 3^n}
 \end{equation}
-那么就有 $C=\mathrm{Im}(\mu).$ 
+那么就有 $C=\mathrm{Im}(\mu).$ 当然，Cantor 集中元素也可表为 $x=\sum_{n\in\mathbb N}{a_n\over 3^n}$ 的形式，其中 $a_n\in\{0,2\}.$ 并且容易验证 $x$ 所对应的序列 $\{a_n\}_{n\in\mathbb N}\in \{0,2\}^{\mathbb N}$ 是唯一的.
+这样就证明了 Cantor 集的势等于 $2^{\aleph_0}=\aleph_1,$ 也即 Cantor 集是一个不可数集，从而给出了一个不可数的 Lebesgue 零测集的例子.
+
+
+\begin{example}
+    Cantor 集 $C$ 是 $\mathbb R$ 中闭集，其 Lebesgue 测度为零，并且不包含任意非退化区间.
+\end{example}
+
+注意到 $\bigcup_n G_n$ 为可数个开区间的并集，故 $C=[0,1]\setminus(\bigcup_n G_n)$ 为 $\mathbb R$ 中闭集.
+
+另一方面，注意到每个 $G_n$ 都是 $2^{n-1}$ 个长度为 $3^{-n}$ 的两两不交的开区间的并集，并且 $\{G_n\}_{n\in\mathbb N}$ 也是互不相交的，因此有
+\begin{equation}
+    \left|\bigcup_n G_n\right|=\sum_n  \sum_{k=1}^{2^{n-1}}{1\over 3^n}=\sum_n{2^{n-1}\over 3^{n}}=1
+\end{equation}
+故 $|C|=1-\left|\bigcup_n G_n\right|=0.$ 
+
+自然，若 $C$ 包含某个非退化区间 $I,$ 那么就有 $|C|\geq |I|>0,$ 矛盾！这就完成了证明.
+
+下面我们给出 Cantor 集是一个不可数集的另一个证明.
+\begin{example}
+    Cantor 集 $C$ 是一个不可数集.
+\end{example}
+事实上，可以定义所谓的 Cantor 函数 $\Lambda:[0,1]\to [0,1]$ 为 
+\begin{equation}
+    \Lambda:[0,1]\to [0,1],\ x\mapsto 
+        \begin{cases}
+            \sum_n {a_n/2\over 2^n}&\text{若 $x=\sum_n {a_n\over 3^n}\in C,\ \{a_n\}_{n\in\mathbb N}\in \{0,2\}^{\mathbb N}$}\\
+            \sum_{n=1}^{r-1} {a_n/2\over 2^n}+{1\over 2^r}&\text{若 $x=\sum_n {a_n\over 3^n}\notin C,\ \{a_n\}_{n\in\mathbb N}\in \{0,1,2\}^{\mathbb N},$}\\
+            &\text{$r$ 为满足 $a_j=1$ 的最小指标 $j$}
+        \end{cases}
+\end{equation}
+首先验证函数 $\Lambda$ 是定义合理的：事实上，已经知道当 $x$ 为 $C$ 中元素时，其对应的序列 $\{a_n\}_{n\in\mathbb N}$ 的确是唯一的. 另一方面，当 $x\notin C$ 时，显然 $x$ 的任意三进制小数表示 $(0.a_1a_2\cdots)_3$ 的头一个为 $1$ 的位 $r$ 必定满足 $a_{r+1},a_{r+2},\cdots$ 不全为 $2.$ 因此有 $(0.a_1a_2\cdots a_{r-1}1)_3\leq x<(0.a_1a_2\cdots a_{r-1}2)_3.$ 特别地，这表明若 $x$ 有另一个 $3$ 进制小数表示 $(0.b_1b_2\cdots b_{r'-1}1\cdots)_3,$ 那么同样有
+$(0.b_1b_2\cdots b_{r'-1}1)_3\leq x<(0.b_1b_2\cdots b_{r'-1}2)_3.$ 这就表明了 $r=r',$ 并且 $a_1=b_1,a_2=b_2,\cdots a_{r-1}=b_{r-1},a_r=b_r=1,$ 因此函数 $\Lambda$ 的定义确是合理的.
+
+下面证明 $\Lambda(C)=[0,1].$ 事实上，设 $y\in [0,1],$ 那么设 $y$ 的二进制小数表示为 $y=\sum_n {y_n\over 2^n},$ 其中 $y_n\in\{0,1\},$ 那么可定义
+$x=\sum_n {2y_n\over 3^n}\in C,$ 使得 $y=\Lambda(x).$ 这就证明了 $\Lambda(C)=[0,1].$
+
+特别地，由于 $\Lambda(C)$ 是不可数的，因此 $C$ 也必定是不可数的. 这就证明了结论.
+
+
+事实上，Cantor 函数还具有一些良好的性质：$\Lambda$ 是连续的单调递增函数. 事实上，若 $x=\sum_n {a_n\over 3^n}\in C,$ 设 $\varepsilon>0,$ 那么对于充分大的 $N,$ 有 $3^{-N}<\varepsilon.$ 自然，对于任意的 $y\in [0,1],$ 当 $|y-x|<3^{-N-1}$ 时，若 $y\in C,$ 那么 $y=\sum_n {b_n\over 3^n}$ 的序列 $\{b_n\}_{n\in\mathbb N}$ 的前 $N$ 项必定完全相同，故 $|f(y)-f(x)|\leq 2^{-N}<\varepsilon.$ 若 $y\notin C,$ 那么若 $r>N,$ 那么 $y$ 的 $3$ 进制小数表示 $(0.y_1y_2\cdots y_{r-1}1\cdots)_3$ 的前 $N$ 项都不为 $1,$ 因此必定有 $y_1=a_1,y_2=a_2,\cdots,y_N=a_N,$ 于是 $|f(y)-f(x)|\leq 2^{-N}<\varepsilon.$ 
+若 $1\leq r\leq N,$ 那么必定有 $y_{r+1}=y_{r+2}=\cdots=y_N=\cdots = 2$ 以及 $a_{r}=2,a_{r+1}=a_{r+2}=\cdots=a_N=\cdots=0.$ 由 $|y-x|<3^{-N-1}$ 即知 $y_1=a_1,\cdots,y_{r-1}=a_{r-1}.$ 于是就有
+\begin{equation}
+    |f(y)-f(x)|=\left|\sum_{n=1}^{r-1} {y_n/2\over 2^n}+{1\over 2^r}-\sum_{n=1}^{r}{a_n/2\over 2^n}\right|=0
+\end{equation}
+总之，只要 $|y-x|<3^{-N-1},$ 就有 $|f(y)-f(x)|<\varepsilon.$ 故 $\Lambda$ 在 $x$ 处连续. 
+
+另一方面，设 $x=(0.a_1a_2\cdots a_{r-1}1\cdots)_3\in [0,1]\setminus C,$ 那么当 $|y-x|<3^{-N-1}$ 时，同样可证明 $|f(y)-f(x)|<\varepsilon.$ 这是因为，
+当 $y=\sum_n {b_n\over 2^n}\in C$ 时，若 $r>N,$ 那么就有 $b_1=a_1,b_2=a_2,\cdots,a_N=b_N,$ 故 $|f(y)-f(x)|\leq 2^{-N}<\varepsilon.$
+
+若 $1\leq r\leq N,$ 那么必定有 $a_{r+1}=a_{r+2}=\cdots=a_N=\cdots=2$ 以及 $b_{r}=2,b_{r+1}=b_{r+2}=\cdots=b_N=\cdots=0.$ 由 $|y-x|<3^{-N-1}$ 即知 $b_1=a_1,\cdots,b_{r-1}=b_{r-1}.$ 于是就有
+\begin{equation}
+    |f(y)-f(x)|=\left|\sum_{n=1}^{r} {b_n/2\over 2^n}-\left[\sum_{n=1}^{r-1}{a_n/2\over 2^n}+{1\over 2^r}\right]\right|=0
+\end{equation}
+
+若 $y=(0.b_1b_2\cdots b_{r'-1}1\cdots)\notin C,$ 那么若 $r'\neq r,$ 那么就有 $|y-x|\geq {1\over 3^{\min\{r,r'\}}},$ 因此必定有 $\min\{r,r'\}\geq N+1.$ 因此 $a_n$ 和 $b_n$ 的前 $N$ 项都不为 $1,$ 因此必定有 $b_1=a_1,b_2=a_2,\cdots,b_N=a_N.$
+于是
+\begin{equation}
+    |f(y)-f(x)|\leq 2^{-N}<\varepsilon
+\end{equation}
+故 $\Lambda$ 在 $x$ 处连续. 这就证明了 Cantor 函数的连续性.
+
+最后证明 $\Lambda$ 的单调性. 设 $x<y\in [0,1],$ 往证 $f(x)\leq f(y).$ 当 $x,y$ 都落入 $C$ 中时，证明是明显的. 若 $x=(0.a_1a_2\cdots a_{r-1}1\cdots)_3$ 和 $y=(0.b_1b_2\cdots b_{r'-1}1\cdots)_3$ 均在 $[0,1]\setminus C$ 中，那么就有 $(0.a_1a_2\cdots a_{r-1}1)_3\leq x\leq (0.a_1a_2\cdots a_{r-1}2)_3$ 以及 
+$(0.b_1b_2\cdots b_{r'-1}1)_3\leq y\leq (0.b_1b_2\cdots b_{r'-1}2)_3.$ 由 $x<y$ 即得
+\begin{equation}
+    (0.a_1a_2\cdots a_{r-1}1)_3<(0.b_1b_2\cdots b_{r'-1}1)_3
+\end{equation}
+这表明存在 $t\leq \min\{r,r'\},$ 使得 
+\begin{equation}
+    a_1=b_1,\cdots,a_{t}=b_{t},a_{t+1}<b_{t+1}
+\end{equation}
+其中当 $t=r$ 或 $t=r'$ 时，$a_{t+1}$ 或 $b_{t+1}$ 取为零. 自然，当 $t=\min\{r,r'\}$ 时，必定有 $r<r'.$
+
+因此 
+\begin{equation}
+    \Lambda(x)=\sum_{n=1}^{r-1}{a_n/2\over 2^n}+{1\over 2^r}\leq\sum_{n=1}^{r'-1}{b_n/2\over 2^n}+{1\over 2^{r'}}=\Lambda(y)
+\end{equation}
+另一方面，若 $x=\sum_n {a_n\over 3^n}\in C$ 并且 $y=(0.b_1b_2\cdots b_{r-1}1\cdots)\notin C,$ 那么就有
+ $(0.a_1a_2\cdots a_{r-1}a_r)_3\leq x\leq (0.a_1a_2\cdots a_{r-1}a_r)_3+3^{-r}$ 以及 
+$(0.b_1b_2\cdots b_{r-1}1)_3\leq y\leq (0.b_1b_2\cdots b_{r-1}2)_3.$ 由 $x<y$ 即得
+\begin{equation}
+    (0.a_1a_2\cdots a_{r-1}a_r)_3<(0.b_1b_2\cdots b_{r-1}1)_3
+\end{equation}
+这表明存在 $t< r,$ 使得 
+\begin{equation}
+    a_1=b_1,\cdots,a_{t}=b_{t},a_{t+1}<b_{t+1}
+\end{equation}
+当 $t<r-1$ 时，就有
+\begin{equation}
+    \Lambda(x)=\sum_{n}{a_n/2\over 2^n}\leq\sum_{n=1}^t {a_n/2\over 2^n}+{a_{t+1}/2+1\over 2^{t+1}}\leq\sum_{n=1}^{t+1}{b_n/2\over 2^n}<\sum_{n=1}^{r-1}{b_n/2\over 2^n}+{1\over 2^r}=\Lambda(y)
+\end{equation}
+当 $t=r-1$ 时，就有 $a_r<b_r=1,$ 故 $a_r=0,$ 从而有
+\begin{equation}
+    \Lambda(x)=\sum_{n}{a_n/2\over 2^n}\leq\sum_{n=1}^t {a_n/2\over 2^n}+{a_{r}/2+1\over 2^{r}}=\sum_{n=1}^{r}{b_n/2\over 2^n}+{1\over 2^r}=\Lambda(y)
+\end{equation}
+这就证明了 $\Lambda(x)<\Lambda(y).$ 
+
+最后，若 $x=(0.a_1a_2\cdots a_{r-1}1\cdots)\notin C$ 并且 $y=\sum_n {b_n\over 3^n}\in C,$ 那么就有
+$(0.a_1a_2\cdots a_{r-1}1)_3\leq x\leq (0.a_1a_2\cdots a_{r-1}2)_3$ 以及 
+$(0.b_1b_2\cdots b_{r-1}b_r)_3\leq y\leq (0.b_1b_2\cdots b_{r-1}b_r)_3+3^{-r}.$ 由 $x<y$ 即得
+\begin{equation}
+   (0.a_1a_2\cdots a_{r-1}1)_3<(0.b_1b_2\cdots b_{r-1}b_r)_3+3^{-r}
+\end{equation}
+若 $b_r=2,$ 那么令 $q$ 为满足 $b_r=b_{r-1}=b_{r-2}=\cdots=b_j=2$ 的最小指标 $j,$ 则有 $1\leq q\leq r$ 以及 $b_{q-1}=0.$ 此时就有
+$(0.b_1b_2\cdots b_{r-1}b_r)_3=(0.\underbrace{b_1b_2\cdots b_{q-2}0}_{q-1}\underbrace{2\cdots 2}_{r-q})_3$ 以及
+$(0.b_1b_2\cdots b_{r-1}b_r)_3+3^{-r}=(0.\underbrace{b_1b_2\cdots b_{q-2}1}_{q-1}\underbrace{0\cdots 0}_{r-q})_3,$
+记 $c_1=b_1,c_2=b_2,\cdots,c_{q-2}=b_{q-2},c_{q-1}=1=b_{q-1}+1,c_{q}=c_{q+1}=\cdots=c_r=0,$ 那么就
+存在 $t< r,$ 使得 
+\begin{equation}
+   a_1=c_1,\cdots,a_{t}=c_{t},a_{t+1}<c_{t+1}
+\end{equation}
+显然，由于 $c_{q}=c_{q+1}=\cdots=c_r=0,$ 因此必然有 $t<q-1.$ 
+当 $t<q-2$ 时，就有
+\begin{equation}
+   \Lambda(x)=\sum_{n=1}^{r-1}{a_n/2\over 2^n}+{1\over 2^r}\leq\sum_{n=1}^t {a_n/2\over 2^n}+{a_{t+1}/2+1\over 2^{t+1}}\leq\sum_{n=1}^{t+1}{b_n/2\over 2^n}\leq\sum_{n}{b_n/2\over 2^n}=\Lambda(y)
+\end{equation}
+当 $t=q-2$ 时，就有 $a_{q-1}<c_{q-1}=1,$ 故 $a_{q-1}=0=b_{q-1},$ 从而有
+\begin{equation}
+   \Lambda(x)=\sum_{n=1}^{r-1}{a_n/2\over 2^n}+{1\over 2^r}\leq\sum_{n=1}^{q-1} {a_n/2\over 2^n}+{a_{q}/2+1\over 2^{q}}\leq \sum_{n=1}^{q-1}{b_n/2\over 2^n}+{2\over 2^q}\leq \sum_{n=1}^{q-1}{b_n/2\over 2^n}+\sum_{n=q}^r{2\over 2^q}=\Lambda(y)
+\end{equation}
+因此 $\Lambda(x)<\Lambda(y).$ 这就证明了 Cantor 函数 $\Lambda$ 的单调性.
+
+Cantor 函数的性质的证明还是相当繁琐的.
+
+\begin{example}
+    Lebesgue 可测集在连续函数下的像可以是不可测的.
+\end{example}
+
+事实上，取 $E$ 为 $[0,1]$ 的一个非 Lebesgue 可测的子集(见例 \ref{ex:existence of non-Lebesgue measurable sets})，令 $A=C\cap\Lambda^{-1}(E),$ 那么由 $\Lambda(C)=[0,1]$ 可知 $\Lambda(A)=E.$ 
+自然，$|A|\leq |C|=0.$ 因此 $A$ 的外测度为零，从而为 Lebesgue 可测集. 
+
+
+\section{可测函数列的极限}
 
 \nocite{*}
 \bibliographystyle{plain}
