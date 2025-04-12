@@ -1958,6 +1958,33 @@ Cantor 函数的性质的证明还是相当繁琐的.
 自然，$|A|\leq |C|=0.$ 因此 $A$ 的外测度为零，从而为 Lebesgue 可测集. 
 
 
+
+\begin{example}
+    \begin{enumerate}[label=\alph*)]
+        \item 区间 $(0,1)$ 内的那些小数表示中具有连续 100 个 $4$ 的元素之全体所做成的集合 $A$ 为 Borel 集.
+        \item $|A|=1.$
+    \end{enumerate}
+\end{example}
+
+对于任意的正整数 $n,$ 定义 
+\begin{equation}
+    A_n=\left\{\sum_{k=1}^{n-1}{a_k\over 10^k}+\sum_{k=n}^{n+99} {4\over 10^k}+\sum_{k=n+100}^\infty {b_k\over 10^k}\Bigg|\ 0\leq a_k,b_k\leq 9\right\}
+\end{equation}
+那么就有 $A=\bigcup_n A_n.$ 
+
+另一方面，有
+$A_n=\bigcup_{\{a_k\}}A_{\{a_k\}},$ 其中 
+\begin{equation}
+    A_{\{a_k\}}=\left\{\sum_{k=1}^{n-1}{a_k\over 10^k}+\sum_{k=n}^{n+99} {4\over 10^k}+\sum_{k=n+100}^\infty {b_k\over 10^k}\Bigg|\ 0\leq b_k\leq 9\right\}
+\end{equation}
+对于任意固定的序列 $\{a_k\}_{1\leq k\leq n-1},$ 显然 $A_{\{a_k\}}$ 与 $[0,1]$ 同胚，因此为 Borel 集. 故 $A_n$ 为 Borel 集，从而 $A$ 为 Borel 集.
+
+另一方面，对于任意固定的序列 $\{a_k\}_{1\leq k\leq n-1},$ $A_{\{a_k\}}$ 实际上只与 $[0,1]$ 相差一个平移，故 $|A_{\{a_k\}}|=1.$ 因此有
+\begin{equation}
+    1=|A_{\{a_k\}}|\leq |A_n|\leq |A|\leq |(0,1)|=1
+\end{equation}
+这就证明了 $|A|=1.$
+
 \section{可测函数列的极限}
 
 \nocite{*}
